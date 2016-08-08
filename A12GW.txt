@@ -1,0 +1,2801 @@
+HN6-L12-GW#show run
+Building configuration...
+
+Current configuration : 58583 bytes
+!
+! Last configuration change at 10:49:47 CCT Thu Jun 30 2016 by qshi2
+! NVRAM config last updated at 10:49:49 CCT Thu Jun 30 2016 by qshi2
+!
+upgrade fpd auto
+version 12.2
+service nagle
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+service internal
+service counters max age 5
+!
+hostname SHN6-L12-GW
+!
+boot-start-marker
+boot system sup-bootdisk:s72033-ipservices_wan-mz.122-33.SXI6.bin
+boot-end-marker
+!
+security passwords min-length 1
+enable secret 5 $1$GP1M$YOsVupVq7hCn0XwpkRR/4.
+!
+aaa new-model
+!
+!
+aaa authentication fail-message ^C Login failed, haha ^C
+aaa authentication login cisco group tacacs+ enable
+aaa authentication login lab group radius enable
+!
+!
+!
+aaa session-id common
+clock timezone CCT 8
+clock calendar-valid
+!
+!
+ip dhcp relay information option
+ip dhcp excluded-address 10.74.20.241
+ip dhcp excluded-address 10.75.213.49
+!
+ip dhcp pool Vlan325
+   network 10.74.20.240 255.255.255.240
+   default-router 10.74.20.241 
+   dns-server 64.104.123.144 
+!
+ip dhcp pool Vlan503
+   network 10.75.213.48 255.255.255.240
+   default-router 10.75.213.49 
+   dns-server 64.104.123.144 
+!
+ip multicast-routing 
+no ip domain-lookup
+ip domain-name cisco.com
+ip name-server 64.104.123.144
+ip name-server 171.70.168.183
+ipv6 unicast-routing
+ipv6 mfib hardware-switching replication-mode ingress
+no mls acl tcam share-global
+mls netflow interface
+no mls qos rewrite ip dscp
+mls cef error action freeze
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-25,27-29,31-59,67-71,78-109,114-125,127-198 priority 24576
+spanning-tree vlan 259-293,310-325,327-391,399-411,438-449,459 priority 24576
+spanning-tree vlan 460-4094 priority 24576
+spanning-tree vlan 26,30,60-66,72-77,110-113,126,199-258,294-309 priority 8192
+spanning-tree vlan 326,392-398,412-437,450-458 priority 8192
+diagnostic bootup level minimal
+access-list 14 deny   10.74.16.125
+access-list 14 permit any
+access-list 20 permit 30.1.0.0 0.0.255.255
+access-list 20 permit 40.1.0.0 0.0.255.255
+access-list 30 deny   10.48.17.219
+access-list 30 permit any
+access-list 101 deny   ip host 10.140.45.144 any
+access-list 101 permit ip any any
+access-list 112 permit icmp 10.74.125.0 0.0.0.255 any
+access-list 112 permit tcp 10.74.125.0 0.0.0.255 any
+access-list 141 deny   ip host 10.74.16.237 any
+access-list 141 deny   ip host 10.74.16.78 any
+access-list 141 deny   ip host 10.74.4.179 any
+access-list 141 deny   ip host 10.74.4.219 any
+access-list 141 deny   ip host 10.74.63.89 any
+access-list 141 permit ip any any
+access-list 144 deny   ip host 10.1.1.1 any
+access-list 144 permit ip any any
+!
+redundancy
+ main-cpu
+  auto-sync running-config
+ mode sso
+!
+vlan internal allocation policy ascending
+vlan access-log ratelimit 2000
+!
+class-map match-all NMTG
+  match access-group 111
+!
+!
+policy-map NMTG
+  class NMTG
+!
+!
+!         
+!
+interface Tunnel0
+ description TO-C15-GW
+ ip unnumbered GigabitEthernet7/1
+ tunnel source 10.74.43.6
+ tunnel destination 10.74.46.74
+!
+interface Tunnel2
+ description S11-l2-Demo-GW
+ ip address 10.74.3.10 255.255.255.252
+ ip mtu 1400
+ tunnel source 10.74.43.6
+ tunnel destination 64.104.163.58
+!
+interface Tunnel5
+ description TO-UCBU
+ no ip address
+!
+interface Tunnel10
+ bandwidth 100000
+ ip address 1.1.100.2 255.255.255.252
+ tunnel source 10.74.43.6
+ tunnel destination 10.74.43.50
+!
+interface Tunnel15
+ ip address 192.168.113.2 255.255.255.248
+ tunnel source 10.74.43.6
+ tunnel destination 10.74.43.138
+!
+interface Tunnel20
+ description connected-to-Podium
+ bandwidth 100000
+ ip address 1.1.101.1 255.255.255.252
+ tunnel source 10.74.43.6
+ tunnel destination 10.74.90.130
+!
+interface Port-channel1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/1
+ switchport
+ switchport access vlan 200
+ switchport mode access
+!
+interface FastEthernet1/2
+ switchport
+ switchport access vlan 200
+ switchport mode access
+!
+interface FastEthernet1/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface FastEthernet1/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/9
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/11
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/13
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/14
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/16
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/17
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/19
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/20
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/21
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/22
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/23
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/24
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/25
+ description Connect_Cat35-71
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/26
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/27
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/28
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/29
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/30
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/31
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/32
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/33
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/34
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/35
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/36
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/37
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/38
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/39
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/40
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/41
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface FastEthernet1/42
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/43
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/44
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/45
+ switchport
+ switchport access vlan 200
+ switchport mode access
+!
+interface FastEthernet1/46
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/47
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet1/48
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+!
+interface GigabitEthernet3/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+!
+interface GigabitEthernet3/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+!
+interface GigabitEthernet3/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode on
+!
+interface GigabitEthernet3/5
+ no ip address
+!
+interface GigabitEthernet3/6
+ no ip address
+!
+interface GigabitEthernet3/7
+ no ip address
+!
+interface GigabitEthernet3/8
+ no ip address
+!
+interface GigabitEthernet3/9
+ no ip address
+!
+interface GigabitEthernet3/10
+ no ip address
+!
+interface GigabitEthernet3/11
+ no ip address
+!
+interface GigabitEthernet3/12
+ no ip address
+!
+interface GigabitEthernet3/13
+ no ip address
+!
+interface GigabitEthernet3/14
+ no ip address
+!
+interface GigabitEthernet3/15
+ no ip address
+!
+interface GigabitEthernet3/16
+ no ip address
+!         
+interface GigabitEthernet3/17
+ no ip address
+!
+interface GigabitEthernet3/18
+ no ip address
+!
+interface GigabitEthernet3/19
+ no ip address
+!
+interface GigabitEthernet3/20
+ no ip address
+!
+interface GigabitEthernet3/21
+ no ip address
+ shutdown
+!
+interface GigabitEthernet3/22
+ no ip address
+!         
+interface GigabitEthernet3/23
+ no ip address
+!
+interface GigabitEthernet3/24
+ no ip address
+!
+interface GigabitEthernet3/25
+ no ip address
+!
+interface GigabitEthernet3/26
+ no ip address
+!
+interface GigabitEthernet3/27
+ no ip address
+!
+interface GigabitEthernet3/28
+ no ip address
+!
+interface GigabitEthernet3/29
+ no ip address
+!
+interface GigabitEthernet3/30
+ no ip address
+!
+interface GigabitEthernet3/31
+ no ip address
+!
+interface GigabitEthernet3/32
+ no ip address
+!
+interface GigabitEthernet3/33
+ no ip address
+!
+interface GigabitEthernet3/34
+ no ip address
+!
+interface GigabitEthernet3/35
+ no ip address
+!
+interface GigabitEthernet3/36
+ no ip address
+!
+interface GigabitEthernet3/37
+ no ip address
+!
+interface GigabitEthernet3/38
+ no ip address
+!
+interface GigabitEthernet3/39
+ no ip address
+!
+interface GigabitEthernet3/40
+ no ip address
+!
+interface GigabitEthernet3/41
+ no ip address
+!         
+interface GigabitEthernet3/42
+ no ip address
+!
+interface GigabitEthernet3/43
+ no ip address
+!
+interface GigabitEthernet3/44
+ no ip address
+!
+interface GigabitEthernet3/45
+ no ip address
+!
+interface GigabitEthernet3/46
+ no ip address
+!
+interface GigabitEthernet3/47
+ no ip address
+!
+interface GigabitEthernet3/48
+ no ip address
+!
+interface GigabitEthernet7/1
+ description To_IT_LAB_GW
+ ip address 10.74.43.6 255.255.255.252
+ ip access-group 101 in
+ ip nat outside
+!
+interface GigabitEthernet7/2
+ description TO_New_rackrow
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+!
+interface GigabitEthernet8/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/9
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/11
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/13
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/14
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/16
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet8/17
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/19
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/20
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/21
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/22
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/23
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet8/24
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/9
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/11
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet9/12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/13
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/14
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/16
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/17
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/19
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/20
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/21
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/22
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/23
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet9/24
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet10/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface GigabitEthernet10/9
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/11
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 0.50
+ storm-control multicast level 0.50
+ storm-control unicast level 0.50
+!
+interface GigabitEthernet10/12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/13
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/14
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/16
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/17
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/19
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/20
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/21
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/22
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/23
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet10/24
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan2
+ no ip address
+!
+interface Vlan3
+ no ip address
+!
+interface Vlan4
+ no ip address
+!
+interface Vlan5
+ no ip address
+!
+interface Vlan6
+ no ip address
+!
+interface Vlan7
+ no ip address
+!
+interface Vlan8
+ no ip address
+!
+interface Vlan9
+ no ip address
+!
+interface Vlan10
+ no ip address
+!
+interface Vlan11
+ ip address 172.16.11.1 255.255.255.0
+!
+interface Vlan12
+ ip address 172.16.12.1 255.255.255.0
+!
+interface Vlan13
+ no ip address
+!         
+interface Vlan14
+ no ip address
+!
+interface Vlan15
+ ip address 10.79.57.1 255.255.255.0
+!
+interface Vlan16
+ ip address 10.75.6.1 255.255.255.0
+!
+interface Vlan18
+ no ip address
+!
+interface Vlan19
+ no ip address
+!
+interface Vlan20
+ no ip address
+!
+interface Vlan21
+ ip address 10.74.18.193 255.255.255.192
+!
+interface Vlan22
+ ip address 10.22.200.254 255.255.255.0
+!
+interface Vlan23
+ ip address 10.22.201.254 255.255.255.0
+!
+interface Vlan24
+ ip address 10.22.202.254 255.255.255.0
+!
+interface Vlan25
+ ip address 10.22.203.254 255.255.255.0
+!
+interface Vlan26
+ ip address 142.102.64.1 255.255.255.0
+!
+interface Vlan27
+ ip address 142.102.65.1 255.255.255.0
+!
+interface Vlan28
+ ip address 142.102.66.1 255.255.255.0
+!
+interface Vlan29
+ no ip address
+!
+interface Vlan30
+ ip address 10.74.130.254 255.255.255.0
+ ip helper-address 10.74.20.174
+!
+interface Vlan31
+ ip address 10.74.97.1 255.255.255.240
+!
+interface Vlan32
+ ip address 10.74.97.17 255.255.255.240
+!
+interface Vlan33
+ ip address 10.74.97.33 255.255.255.240
+!
+interface Vlan34
+ ip address 10.74.97.49 255.255.255.240
+!
+interface Vlan35
+ ip address 10.74.97.65 255.255.255.240
+!
+interface Vlan36
+ ip address 10.74.97.81 255.255.255.240
+!
+interface Vlan37
+ ip address 10.74.97.97 255.255.255.240
+!
+interface Vlan38
+ ip address 10.74.97.113 255.255.255.240
+!
+interface Vlan39
+ ip address 10.74.97.129 255.255.255.240
+!         
+interface Vlan40
+ ip address 10.74.97.145 255.255.255.240
+!
+interface Vlan41
+ ip address 10.74.97.161 255.255.255.240
+!
+interface Vlan42
+ ip address 10.74.97.177 255.255.255.240
+!
+interface Vlan43
+ ip address 10.74.97.193 255.255.255.240
+!
+interface Vlan44
+ ip address 10.74.97.209 255.255.255.240
+!
+interface Vlan45
+ ip address 10.74.97.225 255.255.255.240
+!
+interface Vlan46
+ ip address 10.74.97.241 255.255.255.240
+!
+interface Vlan66
+ ip address 192.166.66.254 255.255.255.0
+ ip helper-address 192.166.67.101
+!
+interface Vlan81
+ no ip address
+!
+interface Vlan82
+ no ip address
+!
+interface Vlan83
+ no ip address
+ ip helper-address 10.74.10.2
+!
+interface Vlan87
+ ip address 100.100.90.1 255.255.255.240
+!         
+interface Vlan88
+ ip address 100.100.90.17 255.255.255.240
+!
+interface Vlan100
+ ip address 100.100.100.1 255.255.255.0
+ ip helper-address 10.74.62.2
+!
+interface Vlan110
+ ip address 10.14.0.1 255.255.0.0
+!
+interface Vlan126
+ ip address 10.1.55.241 255.255.255.240
+!
+interface Vlan127
+ ip address 100.100.77.65 255.255.255.192
+!
+interface Vlan128
+ ip address 100.100.77.129 255.255.255.192
+!         
+interface Vlan129
+ ip address 100.100.78.1 255.255.255.192
+!
+interface Vlan130
+ ip address 100.100.78.65 255.255.255.192
+!
+interface Vlan131
+ ip address 100.100.79.1 255.255.255.192
+!
+interface Vlan132
+ ip address 100.100.79.65 255.255.255.192
+!
+interface Vlan133
+ ip address 100.100.101.1 255.255.255.0
+!
+interface Vlan134
+ ip address 100.100.102.1 255.255.255.240
+!
+interface Vlan135
+ ip address 100.100.102.17 255.255.255.240
+!
+interface Vlan136
+ ip address 100.100.102.33 255.255.255.240
+!
+interface Vlan137
+ ip address 100.100.102.49 255.255.255.240
+!
+interface Vlan138
+ ip address 100.100.102.65 255.255.255.240
+!
+interface Vlan139
+ ip address 100.100.102.81 255.255.255.240
+!
+interface Vlan140
+ ip address 100.100.102.97 255.255.255.240
+!
+interface Vlan141
+ ip address 100.100.102.113 255.255.255.240
+!
+interface Vlan142
+ ip address 100.100.102.129 255.255.255.240
+!
+interface Vlan143
+ ip address 100.100.102.145 255.255.255.240
+!
+interface Vlan144
+ ip address 100.100.103.1 255.255.255.192
+!
+interface Vlan145
+ ip address 100.100.103.65 255.255.255.192
+!
+interface Vlan146
+ ip address 100.100.103.129 255.255.255.192
+!
+interface Vlan147
+ ip address 100.100.104.1 255.255.255.192
+!         
+interface Vlan148
+ ip address 100.100.104.65 255.255.255.192
+!
+interface Vlan149
+ ip address 100.100.105.1 255.255.255.0
+!
+interface Vlan200
+ ip address 10.74.62.1 255.255.255.224
+!
+interface Vlan201
+ ip address 10.74.62.33 255.255.255.240
+!
+interface Vlan202
+ ip address 10.74.62.49 255.255.255.240
+!
+interface Vlan203
+ ip address 10.74.62.65 255.255.255.240
+!
+interface Vlan204
+ ip address 10.74.62.81 255.255.255.240
+!
+interface Vlan205
+ ip address 10.74.62.97 255.255.255.240
+!
+interface Vlan206
+ ip address 10.74.62.113 255.255.255.240
+!
+interface Vlan207
+ ip address 10.74.62.129 255.255.255.240
+!
+interface Vlan208
+ ip address 10.74.62.145 255.255.255.240
+!
+interface Vlan209
+ ip address 10.74.62.161 255.255.255.240
+!
+interface Vlan210
+ ip address 10.74.62.177 255.255.255.240
+!
+interface Vlan211
+ ip address 10.74.62.193 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan212
+ ip address 10.74.62.209 255.255.255.240
+!
+interface Vlan213
+ ip address 10.74.62.225 255.255.255.240
+!
+interface Vlan214
+ ip address 10.74.62.241 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan215
+ ip address 10.74.55.65 255.255.255.240
+ ip helper-address 10.74.55.251
+!         
+interface Vlan216
+ ip address 10.74.55.81 255.255.255.240
+!
+interface Vlan217
+ ip address 10.74.55.97 255.255.255.240
+ ip helper-address 10.74.55.82
+!
+interface Vlan218
+ ip address 10.74.55.113 255.255.255.240
+!
+interface Vlan219
+ ip address 10.74.55.129 255.255.255.240
+!
+interface Vlan220
+ ip address 10.74.55.145 255.255.255.240
+!
+interface Vlan221
+ ip address 10.74.55.161 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan222
+ ip address 10.74.55.177 255.255.255.240
+ ip helper-address 10.74.55.195
+!
+interface Vlan223
+ ip address 10.74.55.193 255.255.255.240
+!
+interface Vlan224
+ ip address 10.74.55.209 255.255.255.240
+!
+interface Vlan225
+ ip address 10.74.55.225 255.255.255.240
+!
+interface Vlan226
+ ip address 10.74.55.241 255.255.255.240
+ ip helper-address 10.74.62.46
+ ip helper-address 10.74.55.251
+!         
+interface Vlan227
+ ip address 10.74.53.1 255.255.255.240
+!
+interface Vlan228
+ ip address 10.74.53.17 255.255.255.240
+ ip helper-address 10.74.62.46
+ ip helper-address 10.74.55.251
+ ip helper-address 10.74.55.252
+!
+interface Vlan229
+ ip address 10.74.53.33 255.255.255.240
+!
+interface Vlan230
+ ip address 10.74.53.49 255.255.255.240
+!
+interface Vlan231
+ ip address 10.74.53.65 255.255.255.240
+!
+interface Vlan232
+ ip address 10.74.53.81 255.255.255.240
+!
+interface Vlan233
+ ip address 10.74.53.97 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan234
+ ip address 10.74.53.113 255.255.255.240
+!
+interface Vlan235
+ ip address 10.74.53.129 255.255.255.240
+!
+interface Vlan236
+ ip address 10.74.53.145 255.255.255.240
+!
+interface Vlan237
+ ip address 10.74.53.161 255.255.255.240
+!
+interface Vlan238
+ ip address 10.74.53.177 255.255.255.240
+!
+interface Vlan239
+ ip address 10.74.53.193 255.255.255.240
+!
+interface Vlan240
+ ip address 10.74.53.209 255.255.255.240
+!
+interface Vlan241
+ ip address 10.74.53.225 255.255.255.240
+!
+interface Vlan242
+ ip address 10.74.53.241 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan243
+ ip address 10.74.63.1 255.255.255.240
+!
+interface Vlan244
+ ip address 10.74.63.17 255.255.255.240
+!
+interface Vlan245
+ ip address 10.74.63.33 255.255.255.240
+!
+interface Vlan246
+ ip address 10.74.63.49 255.255.255.240
+!
+interface Vlan247
+ ip address 10.74.63.65 255.255.255.240
+!
+interface Vlan248
+ ip address 10.74.63.81 255.255.255.240
+ ip access-group 141 in
+!
+interface Vlan249
+ ip address 10.74.63.97 255.255.255.240
+ ip nat inside
+ ip pim dense-mode
+ ipv6 address 2001:10:74:63::97/64
+ ipv6 enable
+!
+interface Vlan250
+ ip address 10.74.63.113 255.255.255.240
+!
+interface Vlan251
+ ip address 10.74.63.129 255.255.255.240
+ ip pim dense-mode
+!
+interface Vlan252
+ ip address 10.74.63.145 255.255.255.240
+ ip pim dense-mode
+!
+interface Vlan253
+ ip address 10.74.63.161 255.255.255.240
+ ip helper-address 10.74.55.195
+!
+interface Vlan254
+ ip address 10.74.63.177 255.255.255.240
+!
+interface Vlan255
+ ip address 10.74.63.193 255.255.255.240
+!
+interface Vlan256
+ ip address 10.74.63.209 255.255.255.240
+!
+interface Vlan257
+ ip address 10.74.63.225 255.255.255.240
+!
+interface Vlan258
+ ip address 10.74.63.241 255.255.255.240
+ ip helper-address 10.74.55.251
+ ip helper-address 10.74.55.252
+ ip helper-address 10.74.55.253
+ ip helper-address 10.74.62.46
+!
+interface Vlan259
+ ip address 10.74.16.1 255.255.255.240
+!
+interface Vlan260
+ ip address 10.74.16.17 255.255.255.240
+!
+interface Vlan261
+ ip address 10.74.16.33 255.255.255.240
+!
+interface Vlan262
+ ip address 10.74.16.49 255.255.255.240
+!
+interface Vlan263
+ ip address 10.74.16.65 255.255.255.240
+!
+interface Vlan264
+ ip address 10.74.16.81 255.255.255.240
+ ip pim dense-mode
+ ipv6 address 2001:10:74:16::81/64
+ ipv6 enable
+!
+interface Vlan265
+ ip address 10.74.16.97 255.255.255.240
+!
+interface Vlan266
+ ip address 10.74.16.113 255.255.255.240
+ ip access-group 14 in
+ ip access-group 14 out
+!
+interface Vlan267
+ ip address 10.74.16.129 255.255.255.240
+!
+interface Vlan268
+ ip address 10.74.16.145 255.255.255.240
+!
+interface Vlan269
+ ip address 10.74.16.161 255.255.255.240
+!
+interface Vlan270
+ ip address 10.74.16.177 255.255.255.240
+!
+interface Vlan271
+ ip address 10.74.16.193 255.255.255.240
+!
+interface Vlan272
+ ip address 10.74.16.209 255.255.255.240
+!
+interface Vlan273
+ ip address 10.74.16.225 255.255.255.240
+ ip access-group 141 in
+!
+interface Vlan274
+ ip address 10.74.16.241 255.255.255.240
+!
+interface Vlan275
+ ip address 10.74.4.1 255.255.255.240
+!
+interface Vlan276
+ ip address 10.74.4.17 255.255.255.240
+!
+interface Vlan277
+ ip address 10.74.4.33 255.255.255.240
+!
+interface Vlan278
+ ip address 10.74.4.49 255.255.255.240
+!
+interface Vlan279
+ ip address 10.74.4.65 255.255.255.240
+!
+interface Vlan280
+ ip address 10.74.4.81 255.255.255.240
+!
+interface Vlan281
+ ip address 10.74.4.97 255.255.255.240
+!
+interface Vlan282
+ ip address 10.74.4.113 255.255.255.240
+!
+interface Vlan283
+ ip address 10.74.4.129 255.255.255.240
+!
+interface Vlan284
+ ip address 10.74.4.145 255.255.255.240
+!
+interface Vlan285
+ ip address 10.74.4.161 255.255.255.240
+!
+interface Vlan286
+ ip address 10.74.4.177 255.255.255.240
+ ip access-group 141 in
+!
+interface Vlan287
+ ip address 10.74.4.193 255.255.255.240
+!
+interface Vlan288
+ ip address 10.74.4.209 255.255.255.240
+ ip access-group 141 in
+!
+interface Vlan289
+ ip address 10.74.4.225 255.255.255.240
+!
+interface Vlan290
+ ip address 10.74.4.241 255.255.255.240
+!
+interface Vlan310
+ ip address 10.74.20.1 255.255.255.240
+!
+interface Vlan311
+ ip address 10.74.20.17 255.255.255.240
+!
+interface Vlan312
+ ip address 10.74.20.33 255.255.255.240
+!
+interface Vlan313
+ ip address 10.74.20.49 255.255.255.240
+!
+interface Vlan314
+ ip address 10.74.20.65 255.255.255.224
+!
+interface Vlan315
+ no ip address
+!
+interface Vlan316
+ ip address 10.74.20.97 255.255.255.240
+!
+interface Vlan317
+ ip address 10.74.20.113 255.255.255.240
+!
+interface Vlan318
+ ip address 10.74.20.129 255.255.255.240
+!
+interface Vlan319
+ ip address 10.74.20.145 255.255.255.240
+!         
+interface Vlan320
+ ip address 10.74.20.161 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan321
+ ip address 10.74.20.177 255.255.255.240
+!
+interface Vlan322
+ ip address 10.74.20.193 255.255.255.240
+ ipv6 address 2001:10:74:20::193/64
+ ipv6 enable
+!
+interface Vlan323
+ ip address 10.74.20.209 255.255.255.240
+!
+interface Vlan324
+ ip address 10.74.20.225 255.255.255.240
+!
+interface Vlan325
+ ip address 10.74.20.241 255.255.255.240
+!
+interface Vlan326
+ ip address 10.2.55.241 255.255.255.240
+!
+interface Vlan327
+ ip address 10.79.58.1 255.255.255.128
+!
+interface Vlan328
+ ip address 100.100.83.1 255.255.255.192
+!
+interface Vlan329
+ ip address 100.100.88.1 255.255.255.240
+!
+interface Vlan330
+ ip address 100.100.88.17 255.255.255.240
+!
+interface Vlan331
+ ip address 100.100.88.33 255.255.255.240
+!
+interface Vlan332
+ ip address 100.100.89.1 255.255.255.192
+!
+interface Vlan361
+ ip address 100.100.87.1 255.255.255.0
+!
+interface Vlan362
+ ip address 100.100.86.1 255.255.255.0
+!
+interface Vlan363
+ ip address 100.100.85.1 255.255.255.0
+!
+interface Vlan364
+ ip address 100.100.82.65 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan365
+ ip address 100.100.82.49 255.255.255.240
+!
+interface Vlan366
+ ip address 100.100.82.33 255.255.255.240
+!
+interface Vlan367
+ ip address 100.100.82.1 255.255.255.240
+!
+interface Vlan368
+ ip address 100.100.82.17 255.255.255.240
+!
+interface Vlan369
+ ip address 100.100.81.1 255.255.255.240
+!
+interface Vlan370
+ ip address 100.100.81.17 255.255.255.240
+!
+interface Vlan371
+ ip address 100.100.81.33 255.255.255.240
+!         
+interface Vlan372
+ ip address 100.100.81.49 255.255.255.240
+!
+interface Vlan373
+ ip address 100.100.81.65 255.255.255.240
+!
+interface Vlan374
+ ip address 100.100.81.81 255.255.255.240
+!
+interface Vlan375
+ ip address 100.100.81.97 255.255.255.240
+!
+interface Vlan376
+ ip address 100.100.81.113 255.255.255.240
+!
+interface Vlan377
+ ip address 100.100.81.129 255.255.255.240
+!
+interface Vlan378
+ ip address 100.100.81.145 255.255.255.240
+!
+interface Vlan379
+ ip address 100.100.74.1 255.255.255.128
+!
+interface Vlan380
+ ip address 100.100.70.1 255.255.255.224
+!
+interface Vlan381
+ ip address 100.100.70.33 255.255.255.224
+!
+interface Vlan382
+ ip address 100.100.70.65 255.255.255.224
+!
+interface Vlan383
+ ip address 100.100.70.97 255.255.255.224
+!
+interface Vlan384
+ ip address 100.100.70.129 255.255.255.224
+!
+interface Vlan385
+ ip address 100.100.70.161 255.255.255.224
+!
+interface Vlan386
+ ip address 100.100.70.193 255.255.255.224
+!
+interface Vlan387
+ ip address 100.100.70.225 255.255.255.224
+!
+interface Vlan388
+ ip address 100.100.71.1 255.255.255.224
+!
+interface Vlan389
+ ip address 100.100.71.33 255.255.255.224
+!
+interface Vlan390
+ ip address 100.100.80.1 255.255.255.192
+!         
+interface Vlan391
+ ip address 100.100.80.65 255.255.255.192
+!
+interface Vlan399
+ ip address 100.100.69.1 255.255.255.128
+!
+interface Vlan400
+ ip address 100.100.49.129 255.255.255.192
+!
+interface Vlan401
+ ip address 100.100.50.1 255.255.255.192
+!
+interface Vlan402
+ ip address 100.100.50.65 255.255.255.192
+!
+interface Vlan403
+ ip address 100.100.51.1 255.255.255.0
+!
+interface Vlan404
+ ip address 100.100.52.1 255.255.255.192
+!
+interface Vlan405
+ ip address 100.100.52.65 255.255.255.192
+!
+interface Vlan406
+ ip address 100.100.53.1 255.255.255.192
+!
+interface Vlan407
+ ip address 100.100.53.65 255.255.255.192
+!
+interface Vlan408
+ ip address 100.100.53.129 255.255.255.192
+!
+interface Vlan409
+ ip address 100.100.54.1 255.255.255.192
+!
+interface Vlan410
+ ip address 100.100.54.65 255.255.255.192
+!
+interface Vlan411
+ ip address 100.100.54.129 255.255.255.192
+!
+interface Vlan412
+ no ip address
+!
+interface Vlan413
+ no ip address
+!
+interface Vlan414
+ ip address 100.100.55.65 255.255.255.192
+!
+interface Vlan415
+ ip address 100.100.55.129 255.255.255.192
+!
+interface Vlan416
+ ip address 100.100.55.193 255.255.255.192
+!         
+interface Vlan417
+ ip address 100.100.56.1 255.255.255.192
+!
+interface Vlan418
+ ip address 100.100.56.129 255.255.255.240
+!
+interface Vlan419
+ ip address 100.100.56.145 255.255.255.240
+!
+interface Vlan420
+ ip address 100.100.56.161 255.255.255.240
+!
+interface Vlan421
+ ip address 100.100.56.177 255.255.255.240
+!
+interface Vlan422
+ ip address 100.100.56.193 255.255.255.240
+!
+interface Vlan423
+ ip address 100.100.56.209 255.255.255.240
+!
+interface Vlan424
+ ip address 100.100.56.225 255.255.255.240
+!
+interface Vlan425
+ ip address 100.100.56.241 255.255.255.240
+!
+interface Vlan426
+ ip address 100.100.57.1 255.255.255.240
+!
+interface Vlan427
+ ip address 100.100.57.17 255.255.255.240
+!
+interface Vlan428
+ ip address 100.100.57.33 255.255.255.240
+!
+interface Vlan429
+ ip address 100.100.57.49 255.255.255.240
+!
+interface Vlan430
+ ip address 100.100.57.65 255.255.255.240
+!
+interface Vlan431
+ ip address 100.100.57.81 255.255.255.240
+!
+interface Vlan432
+ ip address 100.100.57.97 255.255.255.240
+!
+interface Vlan433
+ ip address 100.100.57.113 255.255.255.240
+!
+interface Vlan434
+ ip address 100.100.57.129 255.255.255.240
+!
+interface Vlan435
+ ip address 100.100.57.145 255.255.255.240
+!         
+interface Vlan436
+ ip address 100.100.57.161 255.255.255.240
+!
+interface Vlan437
+ ip address 100.100.57.177 255.255.255.240
+!
+interface Vlan450
+ ip address 100.100.58.1 255.255.255.192
+!
+interface Vlan451
+ ip address 100.100.58.65 255.255.255.192
+!
+interface Vlan452
+ ip address 100.100.58.129 255.255.255.192
+!
+interface Vlan453
+ ip address 100.100.58.193 255.255.255.192
+!
+interface Vlan454
+ ip address 100.100.59.1 255.255.255.192
+!
+interface Vlan455
+ ip address 100.100.59.65 255.255.255.192
+!
+interface Vlan456
+ ip address 100.100.59.129 255.255.255.192
+!
+interface Vlan457
+ ip address 100.100.59.193 255.255.255.192
+!
+interface Vlan458
+ ip address 100.100.60.1 255.255.255.224
+!
+interface Vlan459
+ ip address 100.100.60.65 255.255.255.192
+!
+interface Vlan460
+ ip address 100.100.60.129 255.255.255.192
+!
+interface Vlan461
+ ip address 100.100.60.193 255.255.255.192
+!
+interface Vlan462
+ ip address 100.100.61.1 255.255.255.192
+!
+interface Vlan463
+ ip address 100.100.61.65 255.255.255.192
+!
+interface Vlan464
+ ip address 100.100.61.129 255.255.255.192
+!
+interface Vlan465
+ ip address 100.100.61.193 255.255.255.192
+!
+interface Vlan466
+ ip address 100.100.62.1 255.255.255.192
+!         
+interface Vlan467
+ ip address 100.100.62.129 255.255.255.128
+!
+interface Vlan468
+ ip address 100.100.63.1 255.255.255.128
+!
+interface Vlan469
+ ip address 100.100.64.1 255.255.255.192
+!
+interface Vlan470
+ ip address 100.100.65.1 255.255.255.240
+!
+interface Vlan471
+ ip address 100.100.65.17 255.255.255.240
+!
+interface Vlan472
+ ip address 100.100.66.1 255.255.255.128
+!
+interface Vlan473
+ ip address 100.100.66.129 255.255.255.128
+!
+interface Vlan474
+ ip address 100.100.67.1 255.255.255.192
+!
+interface Vlan475
+ ip address 100.100.68.1 255.255.255.128
+!
+interface Vlan476
+ ip address 100.100.72.1 255.255.255.192
+!
+interface Vlan477
+ ip address 100.100.72.65 255.255.255.192
+!
+interface Vlan478
+ ip address 100.100.72.129 255.255.255.192
+!
+interface Vlan479
+ ip address 100.100.72.193 255.255.255.192
+!
+interface Vlan480
+ ip address 100.100.73.1 255.255.255.192
+!
+interface Vlan481
+ ip address 100.100.73.65 255.255.255.192
+!
+interface Vlan482
+ ip address 100.100.73.129 255.255.255.192
+!
+interface Vlan483
+ ip address 100.100.73.193 255.255.255.192
+!
+interface Vlan484
+ ip address 100.100.75.1 255.255.255.192
+!
+interface Vlan485
+ ip address 100.100.76.1 255.255.255.240
+!         
+interface Vlan486
+ ip address 100.100.76.17 255.255.255.240
+!
+interface Vlan487
+ ip address 100.100.76.33 255.255.255.240
+!
+interface Vlan488
+ ip address 100.100.76.49 255.255.255.240
+!
+interface Vlan489
+ ip address 100.100.76.65 255.255.255.240
+!
+interface Vlan490
+ ip address 100.100.76.81 255.255.255.240
+!
+interface Vlan491
+ ip address 100.100.76.97 255.255.255.240
+!
+interface Vlan492
+ ip address 100.100.76.113 255.255.255.240
+!
+interface Vlan493
+ ip address 100.100.76.129 255.255.255.240
+!
+interface Vlan494
+ ip address 100.100.76.145 255.255.255.240
+!
+interface Vlan495
+ no ip address
+!
+interface Vlan496
+ no ip address
+!
+interface Vlan497
+ ip address 100.100.77.1 255.255.255.192
+!
+interface Vlan498
+ no ip address
+!
+interface Vlan499
+ no ip address
+!
+interface Vlan500
+ ip address 10.75.213.1 255.255.255.240
+!
+interface Vlan501
+ ip address 10.75.213.17 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan502
+ ip address 10.75.213.33 255.255.255.240
+!
+interface Vlan503
+ ip address 10.75.213.49 255.255.255.240
+!
+interface Vlan504
+ ip address 10.75.213.65 255.255.255.192
+ ip access-group 144 in
+!
+interface Vlan505
+ no ip address
+!
+interface Vlan506
+ no ip address
+!
+interface Vlan507
+ no ip address
+!
+interface Vlan508
+ ip address 10.75.213.129 255.255.255.240
+!
+interface Vlan509
+ ip address 10.75.213.145 255.255.255.240
+!
+interface Vlan510
+ ip address 10.75.213.161 255.255.255.224
+!
+interface Vlan511
+ ip address 10.75.213.193 255.255.255.224
+!
+interface Vlan512
+ no ip address
+!
+interface Vlan513
+ no ip address
+!
+interface Vlan514
+ ip address 10.75.213.225 255.255.255.224
+!
+interface Vlan515
+ no ip address
+!
+interface Vlan516
+ ip address 10.79.63.1 255.255.255.240
+!         
+interface Vlan517
+ ip address 10.74.67.126 255.255.255.128
+!
+interface Vlan518
+ ip address 10.79.63.17 255.255.255.240
+!
+interface Vlan519
+ ip address 10.79.63.33 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan520
+ ip address 10.79.63.129 255.255.255.240
+!
+interface Vlan521
+ ip address 10.79.63.145 255.255.255.240
+!
+interface Vlan522
+ ip address 10.79.63.161 255.255.255.240
+!         
+interface Vlan523
+ ip address 10.79.63.193 255.255.255.240
+ ip helper-address 10.74.55.158
+!
+interface Vlan524
+ ip address 10.79.63.209 255.255.255.240
+!
+interface Vlan525
+ ip address 10.79.63.225 255.255.255.240
+!
+interface Vlan526
+ ip address 100.100.84.33 255.255.255.240
+!
+interface Vlan527
+ ip address 100.100.84.49 255.255.255.240
+!
+interface Vlan528
+ ip address 100.100.84.65 255.255.255.240
+!         
+interface Vlan529
+ ip address 100.100.84.81 255.255.255.240
+!
+interface Vlan530
+ ip address 100.100.84.97 255.255.255.240
+!
+interface Vlan531
+ ip address 100.100.84.113 255.255.255.240
+!
+interface Vlan532
+ ip address 100.100.84.129 255.255.255.240
+!
+interface Vlan533
+ ip address 100.100.84.145 255.255.255.240
+!
+interface Vlan534
+ ip address 100.100.84.161 255.255.255.240
+!
+interface Vlan535
+ ip address 100.100.84.1 255.255.255.240
+!
+interface Vlan536
+ ip address 100.100.84.17 255.255.255.240
+!
+interface Vlan537
+ ip address 10.79.63.65 255.255.255.224
+!
+interface Vlan538
+ ip address 10.79.63.97 255.255.255.224
+!
+interface Vlan539
+ ip address 10.79.63.49 255.255.255.240
+!
+interface Vlan540
+ ip address 10.79.63.241 255.255.255.240
+!
+interface Vlan771
+ ip address 10.74.51.1 255.255.255.0
+!
+interface Vlan772
+ ip address 10.74.121.1 255.255.255.0
+!
+interface Vlan773
+ ip address 10.74.10.1 255.255.255.0
+!
+interface Vlan774
+ ip address 100.200.1.1 255.255.255.192
+!
+interface Vlan775
+ ip address 100.200.2.1 255.255.255.0
+!
+interface Vlan776
+ ip address 100.200.3.1 255.255.255.0
+!
+interface Vlan799
+ ip address 10.74.19.65 255.255.255.192
+!         
+interface Vlan800
+ ip address 10.74.19.1 255.255.255.192
+!
+interface Vlan801
+ ip address 10.74.55.1 255.255.255.192
+ ip access-group 100 in
+ ip access-group 30 out
+!
+interface Vlan802
+ ip address 100.100.1.1 255.255.255.192
+!
+interface Vlan803
+ ip address 100.100.1.65 255.255.255.192
+ ip helper-address 100.100.1.9
+!
+interface Vlan804
+ ip address 100.100.1.129 255.255.255.192
+ ip helper-address 100.100.1.194
+!         
+interface Vlan805
+ ip address 100.100.1.193 255.255.255.192
+!
+interface Vlan806
+ ip address 100.100.2.1 255.255.255.192
+!
+interface Vlan807
+ ip address 100.100.2.65 255.255.255.192
+!
+interface Vlan808
+ ip address 100.100.2.129 255.255.255.192
+!
+interface Vlan809
+ ip address 100.100.2.193 255.255.255.192
+!
+interface Vlan810
+ ip address 100.100.3.1 255.255.255.192
+!
+interface Vlan811
+ ip address 100.100.3.65 255.255.255.192
+!
+interface Vlan812
+ ip address 100.100.3.129 255.255.255.192
+!
+interface Vlan813
+ ip address 100.100.3.193 255.255.255.192
+!
+interface Vlan814
+ ip address 100.100.4.1 255.255.255.192
+!
+interface Vlan815
+ ip address 100.100.4.65 255.255.255.192
+!
+interface Vlan816
+ ip address 100.100.4.129 255.255.255.192
+!
+interface Vlan817
+ ip address 100.100.4.193 255.255.255.192
+!
+interface Vlan818
+ ip address 100.100.5.1 255.255.255.192
+!
+interface Vlan819
+ ip address 100.100.5.65 255.255.255.192
+!
+interface Vlan820
+ ip address 100.100.5.129 255.255.255.192
+!
+interface Vlan821
+ ip address 100.100.5.193 255.255.255.192
+!
+interface Vlan822
+ ip address 100.100.6.1 255.255.255.192
+!
+interface Vlan823
+ ip address 100.100.6.65 255.255.255.192
+!         
+interface Vlan824
+ ip address 100.100.6.129 255.255.255.192
+ ip helper-address 10.74.55.82
+!
+interface Vlan825
+ ip address 100.100.6.193 255.255.255.192
+!
+interface Vlan826
+ ip address 100.100.7.1 255.255.255.192
+!
+interface Vlan827
+ ip address 100.100.7.65 255.255.255.192
+!
+interface Vlan828
+ ip address 100.100.7.129 255.255.255.192
+!
+interface Vlan829
+ ip address 100.100.7.193 255.255.255.192
+!         
+interface Vlan830
+ ip address 100.100.8.1 255.255.255.240
+!
+interface Vlan831
+ ip address 100.100.8.17 255.255.255.240
+!
+interface Vlan832
+ ip address 100.100.8.33 255.255.255.240
+!
+interface Vlan833
+ ip address 100.100.8.49 255.255.255.240
+!
+interface Vlan834
+ ip address 100.100.8.65 255.255.255.240
+!
+interface Vlan835
+ ip address 100.100.8.81 255.255.255.240
+!
+interface Vlan836
+ ip address 100.100.8.97 255.255.255.240
+!
+interface Vlan837
+ ip address 100.100.8.113 255.255.255.240
+!
+interface Vlan838
+ ip address 100.100.8.129 255.255.255.240
+!
+interface Vlan839
+ ip address 100.100.8.161 255.255.255.224
+!
+interface Vlan840
+ ip address 100.100.8.193 255.255.255.192
+!
+interface Vlan841
+ ip address 100.100.9.1 255.255.255.192
+ ip helper-address 100.100.8.200
+!
+interface Vlan842
+ ip address 100.100.9.65 255.255.255.192
+!
+interface Vlan843
+ ip address 100.100.9.129 255.255.255.192
+!
+interface Vlan844
+ ip address 100.100.9.193 255.255.255.192
+!
+interface Vlan845
+ ip address 100.100.10.1 255.255.255.192
+!
+interface Vlan846
+ ip address 100.100.10.65 255.255.255.192
+!
+interface Vlan847
+ ip address 100.100.10.129 255.255.255.192
+!
+interface Vlan848
+ ip address 100.100.10.193 255.255.255.192
+!
+interface Vlan849
+ ip address 100.100.11.1 255.255.255.192
+!
+interface Vlan850
+ ip address 100.100.11.65 255.255.255.192
+!
+interface Vlan851
+ ip address 100.100.11.129 255.255.255.192
+!
+interface Vlan852
+ ip address 100.100.11.193 255.255.255.192
+!
+interface Vlan853
+ ip address 100.100.12.1 255.255.255.192
+!
+interface Vlan854
+ ip address 100.100.12.65 255.255.255.192
+!         
+interface Vlan855
+ ip address 100.100.12.129 255.255.255.192
+!
+interface Vlan856
+ ip address 100.100.12.193 255.255.255.192
+!
+interface Vlan857
+ ip address 100.100.13.1 255.255.255.192
+!
+interface Vlan858
+ ip address 100.100.13.65 255.255.255.192
+!
+interface Vlan859
+ ip address 100.100.13.129 255.255.255.192
+!
+interface Vlan860
+ ip address 100.100.13.193 255.255.255.192
+!
+interface Vlan861
+ ip address 100.100.14.1 255.255.255.192
+!
+interface Vlan862
+ ip address 100.100.14.65 255.255.255.192
+!
+interface Vlan863
+ ip address 100.100.14.129 255.255.255.192
+ ip helper-address 100.100.19.130
+!
+interface Vlan864
+ ip address 100.100.14.193 255.255.255.192
+!
+interface Vlan865
+ ip address 100.100.15.1 255.255.255.0
+!
+interface Vlan866
+ ip address 100.100.16.1 255.255.255.192
+!
+interface Vlan867
+ ip address 100.100.16.65 255.255.255.192
+!
+interface Vlan868
+ ip address 100.100.16.129 255.255.255.192
+!
+interface Vlan869
+ ip address 100.100.16.193 255.255.255.192
+!
+interface Vlan870
+ ip address 100.100.17.1 255.255.255.192
+!
+interface Vlan871
+ ip address 100.100.17.65 255.255.255.192
+!
+interface Vlan872
+ ip address 100.100.17.129 255.255.255.192
+!
+interface Vlan873
+ ip address 100.100.17.193 255.255.255.192
+!
+interface Vlan874
+ ip address 100.100.18.1 255.255.255.192
+!
+interface Vlan875
+ ip address 100.100.18.65 255.255.255.192
+!
+interface Vlan876
+ ip address 100.100.18.129 255.255.255.192
+!
+interface Vlan877
+ ip address 100.100.18.193 255.255.255.192
+!
+interface Vlan878
+ ip address 100.100.19.1 255.255.255.192
+!
+interface Vlan879
+ ip address 100.100.19.65 255.255.255.192
+!         
+interface Vlan880
+ ip address 100.100.19.129 255.255.255.192
+!
+interface Vlan881
+ ip address 100.100.19.193 255.255.255.192
+!
+interface Vlan882
+ ip address 100.100.20.1 255.255.255.192
+!
+interface Vlan883
+ ip address 100.100.20.65 255.255.255.192
+!
+interface Vlan884
+ ip address 100.100.20.129 255.255.255.192
+!
+interface Vlan885
+ ip address 100.100.20.193 255.255.255.192
+!
+interface Vlan886
+ ip address 100.100.21.1 255.255.255.192
+!
+interface Vlan887
+ ip address 100.100.21.65 255.255.255.192
+!
+interface Vlan888
+ ip address 100.100.21.129 255.255.255.192
+!
+interface Vlan889
+ ip address 100.100.21.193 255.255.255.192
+!
+interface Vlan890
+ ip address 100.100.22.1 255.255.255.192
+!
+interface Vlan891
+ ip address 100.100.22.65 255.255.255.192
+!
+interface Vlan892
+ ip address 100.100.22.129 255.255.255.192
+!
+interface Vlan893
+ ip address 100.100.22.193 255.255.255.192
+!
+interface Vlan894
+ ip address 100.100.23.1 255.255.255.192
+!
+interface Vlan895
+ ip address 100.100.23.65 255.255.255.192
+!
+interface Vlan896
+ ip address 100.100.23.129 255.255.255.192
+!
+interface Vlan897
+ ip address 100.100.23.193 255.255.255.192
+!
+interface Vlan898
+ ip address 100.100.24.1 255.255.255.192
+!         
+interface Vlan899
+ ip address 100.100.24.65 255.255.255.192
+!
+interface Vlan900
+ ip address 100.100.24.129 255.255.255.192
+ ip helper-address 100.100.19.130
+!
+interface Vlan901
+ ip address 100.100.24.193 255.255.255.192
+!
+interface Vlan902
+ ip address 100.100.25.1 255.255.255.192
+!
+interface Vlan903
+ ip address 100.100.25.65 255.255.255.192
+!
+interface Vlan904
+ ip address 100.100.25.129 255.255.255.192
+!         
+interface Vlan905
+ ip address 100.100.25.193 255.255.255.192
+!
+interface Vlan906
+ ip address 100.100.26.1 255.255.255.192
+!
+interface Vlan907
+ ip address 100.100.26.65 255.255.255.192
+!
+interface Vlan908
+ ip address 100.100.26.129 255.255.255.192
+!
+interface Vlan909
+ ip address 100.100.26.193 255.255.255.192
+!
+interface Vlan910
+ ip address 100.100.27.1 255.255.255.192
+!
+interface Vlan911
+ ip address 100.100.27.65 255.255.255.192
+!
+interface Vlan912
+ ip address 100.100.27.129 255.255.255.192
+!
+interface Vlan913
+ ip address 100.100.27.193 255.255.255.192
+!
+interface Vlan914
+ ip address 100.100.28.1 255.255.255.192
+!
+interface Vlan915
+ ip address 100.100.28.65 255.255.255.192
+ ip helper-address 100.100.28.66
+!
+interface Vlan916
+ ip address 100.100.28.129 255.255.255.192
+!
+interface Vlan917
+ ip address 100.100.28.193 255.255.255.192
+!
+interface Vlan918
+ ip address 100.100.29.1 255.255.255.192
+!
+interface Vlan919
+ ip address 100.100.29.65 255.255.255.192
+!
+interface Vlan920
+ ip address 100.100.29.129 255.255.255.192
+!
+interface Vlan921
+ ip address 100.100.29.193 255.255.255.192
+!
+interface Vlan922
+ ip address 100.100.30.1 255.255.255.192
+!
+interface Vlan923
+ ip address 100.100.30.65 255.255.255.192
+!
+interface Vlan924
+ ip address 100.100.30.129 255.255.255.192
+!
+interface Vlan925
+ ip address 100.100.30.193 255.255.255.192
+!
+interface Vlan926
+ ip address 100.100.31.1 255.255.255.192
+!
+interface Vlan927
+ ip address 100.100.31.65 255.255.255.192
+ ip helper-address 10.74.16.235
+!
+interface Vlan928
+ ip address 100.100.31.129 255.255.255.192
+!
+interface Vlan929
+ ip address 100.100.31.193 255.255.255.192
+!
+interface Vlan930
+ ip address 100.100.32.1 255.255.255.192
+!
+interface Vlan931
+ ip address 100.100.32.65 255.255.255.192
+!
+interface Vlan932
+ ip address 100.100.32.129 255.255.255.192
+!
+interface Vlan933
+ ip address 100.100.32.193 255.255.255.192
+!
+interface Vlan934
+ ip address 100.100.33.1 255.255.255.192
+!
+interface Vlan935
+ ip address 100.100.33.65 255.255.255.192
+!         
+interface Vlan936
+ ip address 100.100.33.129 255.255.255.192
+!
+interface Vlan937
+ ip address 100.100.33.193 255.255.255.192
+!
+interface Vlan938
+ ip address 100.100.34.1 255.255.255.192
+!
+interface Vlan939
+ ip address 100.100.34.65 255.255.255.192
+!
+interface Vlan940
+ ip address 142.100.64.1 255.255.255.0
+!
+interface Vlan941
+ ip address 142.202.64.1 255.255.255.0
+!
+interface Vlan942
+ ip address 142.202.65.1 255.255.255.0
+!
+interface Vlan943
+ ip address 142.202.66.1 255.255.255.0
+!
+interface Vlan944
+ ip address 100.100.35.129 255.255.255.192
+!
+interface Vlan945
+ ip address 100.100.35.193 255.255.255.192
+!
+interface Vlan946
+ ip address 100.100.36.1 255.255.255.192
+!
+interface Vlan947
+ ip address 100.100.36.65 255.255.255.192
+!
+interface Vlan948
+ ip address 100.100.36.129 255.255.255.192
+!
+interface Vlan950
+ ip address 100.100.36.193 255.255.255.192
+!
+interface Vlan951
+ ip address 100.100.37.1 255.255.255.192
+!
+interface Vlan952
+ ip address 100.100.37.65 255.255.255.192
+!
+interface Vlan953
+ ip address 100.100.37.129 255.255.255.192
+!
+interface Vlan954
+ ip address 100.100.37.193 255.255.255.192
+!
+interface Vlan955
+ ip address 100.100.38.1 255.255.255.192
+!         
+interface Vlan956
+ ip address 100.100.38.65 255.255.255.192
+!
+interface Vlan957
+ ip address 100.100.38.129 255.255.255.192
+!
+interface Vlan958
+ ip address 100.100.38.193 255.255.255.192
+!
+interface Vlan959
+ ip address 100.100.39.1 255.255.255.192
+!
+interface Vlan960
+ ip address 100.100.39.65 255.255.255.192
+!
+interface Vlan961
+ ip address 100.100.39.129 255.255.255.192
+!
+interface Vlan962
+ ip address 100.100.40.1 255.255.255.192
+!
+interface Vlan963
+ ip address 100.100.40.65 255.255.255.192
+!
+interface Vlan964
+ ip address 100.100.40.129 255.255.255.192
+!
+interface Vlan965
+ ip address 100.100.40.193 255.255.255.192
+!
+interface Vlan966
+ ip address 100.100.41.1 255.255.255.192
+!
+interface Vlan967
+ ip address 100.100.41.65 255.255.255.192
+!
+interface Vlan968
+ ip address 100.100.41.129 255.255.255.192
+!
+interface Vlan969
+ ip address 100.100.41.193 255.255.255.192
+!
+interface Vlan970
+ ip address 100.100.42.1 255.255.255.192
+!
+interface Vlan971
+ ip address 100.100.42.65 255.255.255.192
+!
+interface Vlan972
+ ip address 100.100.42.129 255.255.255.192
+!
+interface Vlan973
+ ip address 100.100.42.193 255.255.255.192
+!
+interface Vlan974
+ ip address 100.100.43.1 255.255.255.192
+!         
+interface Vlan975
+ ip address 100.100.43.65 255.255.255.192
+!
+interface Vlan976
+ ip address 100.100.43.129 255.255.255.192
+!
+interface Vlan977
+ ip address 100.100.43.193 255.255.255.192
+!
+interface Vlan978
+ ip address 100.100.44.1 255.255.255.192
+!
+interface Vlan979
+ ip address 100.100.44.65 255.255.255.192
+!
+interface Vlan980
+ ip address 100.100.44.129 255.255.255.192
+ ip helper-address 100.100.44.131
+!         
+interface Vlan981
+ ip address 100.100.44.193 255.255.255.192
+!
+interface Vlan982
+ ip address 100.100.45.1 255.255.255.192
+!
+interface Vlan983
+ ip address 100.100.45.65 255.255.255.192
+!
+interface Vlan984
+ ip address 100.100.45.129 255.255.255.192
+!
+interface Vlan985
+ ip address 100.100.45.193 255.255.255.192
+!
+interface Vlan986
+ ip address 100.100.46.1 255.255.255.192
+!
+interface Vlan987
+ ip address 100.100.46.65 255.255.255.192
+!
+interface Vlan988
+ ip address 100.100.46.129 255.255.255.192
+!
+interface Vlan989
+ ip address 100.100.46.193 255.255.255.192
+!
+interface Vlan990
+ ip address 100.100.47.1 255.255.255.192
+!
+interface Vlan991
+ ip address 100.100.47.65 255.255.255.192
+!
+interface Vlan992
+ ip address 100.100.47.129 255.255.255.192
+!
+interface Vlan993
+ ip address 100.100.47.193 255.255.255.192
+!
+interface Vlan994
+ ip address 100.100.48.1 255.255.255.192
+!
+interface Vlan995
+ ip address 100.100.48.65 255.255.255.192
+!
+interface Vlan996
+ ip address 100.100.48.129 255.255.255.192
+!
+interface Vlan997
+ ip address 100.100.48.193 255.255.255.224
+!
+interface Vlan998
+ ip address 100.100.49.1 255.255.255.224
+!
+interface Vlan1000
+ ip address 100.100.49.65 255.255.255.192
+!         
+ip nat inside source list 20 interface GigabitEthernet7/1 overload
+ip classless
+ip forward-protocol nd
+ip route 0.0.0.0 0.0.0.0 10.74.43.5
+ip route 10.74.18.192 255.255.255.192 100.100.100.2
+ip route 10.74.51.0 255.255.255.0 1.1.100.1
+ip route 10.74.55.73 255.255.255.255 10.74.55.67 name guoming-2
+ip route 10.74.55.74 255.255.255.255 10.74.55.66 name guoming-1
+ip route 10.74.89.0 255.255.255.0 1.1.101.2
+ip route 10.74.118.0 255.255.255.0 1.1.101.2
+ip route 10.74.125.1 255.255.255.255 192.168.113.1
+ip route 10.75.160.0 255.255.255.0 192.168.113.1
+ip route 30.1.0.0 255.255.255.0 10.74.63.104
+ip route 40.1.0.0 255.255.255.0 10.74.63.104
+ip route 100.100.9.192 255.255.255.192 10.74.53.181
+ip route 192.168.233.0 255.255.255.0 Tunnel2
+ip route 192.170.0.0 255.255.0.0 10.75.213.227
+!
+!         
+no ip http server
+!
+arp 10.74.126.122 24e9.b310.4eb6 ARPA
+ipv6 route 2001:30:1::/64 2001:10:74:63::104
+ipv6 route 2001:30:1:1::/64 2001:10:74:63::104
+ipv6 route 2001:40:1::/64 2001:10:74:63::104
+ipv6 route 2001:40:1:1::/64 2001:10:74:63::104
+!
+route-map NMTG permit 10
+ match ip address 112
+ set ip next-hop 192.168.113.1
+!
+snmp-server community public RO
+snmp-server community ciscoprivate RW
+snmp-server location SHN6-12F
+snmp-server contact CRDC LAB TEAM
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps chassis
+snmp-server enable traps module
+snmp-server enable traps transceiver all
+snmp-server enable traps casa
+snmp-server enable traps tty
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps bgp
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps event-manager
+snmp-server enable traps frame-relay
+snmp-server enable traps frame-relay subif
+snmp-server enable traps hsrp
+snmp-server enable traps ipmulticast
+snmp-server enable traps msdp
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps rf
+snmp-server enable traps rtr
+snmp-server enable traps slb real virtual csrp
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps flex-links status
+snmp-server enable traps csg agent quota-server database
+snmp-server enable traps sonet
+snmp-server enable traps dial
+snmp-server enable traps entity
+snmp-server enable traps rsvp
+snmp-server enable traps srp
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps port-security
+snmp-server enable traps vlan-mac-limit
+snmp-server host 10.74.21.20 pulic 
+tacacs-server host 171.70.168.112
+tacacs-server host 173.38.203.29
+tacacs-server host 64.104.123.61
+tacacs-server host 171.70.168.246
+tacacs-server host 64.102.6.243
+tacacs-server host 64.104.123.228
+tacacs-server host 144.254.71.234
+tacacs-server timeout 15
+tacacs-server directed-request
+!
+radius-server host 10.74.3.76 auth-port 1645 acct-port 1646
+radius-server key cisco
+!
+control-plane
+!         
+!
+dial-peer cor custom
+!
+!
+!
+banner motd ^CC
+You have entered $(hostname).$(domain) on vty $(line)
+
+ .:|:.:|:.             Lab Admin: mingle@cisco.com 
+ C I S C O             Lab Ops:crdc-labs@cisco.com
+
+UNAUTHORIZED ACCESS TO THIS NETWORK DEVICE IS PROHIBITED.
+You must have explicit permission to access or configure this
+device.  All activities performed on this device are logged and
+violations of this policy may result in disciplinary action.
+^C
+!
+line con 0
+ exec-timeout 0 0
+ password cisco
+ logging synchronous
+ login authentication cisco
+line vty 0 4
+ exec-timeout 0 0
+ password cisco
+ logging synchronous
+ login authentication cisco
+line vty 5 100
+ exec-timeout 5 30
+ password cisco
+ logging synchronous
+ login authentication cisco
+!
+ntp clock-period 17180028
+ntp server 172.20.136.1
+ntp server 171.68.10.80
+ntp server 171.68.10.150
+!         
+no mac-address-table learning vlan 830 
+!
+end
+
+
