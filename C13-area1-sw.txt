@@ -1,0 +1,497 @@
+rea1-sw4-I08#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+sh-cable-con-7   Fas 1/0/48        120          R S I     2811      Fas 0/0
+sh-cable-con-32.yourdomain.com
+                 Fas 1/0/47        120          R S I     2811      Fas 0/0
+i06-switch       Fas 1/0/5         138            S       WS-C3750E Gig 1/0/5
+I09-GEEK-RFGW-10 Fas 1/0/8         145          R S I     Cable-RFG Fas 1
+sh-cable-l3-dst-1
+                 Gig 1/0/1         137          R S I     WS-C3560G Gig 0/39
+cable-area1-sw4-I08# sho
+cable-area1-sw4-I08# show cdp
+cable-area1-sw4-I08# show cdp en
+cable-area1-sw4-I08# show cdp entry * pro
+Protocol information for sh-cable-con-7 :
+  IP address: 10.75.220.9
+Protocol information for sh-cable-con-32.yourdomain.com :
+  IP address: 10.75.220.7
+Protocol information for i06-switch :
+  IP address: 10.123.0.1
+Protocol information for I09-GEEK-RFGW-10 :
+  IP address: 80.1.2.62
+  IPv6 address: 2001:80:1:2::62  (global unicast)
+  IPv6 address: FE80::46D3:CAFF:FE6F:439  (link-local)
+Protocol information for sh-cable-l3-dst-1 :
+  IP address: 10.75.220.1
+  IPv6 address: 2001:31:224::  (global unicast)
+  IPv6 address: 2001:31:224::1  (global unicast)
+  IPv6 address: 2001:31:225::1  (global unicast)
+  IPv6 address: 2001:80:1:2::1  (global unicast)
+  IPv6 address: FE80::128C:CFFF:FE63:85CA  (link-local)
+cable-area1-sw4-I08#sho
+cable-area1-sw4-I08#show run
+Building configuration...
+
+Current configuration : 10882 bytes
+!
+version 12.2
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname cable-area1-sw4-I08
+!
+enable secret 5 $1$2GYi$3BfXHTKd.NbV30CIMtwq91
+enable password poPPee
+!
+no aaa new-model
+switch 1 provision ws-c3750-48ts
+system mtu routing 1500
+ip subnet-zero
+no ip domain-lookup
+!         
+!
+!
+!
+no file verify auto
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+interface Port-channel7
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 11,33
+ switchport mode trunk
+ switchport block unicast
+!
+interface FastEthernet1/0/1
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/2
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/3
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/4
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/5
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/6
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!         
+interface FastEthernet1/0/7
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/8
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/9
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/10
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/11
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/12
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/13
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ ip access-group TCPFILTER in
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/14
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!         
+interface FastEthernet1/0/15
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/16
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/17
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/18
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/19
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/20
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/21
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/22
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/23
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/24
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/25
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/26
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/27
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/28
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/29
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/30
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/31
+ switchport access vlan 33
+ switchport mode access
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/32
+ switchport access vlan 33
+ switchport mode access
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/33
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/34
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/35
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/36
+ switchport access vlan 33
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!         
+interface FastEthernet1/0/37
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/38
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/39
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/40
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/41
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/42
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/43
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/44
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/45
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/46
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/47
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface FastEthernet1/0/48
+ switchport access vlan 11
+ switchport mode access
+ switchport block unicast
+ storm-control broadcast level 5.00 1.00
+ storm-control multicast level 5.00 1.00
+!
+interface GigabitEthernet1/0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 11,33
+ switchport mode trunk
+ switchport block unicast
+ channel-group 7 mode on
+!
+interface GigabitEthernet1/0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 11,33
+ switchport mode trunk
+ switchport block unicast
+ channel-group 7 mode on
+!
+interface GigabitEthernet1/0/3
+!
+interface GigabitEthernet1/0/4
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan33
+ ip address 80.1.2.101 255.255.255.0
+!
+ip classless
+ip http server
+!
+ip access-list extended TCPFILTER
+ deny   tcp any any match-all +ack +fin
+ permit ip any any
+ip access-list extended xxx
+ deny   tcp any eq 4737 any
+ deny   tcp any any eq 4737
+ permit ip any any
+!
+access-list 100 deny   tcp any any ack
+access-list 100 permit ip any any
+snmp-server community cabu RW
+snmp-server enable traps snmp linkdown linkup
+snmp-server enable traps storm-control trap-rate 2
+snmp-server enable traps license
+snmp-server host 10.75.220.19 version 2c cabu 
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line vty 0 4
+ password cisco
+ login
+line vty 5 15
+ password cisco
+ login
+!
+end
+
+cable-area1-sw4-I08#     sho
+cable-area1-sw4-I08#     show vl
+cable-area1-sw4-I08#     show vlan  b
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gi1/0/2, Gi1/0/3, Gi1/0/4
+11   10.75.220.0/28                   active    Fa1/0/37, Fa1/0/38, Fa1/0/39, Fa1/0/40
+                                                Fa1/0/41, Fa1/0/42, Fa1/0/43, Fa1/0/44
+                                                Fa1/0/45, Fa1/0/46, Fa1/0/47, Fa1/0/48
+12   10.79.41.0/28                    active    
+31   80.1.3.0/24-N                    active    
+32   80.1.1.0/24-H                    active    
+33   80.1.2.0/24-I                    active    Fa1/0/1, Fa1/0/2, Fa1/0/3, Fa1/0/4, Fa1/0/5
+                                                Fa1/0/6, Fa1/0/7, Fa1/0/8, Fa1/0/9, Fa1/0/10
+                                                Fa1/0/11, Fa1/0/12, Fa1/0/13, Fa1/0/14
+                                                Fa1/0/15, Fa1/0/16, Fa1/0/17, Fa1/0/18
+                                                Fa1/0/19, Fa1/0/20, Fa1/0/21, Fa1/0/22
+                                                Fa1/0/23, Fa1/0/24, Fa1/0/25, Fa1/0/26
+                                                Fa1/0/27, Fa1/0/28, Fa1/0/29, Fa1/0/30
+                                                Fa1/0/31, Fa1/0/32, Fa1/0/33, Fa1/0/34
+                                                Fa1/0/35, Fa1/0/36
+          
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+34   80.1.4.0/24-CMTS-K               active    
+35   VLAN0035                         active    
+77   VLAN0077                         active    
+1002 fddi-default                     act/unsup 
+1003 trcrf-default                    act/unsup 
+1004 fddinet-default                  act/unsup 
+1005 trbrf-default                    act/unsup 
+cable-area1-sw4-I08#

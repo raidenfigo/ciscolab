@@ -1,0 +1,1158 @@
+HN4F13-GW-CABU#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+sh-cable-l3-core-2
+                 Gig 0/0/4         137             R S I  WS-C3750E Gig 1/0/27
+sh-cable-l3-core-1
+                 Gig 0/0/3         145             R S I  WS-C3560E Gig 0/51
+shn4-lab-gw2.cisco.com
+                 Gig 0/0/0         124             R S I  WS-C6504- Gig 3/6
+sh-cable-core-new-1
+                 Gig 0             151              S I   WS-C3750G Gig 1/0/22
+sh-cable-NGNH-aggr
+                 Gig 0/0/5         170             R S I  WS-C4500X Ten 1/31
+SHN4-CORE-2      Gig 0/0/2         151             R S I  WS-C3750G Gig 1/0/25
+cable-gwsw-3750.cisco.com
+                 Gig 0/0/1         134              S I   WS-C3750G Gig 1/0/49
+
+Total cdp entries displayed : 7
+SHN4F13-GW-CABU# sho
+SHN4F13-GW-CABU# show run
+Building configuration...
+
+Current configuration : 47806 bytes
+!
+version 15.4
+no service timestamps debug uptime
+service timestamps log datetime localtime
+no platform punt-keepalive disable-kernel-core
+!
+hostname SHN4F13-GW-CABU
+!
+boot-start-marker
+boot-end-marker
+!
+aqm-register-fnf
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !        
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 $1$zzge$9vOctfweTCHebrgOee/ez1
+enable password cisco
+!
+aaa new-model
+!
+!
+aaa authentication login lab group tacacs+ enable
+!
+!
+!
+!
+!
+aaa session-id common
+!
+transport-map type persistent webui webui
+ server   
+ secure-server
+!
+clock timezone CST 8 0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+no ip domain lookup
+
+!
+!
+!         
+ipv6 unicast-routing
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+flow record legacy_network
+ match ipv4 source address
+ match ipv4 destination address
+ match ipv6 source address
+ match ipv6 destination address
+ match transport source-port
+ match transport destination-port
+ collect ipv4 dscp
+ collect ipv4 protocol
+ collect ipv6 traffic-class
+ collect ipv6 protocol
+ collect interface input
+ collect interface output
+ collect counter packets long
+!
+!
+flow monitor legacy_network
+ cache entries 1000
+ statistics packet size
+ record legacy_network
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!         
+!
+!
+!
+crypto pki trustpoint TP-self-signed-2158930011
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2158930011
+ revocation-check none
+ rsakeypair TP-self-signed-2158930011
+!
+!
+crypto pki certificate chain TP-self-signed-2158930011
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32313538 39333030 3131301E 170D3134 30363036 30323433 
+  32395A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 31353839 
+  33303031 3130819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100AF2C BED3342C 069821F2 F4264A89 6A1CD3A7 159E6B9F F2B5F111 1C97C7A8 
+  89E7553A 65D7FDC0 C453F1FA 2F11BC76 312BADB8 1693BF2C 9A177879 371F0E25 
+  3877C873 524B04D6 769EC68F ED994022 06F2B310 46077163 A0385F6A 76546FF6 
+  8E3F9C0A 898AAAD0 1565A65E 3F26B36F 7F5D7419 C2D890A1 12F8C761 15003C17 
+  E4250203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 140654FA DA4B4230 59296618 6B33B548 A90AF8F6 31301D06 
+  03551D0E 04160414 0654FADA 4B423059 2966186B 33B548A9 0AF8F631 300D0609 
+  2A864886 F70D0101 05050003 8181006E 34FC7B5C BCD97A94 D88C0513 AB336A19 
+  286C04D3 26735B43 D4BA3BFB 204F84F0 C16569D2 E1DDD807 A347DA16 ED58A5E8 
+  32815C52 DB3E58FE 7CDE571B BD6B6783 584802D2 0EB6A661 076E5EB1 D2D85D53 
+  9CF307A6 612738C6 C180387E A031034F 07E12BAC 2393D18D 770B96B0 70DC76FA 
+  A6502EE9 F299759F 27DC297A A61E30
+  	quit
+spanning-tree extend system-id
+!
+username cisco password 0 cisco
+!
+redundancy
+ mode sso
+!         
+!
+!
+!
+!
+cdp run
+!
+!
+class-map match-any ICMP
+ match access-group name ICMP
+class-map match-any RtProt
+ match protocol ospf
+ match protocol eigrp
+ match protocol bgp
+!
+! 
+!
+!
+!
+!         
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+interface Port-channel40
+ no ip address
+ no negotiation auto
+!
+interface Tunnel0
+ no ip address
+!
+interface Tunnel10
+ ip address 1.1.1.2 255.255.255.0
+ ip mtu 1400
+ tunnel source 10.74.46.130
+ tunnel destination 10.74.3.38
+!
+interface Tunnel12
+ description smartpdu-to-SHN15
+ ip address 1.12.12.2 255.255.255.0
+ tunnel source 10.74.46.130
+ tunnel destination 10.74.43.50
+!
+interface GigabitEthernet0/0/0
+ description " To shn4-lab-gw2 G3/6 "
+ ip address 10.74.46.130 255.255.255.252
+ ip nat outside
+ negotiation auto
+ cdp enable
+!
+interface GigabitEthernet0/0/0.13
+!
+interface GigabitEthernet0/0/0.14
+ ip virtual-reassembly
+!
+interface GigabitEthernet0/0/1
+ description C13Lab-legacyNW
+ no ip address
+ load-interval 30
+ negotiation auto
+ cdp enable
+!
+interface GigabitEthernet0/0/1.2
+ encapsulation dot1Q 2
+ ip address 20.1.0.1 255.255.0.0
+ ipv6 address 2001:20:1:1::1/64
+!
+interface GigabitEthernet0/0/1.3
+ encapsulation dot1Q 3
+ ip address 10.74.58.193 255.255.255.224
+ ipv6 address 2001:10:74:58::1/64
+!
+interface GigabitEthernet0/0/1.4
+ encapsulation dot1Q 4
+ ip address 10.74.58.225 255.255.255.224
+!
+interface GigabitEthernet0/0/1.5
+!
+interface GigabitEthernet0/0/1.6
+ encapsulation dot1Q 6
+ ip address 10.74.59.129 255.255.255.192
+ ip pim sparse-dense-mode
+ ip igmp helper-address 10.74.46.109
+ ip sap listen
+ ipv6 address 2001:10:74:129::1/64
+ ipv6 enable
+!
+interface GigabitEthernet0/0/1.7
+ encapsulation dot1Q 7
+ ip address 20.5.0.1 255.255.0.0
+ ip nat inside
+ ip flow monitor legacy_network input
+ ipv6 address 2001:20:5:1::1/64
+ ipv6 enable
+!
+interface GigabitEthernet0/0/1.8
+ encapsulation dot1Q 8
+ ip address 20.8.0.1 255.255.0.0
+ ip irdp
+ ip irdp maxadvertinterval 4
+ ip irdp minadvertinterval 3
+ ip irdp holdtime 10
+ ip irdp preference -1
+ ipv6 address 2001:20:8:1::1/64
+ ipv6 enable
+!
+interface GigabitEthernet0/0/1.9
+ encapsulation dot1Q 9
+ ip address 20.9.0.1 255.255.0.0
+ ip irdp
+ ip irdp maxadvertinterval 4
+ ip irdp minadvertinterval 3
+ ip irdp holdtime 10
+ ip irdp preference -1
+ ipv6 address 2001:20:9:1::1/94
+ ipv6 enable
+!
+interface GigabitEthernet0/0/1.10
+ encapsulation dot1Q 10
+ ip address 20.2.0.1 255.255.0.0
+ ipv6 address 2001:20:2:1::1/64
+ ipv6 enable
+!
+interface GigabitEthernet0/0/1.11
+ encapsulation dot1Q 11
+ ip address 20.3.0.1 255.255.0.0
+ ip nat inside
+ ipv6 address 2001:20:3:1::1/64
+ ipv6 enable
+!
+interface GigabitEthernet0/0/1.12
+ encapsulation dot1Q 12
+ ip address 20.4.0.252 255.255.255.0 secondary
+ ip address 20.4.0.1 255.255.0.0
+ ip nat inside
+ ipv6 address 2001:20:4:1::1/64
+ ipv6 traffic-filter ipv6 in
+!
+interface GigabitEthernet0/0/1.13
+ encapsulation dot1Q 13
+ ip address 10.74.59.193 255.255.255.192
+ ipv6 address 2001:10:74:59::193/64
+ ipv6 enable
+!
+interface GigabitEthernet0/0/1.14
+ encapsulation dot1Q 14
+ ip address 20.10.0.1 255.255.0.0
+ ip nat inside
+!
+interface GigabitEthernet0/0/1.15
+ encapsulation dot1Q 15
+ ip address 10.74.21.1 255.255.255.192
+ ipv6 address 2001:10:74:21:1::1/64
+!
+interface GigabitEthernet0/0/1.16
+ encapsulation dot1Q 16
+ ip address 10.74.21.65 255.255.255.192
+!
+interface GigabitEthernet0/0/1.17
+ encapsulation dot1Q 17
+ ip address 60.1.0.1 255.255.0.0
+!
+interface GigabitEthernet0/0/1.18
+ encapsulation dot1Q 18
+ ip address 10.74.21.129 255.255.255.192
+!
+interface GigabitEthernet0/0/1.19
+ encapsulation dot1Q 19
+ ip address 10.74.21.193 255.255.255.192
+ ip nat outside
+!
+interface GigabitEthernet0/0/1.20
+ encapsulation dot1Q 20
+ ip address 192.168.173.254 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/0/1.21
+ encapsulation dot1Q 21
+ ip address 10.74.59.1 255.255.255.192
+!
+interface GigabitEthernet0/0/1.22
+ encapsulation dot1Q 22
+ ip address 10.74.59.65 255.255.255.192
+!         
+interface GigabitEthernet0/0/1.23
+ encapsulation dot1Q 23
+ ip address 10.79.41.241 255.255.255.240
+!
+interface GigabitEthernet0/0/1.24
+ encapsulation dot1Q 24
+ ip address 10.79.196.1 255.255.255.192
+!
+interface GigabitEthernet0/0/1.30
+ encapsulation dot1Q 30
+ ip address 20.20.0.1 255.255.255.0
+!
+interface GigabitEthernet0/0/1.100
+ encapsulation dot1Q 100
+ ip address 20.100.0.1 255.255.255.0
+ no ip redirects
+ no ip unreachables
+!
+interface GigabitEthernet0/0/1.101
+ encapsulation dot1Q 101
+ ip address 20.101.0.1 255.255.255.0
+!
+interface GigabitEthernet0/0/1.102
+ encapsulation dot1Q 102
+ ip address 20.102.0.1 255.255.255.0
+!
+interface GigabitEthernet0/0/1.200
+ encapsulation dot1Q 200
+ ip address 10.74.58.130 255.255.255.192
+ ip nat inside
+!
+interface GigabitEthernet0/0/1.201
+ encapsulation dot1Q 201
+ ip address 10.74.58.1 255.255.255.240
+ ip irdp
+ ip irdp maxadvertinterval 4
+ ip irdp minadvertinterval 3
+ ip irdp holdtime 10
+!
+interface GigabitEthernet0/0/1.202
+ encapsulation dot1Q 202
+ ip address 10.74.58.33 255.255.255.240
+ ip irdp
+ ip irdp maxadvertinterval 4
+ ip irdp minadvertinterval 3
+ ip irdp holdtime 10
+!
+interface GigabitEthernet0/0/1.300
+ encapsulation dot1Q 300
+ ip address 200.200.200.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/0/1.520
+ encapsulation dot1Q 520
+ ip address 192.168.1.1 255.255.255.0
+!
+interface GigabitEthernet0/0/1.801
+ encapsulation dot1Q 801
+ ip address 172.16.20.1 255.255.0.0
+!
+interface GigabitEthernet0/0/1.802
+ description Smart-PDU
+ encapsulation dot1Q 802
+ ip address 172.15.1.1 255.255.255.0
+!
+interface GigabitEthernet0/0/2
+ ip address 100.100.100.1 255.255.255.0
+ ip nat inside
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco
+ negotiation auto
+ cdp enable
+!
+interface GigabitEthernet0/0/2.13
+ encapsulation dot1Q 13
+ no ip redirects
+ no ip unreachables
+ ip mtu 1400
+ ipv6 enable
+!
+interface GigabitEthernet0/0/3
+ ip address 100.100.200.1 255.255.255.0
+ ip nat inside
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco123!
+ negotiation auto
+ ipv6 address 2001:100:100:200::1/64
+ ipv6 enable
+ ipv6 ospf authentication null
+ ipv6 ospf 100 area 0
+ cdp enable
+!
+interface GigabitEthernet0/0/4
+ ip address 100.100.250.1 255.255.255.0
+ ip nat inside
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco123!
+ negotiation auto
+ ipv6 address 2001:100:100:250::1/64
+ ipv6 enable
+ ipv6 ospf 100 area 0
+ cdp enable
+!
+interface GigabitEthernet0/0/5
+ ip address 100.100.150.1 255.255.255.0
+ ip nat inside
+ negotiation auto
+ ipv6 address 2001:100:100:150::1/64
+ ipv6 enable
+ ipv6 ospf authentication null
+ ipv6 ospf 100 area 0
+ cdp enable
+!
+interface GigabitEthernet0/0/6
+ no ip address
+ negotiation auto
+ cdp enable
+!
+interface GigabitEthernet0/0/7
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ ip address 20.5.0.100 255.255.0.0
+ load-interval 30
+ negotiation auto
+ cdp enable
+!
+!
+router eigrp 1000
+!
+router ospf 100
+ router-id 100.100.250.250
+ ispf
+ max-lsa 2000
+ redistribute static subnets
+ passive-interface GigabitEthernet0/0/0
+ passive-interface GigabitEthernet0/0/1.2
+ passive-interface GigabitEthernet0/0/1.3
+ passive-interface GigabitEthernet0/0/1.4
+ passive-interface GigabitEthernet0/0/1.6
+ passive-interface GigabitEthernet0/0/1.7
+ passive-interface GigabitEthernet0/0/1.8
+ passive-interface GigabitEthernet0/0/1.9
+ passive-interface GigabitEthernet0/0/1.10
+ passive-interface GigabitEthernet0/0/1.11
+ passive-interface GigabitEthernet0/0/1.12
+ passive-interface GigabitEthernet0/0/1.13
+ passive-interface GigabitEthernet0/0/1.14
+ passive-interface GigabitEthernet0/0/1.15
+ passive-interface GigabitEthernet0/0/1.16
+ passive-interface GigabitEthernet0/0/1.17
+ passive-interface GigabitEthernet0/0/1.18
+ passive-interface GigabitEthernet0/0/1.19
+ passive-interface GigabitEthernet0/0/1.20
+ passive-interface GigabitEthernet0/0/1.21
+ passive-interface GigabitEthernet0/0/1.100
+ passive-interface GigabitEthernet0/0/1.101
+ passive-interface GigabitEthernet0/0/1.102
+ passive-interface GigabitEthernet0/0/1.200
+ passive-interface GigabitEthernet0/0/1.201
+ passive-interface GigabitEthernet0/0/1.202
+ passive-interface GigabitEthernet0/0/1.801
+ passive-interface GigabitEthernet0/0/1.802
+ network 100.100.150.0 0.0.0.255 area 0
+ network 100.100.200.0 0.0.0.255 area 0
+ network 100.100.250.0 0.0.0.255 area 0
+ default-information originate
+!
+ip access-list logging interval 10000
+ip nat inside source list 20 interface GigabitEthernet0/0/0 overload
+ip nat inside source list 30 interface GigabitEthernet0/0/0 overload
+ip nat inside source list 40 interface GigabitEthernet0/0/0 overload
+ip nat inside source static tcp 192.168.173.1 443 10.74.21.193 10001 extendable
+ip nat inside source static tcp 192.168.173.2 443 10.74.21.193 10002 extendable
+ip nat inside source static tcp 192.168.173.3 443 10.74.21.193 10003 extendable
+ip nat inside source static tcp 192.168.173.4 443 10.74.21.193 10004 extendable
+ip nat inside source static tcp 192.168.173.5 443 10.74.21.193 10005 extendable
+ip nat inside source static tcp 192.168.173.6 443 10.74.21.193 10006 extendable
+ip nat inside source static tcp 192.168.173.7 443 10.74.21.193 10007 extendable
+ip nat inside source static tcp 192.168.173.8 443 10.74.21.193 10008 extendable
+ip nat inside source static tcp 192.168.173.9 443 10.74.21.193 10009 extendable
+ip nat inside source static tcp 192.168.173.10 443 10.74.21.193 10010 extendable
+ip nat inside source static tcp 192.168.173.11 443 10.74.21.193 10011 extendable
+ip nat inside source static tcp 192.168.173.12 443 10.74.21.193 10012 extendable
+ip nat inside source static tcp 192.168.173.13 443 10.74.21.193 10013 extendable
+ip nat inside source static tcp 192.168.173.14 443 10.74.21.193 10014 extendable
+ip nat inside source static tcp 192.168.173.15 443 10.74.21.193 10015 extendable
+ip nat inside source static tcp 192.168.173.16 443 10.74.21.193 10016 extendable
+ip nat inside source static tcp 192.168.173.17 443 10.74.21.193 10017 extendable
+ip nat inside source static tcp 192.168.173.18 443 10.74.21.193 10018 extendable
+ip nat inside source static tcp 192.168.173.19 443 10.74.21.193 10019 extendable
+ip nat inside source static tcp 192.168.173.20 443 10.74.21.193 10020 extendable
+ip nat inside source static tcp 192.168.173.21 443 10.74.21.193 10021 extendable
+ip nat inside source static tcp 192.168.173.22 443 10.74.21.193 10022 extendable
+ip nat inside source static tcp 192.168.173.23 443 10.74.21.193 10023 extendable
+ip nat inside source static tcp 192.168.173.24 443 10.74.21.193 10024 extendable
+ip nat inside source static tcp 192.168.173.25 443 10.74.21.193 10025 extendable
+ip nat inside source static tcp 192.168.173.26 443 10.74.21.193 10026 extendable
+ip nat inside source static tcp 192.168.173.27 443 10.74.21.193 10027 extendable
+ip nat inside source static tcp 192.168.173.28 443 10.74.21.193 10028 extendable
+ip nat inside source static tcp 192.168.173.29 443 10.74.21.193 10029 extendable
+ip nat inside source static tcp 192.168.173.30 443 10.74.21.193 10030 extendable
+ip nat inside source static tcp 192.168.173.31 443 10.74.21.193 10031 extendable
+ip nat inside source static tcp 192.168.173.32 443 10.74.21.193 10032 extendable
+ip nat inside source static tcp 192.168.173.33 443 10.74.21.193 10033 extendable
+ip nat inside source static tcp 192.168.173.34 443 10.74.21.193 10034 extendable
+ip nat inside source static tcp 192.168.173.35 443 10.74.21.193 10035 extendable
+ip nat inside source static tcp 192.168.173.36 443 10.74.21.193 10036 extendable
+ip nat inside source static tcp 192.168.173.37 443 10.74.21.193 10037 extendable
+ip nat inside source static tcp 192.168.173.38 443 10.74.21.193 10038 extendable
+ip nat inside source static tcp 192.168.173.39 443 10.74.21.193 10039 extendable
+ip nat inside source static tcp 192.168.173.40 443 10.74.21.193 10040 extendable
+ip nat inside source static tcp 192.168.173.41 443 10.74.21.193 10041 extendable
+ip nat inside source static tcp 192.168.173.42 443 10.74.21.193 10042 extendable
+ip nat inside source static tcp 192.168.173.43 443 10.74.21.193 10043 extendable
+ip nat inside source static tcp 192.168.173.44 443 10.74.21.193 10044 extendable
+ip nat inside source static tcp 192.168.173.45 443 10.74.21.193 10045 extendable
+ip nat inside source static tcp 192.168.173.46 443 10.74.21.193 10046 extendable
+ip nat inside source static tcp 192.168.173.47 443 10.74.21.193 10047 extendable
+ip nat inside source static tcp 192.168.173.48 443 10.74.21.193 10048 extendable
+ip nat inside source static tcp 192.168.173.49 443 10.74.21.193 10049 extendable
+ip nat inside source static tcp 192.168.173.50 443 10.74.21.193 10050 extendable
+ip nat inside source static tcp 192.168.173.51 443 10.74.21.193 10051 extendable
+ip nat inside source static tcp 192.168.173.52 443 10.74.21.193 10052 extendable
+ip nat inside source static tcp 192.168.173.53 443 10.74.21.193 10053 extendable
+ip nat inside source static tcp 192.168.173.54 443 10.74.21.193 10054 extendable
+ip nat inside source static tcp 192.168.173.55 443 10.74.21.193 10055 extendable
+ip nat inside source static tcp 192.168.173.56 443 10.74.21.193 10056 extendable
+ip nat inside source static tcp 192.168.173.57 443 10.74.21.193 10057 extendable
+ip nat inside source static tcp 192.168.173.58 443 10.74.21.193 10058 extendable
+ip nat inside source static tcp 192.168.173.59 443 10.74.21.193 10059 extendable
+ip nat inside source static tcp 192.168.173.60 443 10.74.21.193 10060 extendable
+ip nat inside source static tcp 192.168.173.61 443 10.74.21.193 10061 extendable
+ip nat inside source static tcp 192.168.173.62 443 10.74.21.193 10062 extendable
+ip nat inside source static tcp 192.168.173.63 443 10.74.21.193 10063 extendable
+ip nat inside source static tcp 192.168.173.64 443 10.74.21.193 10064 extendable
+ip nat inside source static tcp 192.168.173.65 443 10.74.21.193 10065 extendable
+ip nat inside source static tcp 192.168.173.66 443 10.74.21.193 10066 extendable
+ip nat inside source static tcp 192.168.173.67 443 10.74.21.193 10067 extendable
+ip nat inside source static tcp 192.168.173.68 443 10.74.21.193 10068 extendable
+ip nat inside source static tcp 192.168.173.69 443 10.74.21.193 10069 extendable
+ip nat inside source static tcp 192.168.173.70 443 10.74.21.193 10070 extendable
+ip nat inside source static tcp 192.168.173.71 443 10.74.21.193 10071 extendable
+ip nat inside source static tcp 192.168.173.72 443 10.74.21.193 10072 extendable
+ip nat inside source static tcp 192.168.173.73 443 10.74.21.193 10073 extendable
+ip nat inside source static tcp 192.168.173.74 443 10.74.21.193 10074 extendable
+ip nat inside source static tcp 192.168.173.75 443 10.74.21.193 10075 extendable
+ip nat inside source static tcp 192.168.173.76 443 10.74.21.193 10076 extendable
+ip nat inside source static tcp 192.168.173.77 443 10.74.21.193 10077 extendable
+ip nat inside source static tcp 192.168.173.78 443 10.74.21.193 10078 extendable
+ip nat inside source static tcp 192.168.173.79 443 10.74.21.193 10079 extendable
+ip nat inside source static tcp 192.168.173.80 443 10.74.21.193 10080 extendable
+ip nat inside source static tcp 192.168.173.81 443 10.74.21.193 10081 extendable
+ip nat inside source static tcp 192.168.173.82 443 10.74.21.193 10082 extendable
+ip nat inside source static tcp 192.168.173.83 443 10.74.21.193 10083 extendable
+ip nat inside source static tcp 192.168.173.84 443 10.74.21.193 10084 extendable
+ip nat inside source static tcp 192.168.173.85 443 10.74.21.193 10085 extendable
+ip nat inside source static tcp 192.168.173.86 443 10.74.21.193 10086 extendable
+ip nat inside source static tcp 192.168.173.87 443 10.74.21.193 10087 extendable
+ip nat inside source static tcp 192.168.173.88 443 10.74.21.193 10088 extendable
+ip nat inside source static tcp 192.168.173.89 443 10.74.21.193 10089 extendable
+ip nat inside source static tcp 192.168.173.90 443 10.74.21.193 10090 extendable
+ip nat inside source static tcp 192.168.173.91 443 10.74.21.193 10091 extendable
+ip nat inside source static tcp 192.168.173.92 443 10.74.21.193 10092 extendable
+ip nat inside source static tcp 192.168.173.93 443 10.74.21.193 10093 extendable
+ip nat inside source static tcp 192.168.173.94 443 10.74.21.193 10094 extendable
+ip nat inside source static tcp 192.168.173.95 443 10.74.21.193 10095 extendable
+ip nat inside source static tcp 192.168.173.96 443 10.74.21.193 10096 extendable
+ip nat inside source static tcp 192.168.173.97 443 10.74.21.193 10097 extendable
+ip nat inside source static tcp 192.168.173.98 443 10.74.21.193 10098 extendable
+ip nat inside source static tcp 192.168.173.99 443 10.74.21.193 10099 extendable
+ip nat inside source static tcp 192.168.173.100 443 10.74.21.193 10100 extendable
+ip nat inside source static tcp 192.168.173.101 443 10.74.21.193 10101 extendable
+ip nat inside source static tcp 192.168.173.102 443 10.74.21.193 10102 extendable
+ip nat inside source static tcp 192.168.173.103 443 10.74.21.193 10103 extendable
+ip nat inside source static tcp 192.168.173.104 443 10.74.21.193 10104 extendable
+ip nat inside source static tcp 192.168.173.105 443 10.74.21.193 10105 extendable
+ip nat inside source static tcp 192.168.173.200 443 10.74.21.193 10200 extendable
+ip nat inside source static tcp 192.168.173.201 443 10.74.21.193 10201 extendable
+ip nat inside source static tcp 192.168.173.202 443 10.74.21.193 10202 extendable
+ip nat inside source static tcp 192.168.173.203 443 10.74.21.193 10203 extendable
+ip nat inside source static tcp 192.168.173.204 443 10.74.21.193 10204 extendable
+ip nat inside source static tcp 192.168.173.205 443 10.74.21.193 10205 extendable
+ip nat inside source static tcp 192.168.173.206 443 10.74.21.193 10206 extendable
+ip nat inside source static tcp 192.168.173.207 443 10.74.21.193 10207 extendable
+ip nat inside source static tcp 192.168.173.208 443 10.74.21.193 10208 extendable
+ip nat inside source static tcp 192.168.173.209 443 10.74.21.193 10209 extendable
+ip nat inside source static tcp 192.168.173.210 443 10.74.21.193 10210 extendable
+ip nat inside source static tcp 192.168.173.211 443 10.74.21.193 10211 extendable
+ip nat inside source static tcp 192.168.173.212 443 10.74.21.193 10212 extendable
+ip nat inside source static tcp 192.168.173.213 443 10.74.21.193 10213 extendable
+ip nat inside source static tcp 192.168.173.214 443 10.74.21.193 10214 extendable
+ip nat inside source static tcp 192.168.173.215 443 10.74.21.193 10215 extendable
+ip nat inside source static tcp 192.168.173.216 443 10.74.21.193 10216 extendable
+ip nat inside source static tcp 192.168.173.217 443 10.74.21.193 10217 extendable
+ip nat inside source static tcp 192.168.173.218 443 10.74.21.193 10218 extendable
+ip nat inside source static tcp 192.168.173.219 443 10.74.21.193 10219 extendable
+ip nat inside source static tcp 192.168.173.220 443 10.74.21.193 10220 extendable
+ip nat inside source static tcp 20.5.3.110 3389 10.74.21.193 13389 extendable
+ip nat inside source static tcp 80.5.1.7 5901 10.74.21.193 18017 extendable
+ip nat inside source static tcp 192.168.173.1 23 10.74.21.193 20001 extendable
+ip nat inside source static tcp 192.168.173.2 23 10.74.21.193 20002 extendable
+ip nat inside source static tcp 192.168.173.3 23 10.74.21.193 20003 extendable
+ip nat inside source static tcp 192.168.173.4 23 10.74.21.193 20004 extendable
+ip nat inside source static tcp 192.168.173.5 23 10.74.21.193 20005 extendable
+ip nat inside source static tcp 192.168.173.6 23 10.74.21.193 20006 extendable
+ip nat inside source static tcp 192.168.173.7 23 10.74.21.193 20007 extendable
+ip nat inside source static tcp 192.168.173.8 23 10.74.21.193 20008 extendable
+ip nat inside source static tcp 192.168.173.9 23 10.74.21.193 20009 extendable
+ip nat inside source static tcp 192.168.173.10 23 10.74.21.193 20010 extendable
+ip nat inside source static tcp 192.168.173.11 23 10.74.21.193 20011 extendable
+ip nat inside source static tcp 192.168.173.12 23 10.74.21.193 20012 extendable
+ip nat inside source static tcp 192.168.173.13 23 10.74.21.193 20013 extendable
+ip nat inside source static tcp 192.168.173.14 23 10.74.21.193 20014 extendable
+ip nat inside source static tcp 192.168.173.15 23 10.74.21.193 20015 extendable
+ip nat inside source static tcp 192.168.173.16 23 10.74.21.193 20016 extendable
+ip nat inside source static tcp 192.168.173.17 23 10.74.21.193 20017 extendable
+ip nat inside source static tcp 192.168.173.18 23 10.74.21.193 20018 extendable
+ip nat inside source static tcp 192.168.173.19 23 10.74.21.193 20019 extendable
+ip nat inside source static tcp 192.168.173.20 23 10.74.21.193 20020 extendable
+ip nat inside source static tcp 192.168.173.21 23 10.74.21.193 20021 extendable
+ip nat inside source static tcp 192.168.173.22 23 10.74.21.193 20022 extendable
+ip nat inside source static tcp 192.168.173.23 23 10.74.21.193 20023 extendable
+ip nat inside source static tcp 192.168.173.24 23 10.74.21.193 20024 extendable
+ip nat inside source static tcp 192.168.173.25 23 10.74.21.193 20025 extendable
+ip nat inside source static tcp 192.168.173.26 23 10.74.21.193 20026 extendable
+ip nat inside source static tcp 192.168.173.27 23 10.74.21.193 20027 extendable
+ip nat inside source static tcp 192.168.173.28 23 10.74.21.193 20028 extendable
+ip nat inside source static tcp 192.168.173.29 23 10.74.21.193 20029 extendable
+ip nat inside source static tcp 192.168.173.30 23 10.74.21.193 20030 extendable
+ip nat inside source static tcp 192.168.173.31 23 10.74.21.193 20031 extendable
+ip nat inside source static tcp 192.168.173.32 23 10.74.21.193 20032 extendable
+ip nat inside source static tcp 192.168.173.33 23 10.74.21.193 20033 extendable
+ip nat inside source static tcp 192.168.173.34 23 10.74.21.193 20034 extendable
+ip nat inside source static tcp 192.168.173.35 23 10.74.21.193 20035 extendable
+ip nat inside source static tcp 192.168.173.36 23 10.74.21.193 20036 extendable
+ip nat inside source static tcp 192.168.173.37 23 10.74.21.193 20037 extendable
+ip nat inside source static tcp 192.168.173.38 23 10.74.21.193 20038 extendable
+ip nat inside source static tcp 192.168.173.39 23 10.74.21.193 20039 extendable
+ip nat inside source static tcp 192.168.173.40 23 10.74.21.193 20040 extendable
+ip nat inside source static tcp 192.168.173.41 23 10.74.21.193 20041 extendable
+ip nat inside source static tcp 192.168.173.42 23 10.74.21.193 20042 extendable
+ip nat inside source static tcp 192.168.173.43 23 10.74.21.193 20043 extendable
+ip nat inside source static tcp 192.168.173.44 23 10.74.21.193 20044 extendable
+ip nat inside source static tcp 192.168.173.45 23 10.74.21.193 20045 extendable
+ip nat inside source static tcp 192.168.173.46 23 10.74.21.193 20046 extendable
+ip nat inside source static tcp 192.168.173.47 23 10.74.21.193 20047 extendable
+ip nat inside source static tcp 192.168.173.48 23 10.74.21.193 20048 extendable
+ip nat inside source static tcp 192.168.173.49 23 10.74.21.193 20049 extendable
+ip nat inside source static tcp 192.168.173.50 23 10.74.21.193 20050 extendable
+ip nat inside source static tcp 192.168.173.51 23 10.74.21.193 20051 extendable
+ip nat inside source static tcp 192.168.173.52 23 10.74.21.193 20052 extendable
+ip nat inside source static tcp 192.168.173.53 23 10.74.21.193 20053 extendable
+ip nat inside source static tcp 192.168.173.54 23 10.74.21.193 20054 extendable
+ip nat inside source static tcp 192.168.173.55 23 10.74.21.193 20055 extendable
+ip nat inside source static tcp 192.168.173.56 23 10.74.21.193 20056 extendable
+ip nat inside source static tcp 192.168.173.57 23 10.74.21.193 20057 extendable
+ip nat inside source static tcp 192.168.173.58 23 10.74.21.193 20058 extendable
+ip nat inside source static tcp 192.168.173.59 23 10.74.21.193 20059 extendable
+ip nat inside source static tcp 192.168.173.60 23 10.74.21.193 20060 extendable
+ip nat inside source static tcp 192.168.173.61 23 10.74.21.193 20061 extendable
+ip nat inside source static tcp 192.168.173.62 23 10.74.21.193 20062 extendable
+ip nat inside source static tcp 192.168.173.63 23 10.74.21.193 20063 extendable
+ip nat inside source static tcp 192.168.173.64 23 10.74.21.193 20064 extendable
+ip nat inside source static tcp 192.168.173.65 23 10.74.21.193 20065 extendable
+ip nat inside source static tcp 192.168.173.66 23 10.74.21.193 20066 extendable
+ip nat inside source static tcp 192.168.173.67 23 10.74.21.193 20067 extendable
+ip nat inside source static tcp 192.168.173.68 23 10.74.21.193 20068 extendable
+ip nat inside source static tcp 192.168.173.69 23 10.74.21.193 20069 extendable
+ip nat inside source static tcp 192.168.173.70 23 10.74.21.193 20070 extendable
+ip nat inside source static tcp 192.168.173.71 23 10.74.21.193 20071 extendable
+ip nat inside source static tcp 192.168.173.72 23 10.74.21.193 20072 extendable
+ip nat inside source static tcp 192.168.173.73 23 10.74.21.193 20073 extendable
+ip nat inside source static tcp 192.168.173.74 23 10.74.21.193 20074 extendable
+ip nat inside source static tcp 192.168.173.75 23 10.74.21.193 20075 extendable
+ip nat inside source static tcp 192.168.173.76 23 10.74.21.193 20076 extendable
+ip nat inside source static tcp 192.168.173.77 23 10.74.21.193 20077 extendable
+ip nat inside source static tcp 192.168.173.78 23 10.74.21.193 20078 extendable
+ip nat inside source static tcp 192.168.173.79 23 10.74.21.193 20079 extendable
+ip nat inside source static tcp 192.168.173.80 23 10.74.21.193 20080 extendable
+ip nat inside source static tcp 192.168.173.81 23 10.74.21.193 20081 extendable
+ip nat inside source static tcp 192.168.173.82 23 10.74.21.193 20082 extendable
+ip nat inside source static tcp 192.168.173.83 23 10.74.21.193 20083 extendable
+ip nat inside source static tcp 192.168.173.84 23 10.74.21.193 20084 extendable
+ip nat inside source static tcp 192.168.173.85 23 10.74.21.193 20085 extendable
+ip nat inside source static tcp 192.168.173.86 23 10.74.21.193 20086 extendable
+ip nat inside source static tcp 192.168.173.87 23 10.74.21.193 20087 extendable
+ip nat inside source static tcp 192.168.173.88 23 10.74.21.193 20088 extendable
+ip nat inside source static tcp 192.168.173.89 23 10.74.21.193 20089 extendable
+ip nat inside source static tcp 192.168.173.90 23 10.74.21.193 20090 extendable
+ip nat inside source static tcp 192.168.173.91 23 10.74.21.193 20091 extendable
+ip nat inside source static tcp 192.168.173.92 23 10.74.21.193 20092 extendable
+ip nat inside source static tcp 192.168.173.93 23 10.74.21.193 20093 extendable
+ip nat inside source static tcp 192.168.173.94 23 10.74.21.193 20094 extendable
+ip nat inside source static tcp 192.168.173.95 23 10.74.21.193 20095 extendable
+ip nat inside source static tcp 192.168.173.96 23 10.74.21.193 20096 extendable
+ip nat inside source static tcp 192.168.173.97 23 10.74.21.193 20097 extendable
+ip nat inside source static tcp 192.168.173.98 23 10.74.21.193 20098 extendable
+ip nat inside source static tcp 192.168.173.99 23 10.74.21.193 20099 extendable
+ip nat inside source static tcp 192.168.173.100 23 10.74.21.193 20100 extendable
+ip nat inside source static tcp 192.168.173.101 23 10.74.21.193 20101 extendable
+ip nat inside source static tcp 192.168.173.102 23 10.74.21.193 20102 extendable
+ip nat inside source static tcp 192.168.173.103 23 10.74.21.193 20103 extendable
+ip nat inside source static tcp 192.168.173.104 23 10.74.21.193 20104 extendable
+ip nat inside source static tcp 192.168.173.105 23 10.74.21.193 20105 extendable
+ip nat inside source static tcp 192.168.173.200 23 10.74.21.193 20200 extendable
+ip nat inside source static tcp 192.168.173.201 23 10.74.21.193 20201 extendable
+ip nat inside source static tcp 192.168.173.202 23 10.74.21.193 20202 extendable
+ip nat inside source static tcp 192.168.173.203 23 10.74.21.193 20203 extendable
+ip nat inside source static tcp 192.168.173.204 23 10.74.21.193 20204 extendable
+ip nat inside source static tcp 192.168.173.205 23 10.74.21.193 20205 extendable
+ip nat inside source static tcp 192.168.173.206 23 10.74.21.193 20206 extendable
+ip nat inside source static tcp 192.168.173.207 23 10.74.21.193 20207 extendable
+ip nat inside source static tcp 192.168.173.208 23 10.74.21.193 20208 extendable
+ip nat inside source static tcp 192.168.173.209 23 10.74.21.193 20209 extendable
+ip nat inside source static tcp 192.168.173.210 23 10.74.21.193 20210 extendable
+ip nat inside source static tcp 192.168.173.211 23 10.74.21.193 20211 extendable
+ip nat inside source static tcp 192.168.173.212 23 10.74.21.193 20212 extendable
+ip nat inside source static tcp 192.168.173.213 23 10.74.21.193 20213 extendable
+ip nat inside source static tcp 192.168.173.214 23 10.74.21.193 20214 extendable
+ip nat inside source static tcp 192.168.173.215 23 10.74.21.193 20215 extendable
+ip nat inside source static tcp 192.168.173.216 23 10.74.21.193 20216 extendable
+ip nat inside source static tcp 192.168.173.217 23 10.74.21.193 20217 extendable
+ip nat inside source static tcp 192.168.173.218 23 10.74.21.193 20218 extendable
+ip nat inside source static tcp 192.168.173.219 23 10.74.21.193 20219 extendable
+ip nat inside source static tcp 192.168.173.220 23 10.74.21.193 20220 extendable
+ip nat inside source static tcp 20.5.5.10 443 10.74.21.193 30010 extendable
+ip nat inside source static tcp 20.5.5.11 443 10.74.21.193 30011 extendable
+ip nat inside source static 80.5.2.11 10.74.21.220
+ip nat inside source static 80.1.2.41 10.74.21.222
+ip nat inside source static 20.3.0.200 10.74.21.223
+ip nat inside source static tcp 20.5.1.10 22 10.74.46.130 10110 extendable
+ip nat inside source static tcp 20.5.1.11 3389 10.74.46.130 10111 extendable
+ip nat inside source static tcp 20.5.1.120 8080 10.74.46.130 12080 extendable
+ip nat inside source static tcp 20.5.1.121 8080 10.74.46.130 12180 extendable
+ip nat inside source static tcp 20.5.1.122 8080 10.74.46.130 12280 extendable
+ip nat inside source static tcp 20.5.1.33 22 10.74.46.130 13523 extendable
+ip nat inside source static tcp 20.5.15.25 5905 10.74.46.130 13525 extendable
+ip nat inside source static tcp 80.5.1.6 22 10.74.46.130 13531 extendable
+ip nat inside source static tcp 80.5.1.6 8080 10.74.46.130 13532 extendable
+ip nat inside source static tcp 80.5.1.33 5901 10.74.46.130 13533 extendable
+ip nat inside source static tcp 80.5.1.40 5901 10.74.46.130 13534 extendable
+ip nat inside source static tcp 20.4.0.88 23 10.74.46.130 30088 extendable
+ip nat inside source static tcp 80.5.3.100 23 10.74.46.130 30100 extendable
+ip nat inside source static tcp 20.3.3.233 23 10.74.46.130 30233 extendable
+ip nat inside source static tcp 80.5.3.3 8080 10.75.220.38 10033 extendable
+ip nat inside source static tcp 80.5.3.4 8080 10.75.220.38 10034 extendable
+ip nat inside source static tcp 80.5.3.5 8080 10.75.220.38 10035 extendable
+ip nat inside source static tcp 80.5.3.6 8080 10.75.220.38 10036 extendable
+ip nat inside source static tcp 80.5.3.71 3389 10.75.220.38 10071 extendable
+ip nat inside source static tcp 80.5.3.72 3389 10.75.220.38 10072 extendable
+ip nat inside source static tcp 80.5.3.73 3389 10.75.220.38 10073 extendable
+ip nat inside source static tcp 80.5.3.74 3389 10.75.220.38 10074 extendable
+ip nat inside source static tcp 80.5.3.75 3389 10.75.220.38 10075 extendable
+ip nat inside source static tcp 80.5.3.76 3389 10.75.220.38 10076 extendable
+ip nat inside source static tcp 80.5.3.77 3389 10.75.220.38 10077 extendable
+ip nat inside source static tcp 80.5.3.81 3389 10.75.220.38 10081 extendable
+ip nat inside source static tcp 80.5.3.82 3389 10.75.220.38 10082 extendable
+ip nat inside source static tcp 80.5.3.200 3389 10.75.220.38 10200 extendable
+ip nat inside source static tcp 80.5.3.200 443 10.75.220.38 10443 extendable
+ip forward-protocol nd
+!
+ip http server
+ip http authentication local
+no ip http secure-server
+ip pim rp-address 171.69.10.13 multicast_rp_blockdensemode
+no ip pim dm-fallback
+ip pim autorp listener
+ip route 0.0.0.0 0.0.0.0 10.74.46.129
+ip route 1.1.1.1 255.255.255.255 Tunnel10
+ip route 10.74.3.64 255.255.255.192 Tunnel12
+ip route 10.74.54.0 255.255.255.0 Tunnel10
+ip route 10.74.90.0 255.255.255.128 Tunnel12
+ip route 10.75.196.0 255.255.255.0 100.100.100.2
+ip route 10.75.199.0 255.255.255.0 100.100.100.2
+ip route 20.6.0.0 255.255.0.0 Tunnel10
+ip route 20.7.0.0 255.255.0.0 Tunnel10
+ip route 20.8.0.0 255.255.0.0 Tunnel10
+ip route 20.9.0.0 255.255.0.0 Tunnel10
+ip route 20.10.0.0 255.255.0.0 Tunnel10
+ip route 20.11.0.0 255.255.0.0 100.100.100.2
+ip route 20.12.0.0 255.255.0.0 100.100.100.2
+ip route 20.13.0.0 255.255.0.0 100.100.100.2
+ip route 20.14.0.0 255.255.0.0 100.100.100.2
+ip route 30.0.7.0 255.255.255.0 20.3.0.121
+ip route 30.0.8.0 255.255.255.0 20.3.0.121
+ip route 30.0.9.0 255.255.255.0 20.3.0.41
+ip route 30.0.10.0 255.255.255.0 20.3.0.41
+ip route 30.0.155.0 255.255.255.0 20.3.0.219
+ip route 30.20.0.0 255.255.0.0 20.20.0.2
+ip route 30.20.0.0 255.255.255.0 20.0.0.2 name jiajuli-mgmt
+ip route 30.54.0.0 255.255.0.0 20.3.0.121
+ip route 30.55.0.0 255.255.0.0 20.3.0.121
+ip route 30.61.0.0 255.255.0.0 100.100.100.2
+ip route 30.62.0.0 255.255.0.0 100.100.100.2
+ip route 30.65.0.0 255.255.0.0 20.5.0.129
+ip route 30.66.0.0 255.255.0.0 20.5.0.129
+ip route 30.67.0.0 255.255.0.0 20.3.0.120
+ip route 30.68.0.0 255.255.0.0 20.3.0.120
+ip route 30.86.0.0 255.255.0.0 20.5.2.20
+ip route 30.90.0.0 255.255.0.0 20.6.90.1
+ip route 30.91.0.0 255.255.0.0 20.6.90.1
+ip route 30.92.0.0 255.255.0.0 20.6.90.1
+ip route 30.130.0.0 255.255.0.0 20.5.1.48
+ip route 30.131.0.0 255.255.0.0 20.5.1.48
+ip route 30.150.0.0 255.255.0.0 Tunnel10
+ip route 30.151.0.0 255.255.0.0 20.6.150.1
+ip route 30.154.0.0 255.255.0.0 20.3.0.121
+ip route 30.170.0.0 255.255.0.0 Tunnel10
+ip route 30.186.0.0 255.255.0.0 20.5.6.88
+ip route 30.187.0.0 255.255.0.0 20.5.6.88
+ip route 30.198.0.0 255.255.0.0 20.5.1.49
+ip route 30.202.0.0 255.255.0.0 20.3.0.200
+ip route 30.203.0.0 255.255.0.0 20.3.0.200
+ip route 30.204.0.0 255.255.0.0 20.3.0.200
+ip route 30.205.0.0 255.255.0.0 20.3.0.200
+ip route 30.206.0.0 255.255.0.0 20.3.0.200
+ip route 30.207.0.0 255.255.0.0 20.3.0.200
+ip route 30.208.0.0 255.255.0.0 20.3.0.200
+ip route 30.209.0.0 255.255.0.0 20.3.0.200
+ip route 30.235.0.0 255.255.0.0 20.5.0.130
+ip route 30.236.0.0 255.255.0.0 20.5.0.130
+ip route 31.15.0.0 255.255.0.0 20.5.0.155
+ip route 31.15.0.0 255.255.255.0 20.5.0.155
+ip route 31.15.1.0 255.255.255.0 20.5.0.155
+ip route 31.15.2.0 255.255.255.0 20.5.0.155
+ip route 31.16.0.0 255.255.0.0 20.5.0.155
+ip route 31.16.0.0 255.255.255.0 20.5.0.155
+ip route 31.16.1.0 255.255.255.0 20.5.0.155
+ip route 31.16.2.0 255.255.255.0 20.5.0.155
+ip route 31.17.0.0 255.255.0.0 20.5.0.155
+ip route 31.17.0.0 255.255.255.0 20.5.0.155
+ip route 31.17.1.0 255.255.255.0 20.5.0.155
+ip route 31.18.0.0 255.255.0.0 20.5.0.156
+ip route 31.18.0.0 255.255.255.0 20.5.0.156
+ip route 31.18.101.0 255.255.255.0 20.5.0.155
+ip route 31.19.0.0 255.255.255.0 20.5.0.155
+ip route 40.1.1.2 255.255.255.255 10.74.90.130
+ip route 40.3.0.0 255.255.255.0 20.5.0.40
+ip route 40.3.1.0 255.255.255.0 20.5.0.40
+ip route 40.3.3.0 255.255.255.0 20.5.0.40
+ip route 40.3.4.0 255.255.255.0 20.5.0.40
+ip route 40.3.6.0 255.255.255.0 20.5.0.40
+ip route 40.71.0.0 255.255.0.0 20.5.0.139
+ip route 40.130.0.0 255.255.0.0 10.74.21.164
+ip route 50.0.0.0 255.0.0.0 Tunnel10
+ip route 50.1.0.0 255.255.0.0 1.1.1.1
+ip route 60.2.0.0 255.255.255.0 Tunnel10
+ip route 70.1.0.0 255.255.0.0 20.5.0.142
+ip route 91.189.0.0 255.255.0.0 GigabitEthernet0/0/0 10.74.46.129
+ip route 100.0.0.0 255.0.0.0 100.100.100.2
+ip route 101.0.0.0 255.0.0.0 100.100.100.2
+ip route 102.0.0.0 255.0.0.0 100.100.100.2
+ip route 103.0.0.0 255.0.0.0 100.100.100.2
+ip route 104.0.0.0 255.0.0.0 100.100.100.2
+ip route 105.0.0.0 255.0.0.0 100.100.100.2
+ip route 106.0.0.0 255.0.0.0 100.100.100.2
+ip route 107.0.0.0 255.0.0.0 100.100.100.2
+ip route 108.0.0.0 255.0.0.0 100.100.100.2
+ip route 109.0.0.0 255.0.0.0 100.100.100.2
+ip route 110.0.0.0 255.0.0.0 100.100.100.2
+ip route 111.0.0.0 255.0.0.0 100.100.100.2
+ip route 112.0.0.0 255.0.0.0 100.100.100.2
+ip route 113.0.0.0 255.0.0.0 100.100.100.2
+ip route 114.0.0.0 255.0.0.0 100.100.100.2
+ip route 115.0.0.0 255.0.0.0 100.100.100.2
+ip route 116.0.0.0 255.0.0.0 100.100.100.2
+ip route 117.0.0.0 255.0.0.0 100.100.100.2
+ip route 118.0.0.0 255.0.0.0 100.100.100.2
+ip route 119.0.0.0 255.0.0.0 100.100.100.2
+ip route 150.1.0.0 255.255.0.0 100.100.100.2
+ip route 150.2.0.0 255.255.0.0 100.100.100.2
+ip route 150.3.0.0 255.255.0.0 100.100.100.2
+ip route 150.4.0.0 255.255.0.0 100.100.100.2
+ip route 150.5.0.0 255.255.0.0 100.100.100.2
+ip route 150.6.0.0 255.255.0.0 100.100.100.2
+ip route 150.7.0.0 255.255.0.0 100.100.100.2
+ip route 180.0.0.0 255.0.0.0 100.100.100.2
+ip route 200.0.0.0 255.0.0.0 100.100.100.2
+ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 20.3.0.1
+ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 20.5.0.1
+ip tacacs source-interface GigabitEthernet0/0/0
+!
+ip access-list standard multicast_rp_blockdensemode
+ 10 permit any
+!
+ip access-list extended ALL_ICMP
+ 10 permit icmp any any
+!
+ip access-list match-local-traffic
+ip access-list persistent
+access-list 20 11 permit 20.3.0.0 0.0.255.255
+access-list 30 10 permit 20.5.0.0 0.0.255.255
+access-list 40 10 permit 80.0.0.0 0.255.255.255
+arp 10.74.21.150 90b1.1c79.9307 ARPA
+ipv6 route 2001:30:0:9::/64 2001:20:5:1::41
+ipv6 route 2001:30:0:20::/64 2001:20:3:1::121
+ipv6 route 2001:30:0:32::/64 2001:20:3:1::121
+ipv6 route 2001:30:0:33::/64 2001:20:3:1::121
+ipv6 route 2001:30:6::/48 2001:20:3:1::121
+ipv6 route 2001:30:65:1::/64 2001:20:5:1::129
+ipv6 route 2001:30:66:1::/64 2001:20:5:1::129
+ipv6 route 2001:30:86::/48 2001:20:5:1::2:20
+ipv6 route 2001:30:130::/48 2001:20:5:1::48
+ipv6 route 2001:30:186::/64 2001:20:5:1::6:88
+ipv6 route 2001:30:187::/64 2001:20:5:1::6:88
+ipv6 route 2001:30:198::/64 2001:20:5:1::49
+ipv6 route 2001:30:202::/48 2001:20:3:1::2200
+ipv6 route 2001:30:204::/64 2001:20:3:1::2200
+ipv6 route 2001:30:235::/64 2001:20:5:1::130
+ipv6 route 2001:30:235:10::/64 2001:20:5:1::130
+ipv6 route 2001:31:15::/48 2001:20:5:1::155
+ipv6 route 2001:31:16::/48 2001:20:5:1::155
+ipv6 route 2001:40:3::/48 2001:20:5:1::40
+ipv6 route 2001:40:88::/48 2001:20:3:1::120
+ipv6 router ospf 100
+ router-id 1.1.1.1
+ area 0 authentication ipsec spi 256 md5 48573947302838720572038564759343
+ default-information originate always
+ redistribute static
+!
+!
+snmp-server community public RO
+snmp-server community ciscoprivate RO
+snmp-server community private RO
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps vrrp
+snmp-server enable traps pfr
+snmp-server enable traps flowmon
+snmp-server enable traps ds1
+snmp-server enable traps call-home message-send-fail server-fail
+snmp-server enable traps tty
+snmp-server enable traps eigrp
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps casa
+snmp-server enable traps aaa_server
+snmp-server enable traps atm subif
+snmp-server enable traps bfd
+snmp-server enable traps bgp cbgp2
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps dhcp
+snmp-server enable traps dial
+snmp-server enable traps dlsw
+snmp-server enable traps dsp card-status
+snmp-server enable traps dsp oper-state
+snmp-server enable traps dsp video-usage
+snmp-server enable traps dsp video-out-of-resource
+snmp-server enable traps fru-ctrl
+snmp-server enable traps entity
+snmp-server enable traps event-manager
+snmp-server enable traps frame-relay multilink bundle-mismatch
+snmp-server enable traps frame-relay
+snmp-server enable traps frame-relay subif
+snmp-server enable traps hsrp
+snmp-server enable traps ipmulticast
+snmp-server enable traps msdp
+snmp-server enable traps mvpn
+snmp-server enable traps ospfv3 state-change
+snmp-server enable traps ospfv3 errors
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps pppoe
+snmp-server enable traps cpu threshold
+snmp-server enable traps pw vc
+snmp-server enable traps rsvp
+snmp-server enable traps ipsla
+snmp-server enable traps syslog
+snmp-server enable traps l2tun session
+snmp-server enable traps l2tun pseudowire status
+snmp-server enable traps ethernet evc status create delete
+snmp-server enable traps ether-oam
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps entity-qfp mem-res-thresh
+snmp-server enable traps entity-state
+snmp-server enable traps trustsec-sxp conn-srcaddr-err msg-parse-err conn-config-err binding-err conn-up conn-down binding-expn-fail oper-nodeid-change binding-conflict
+snmp-server enable traps flash insertion removal
+snmp-server enable traps firewall serverstatus
+snmp-server enable traps sbc adj-status
+snmp-server enable traps sbc blacklist
+snmp-server enable traps sbc congestion-alarm
+snmp-server enable traps sbc h248-ctrlr-status
+snmp-server enable traps sbc media-source
+snmp-server enable traps sbc radius-conn-status
+snmp-server enable traps sbc sla-violation
+snmp-server enable traps sbc sla-violation-rev1
+snmp-server enable traps sbc svc-state
+snmp-server enable traps sbc qos-statistics
+snmp-server enable traps srp
+snmp-server enable traps isdn call-information
+snmp-server enable traps isdn layer2
+snmp-server enable traps isdn chan-not-avail
+snmp-server enable traps isdn ietf
+snmp-server enable traps cnpd
+snmp-server enable traps entity-diag boot-up-fail hm-test-recover hm-thresh-reached scheduled-test-fail
+snmp-server enable traps cef resource-failure peer-state-change peer-fib-state-change inconsistency
+snmp-server enable traps sonet
+snmp-server enable traps resource-policy
+snmp-server enable traps nhrp nhs
+snmp-server enable traps nhrp nhc
+snmp-server enable traps nhrp nhp
+snmp-server enable traps nhrp quota-exceeded
+snmp-server enable traps isis
+snmp-server enable traps ip local pool
+snmp-server enable traps mpls rfc ldp
+snmp-server enable traps mpls ldp
+snmp-server enable traps mpls rfc traffic-eng
+snmp-server enable traps mpls traffic-eng
+snmp-server enable traps mpls fast-reroute protected
+snmp-server enable traps ike policy add
+snmp-server enable traps ike policy delete
+snmp-server enable traps ike tunnel start
+snmp-server enable traps ike tunnel stop
+snmp-server enable traps ipsec cryptomap add
+snmp-server enable traps ipsec cryptomap delete
+snmp-server enable traps ipsec cryptomap attach
+snmp-server enable traps ipsec cryptomap detach
+snmp-server enable traps ipsec tunnel start
+snmp-server enable traps ipsec tunnel stop
+snmp-server enable traps ipsec too-many-sas
+snmp-server enable traps gdoi gm-start-registration
+snmp-server enable traps gdoi gm-registration-complete
+snmp-server enable traps gdoi gm-re-register
+snmp-server enable traps gdoi gm-rekey-rcvd
+snmp-server enable traps gdoi gm-rekey-fail
+snmp-server enable traps gdoi ks-rekey-pushed
+snmp-server enable traps gdoi gm-incomplete-cfg
+snmp-server enable traps gdoi ks-no-rsa-keys
+snmp-server enable traps gdoi ks-new-registration
+snmp-server enable traps gdoi ks-reg-complete
+snmp-server enable traps bulkstat collection transfer
+snmp-server enable traps alarms informational
+snmp-server enable traps voice
+snmp-server enable traps vrfmib vrf-up vrf-down vnet-trunk-up vnet-trunk-down
+snmp-server enable traps ethernet cfm alarm
+snmp-server enable traps rf
+snmp-server enable traps transceiver all
+snmp-server enable traps mpls vpn
+snmp-server enable traps mpls rfc vpn
+snmp-server host 10.74.90.2 ciscoprivate 
+snmp-server host 10.74.90.2 public 
+!
+tacacs-server host 173.38.203.29
+tacacs-server timeout 15
+tacacs-server directed-request
+!
+!
+control-plane host
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+banner motd ^C
+You have entered $(hostname).$(domain) on vty $(line)
+          
+ .:|:.:|:.             Lab Admin:sheli2@cisco.com (Santo Li)
+ C I S C O             Lab Ops:crdc-labs@cisco.com
+
+UNAUTHORIZED ACCESS TO THIS NETWORK DEVICE IS PROHIBITED.
+You must have explicit permission to access or configure this
+device.  All activities performed on this device are logged an
+violations of this policy may result in disciplinary action.
+^C
+!
+line con 0
+ exec-timeout 0 0
+ password cisco
+ logging synchronous
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ exec-timeout 0 0
+ password cisco
+ logging synchronous
+ login authentication lab
+line vty 5 15
+ password cisco
+ logging synchronous
+ login authentication lab
+!
+transport type persistent webui input webui
+!
+ntp logging
+ntp server vrf Mgmt-intf 10.75.220.24
+ntp server 10.75.220.24
+!
+end
+

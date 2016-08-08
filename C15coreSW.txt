@@ -1,0 +1,698 @@
+oreSW=->en
+Password: 
+-=15F-CoreSW=-#sho
+-=15F-CoreSW=-#show cdp
+-=15F-CoreSW=-#show cdp ne
+-=15F-CoreSW=-#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SW-081           Gig 2/27          140              S I   WS-C3750- Gig 1/0/1
+SW-090           Gig 2/29          174             R S I  WS-C3750G Gig 1/0/25
+SW-108           Gig 3/18          173              S I   WS-C3750G Gig 1/0/51
+SW-091           Gig 2/30          140              S I   WS-C3750G Gig 1/0/49
+SW-118           Gig 2/37          174              S I   WS-C3750G Gig 1/0/51
+SW-008           Gig 2/3           171              S I   WS-C3750G Gig 1/0/52
+SW-038           Gig 2/13          125              S I   WS-C3750G Gig 1/0/52
+SW-139           Gig 2/40          172              S I   WS-C3750G Gig 1/0/52
+SW-129           Gig 2/44          128              S I   WS-C3750- Gig 1/0/3
+SW-094           Gig 3/3           147              S I   WS-C3750G Gig 1/0/49
+SW-148           Gig 3/14          169              S I   WS-C3750- Gig 1/0/2
+SW-059           Gig 2/19          153              S I   WS-C3750G Gig 1/0/49
+SW-095           Gig 3/1           176              S I   WS-C3750G Gig 1/0/49
+SW-069           Gig 2/23          136              S I   WS-C3750G Gig 1/0/49
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SW-087           Gig 2/28          171              S I   WS-C3750G Gig 1/0/25
+SW-078           Gig 2/26          173              S I   WS-C3750G Gig 1/0/49
+SW-168           Gig 3/23          125              S I   WS-C3750G Gig 1/0/49
+SW-122           Gig 2/45          158              S I   WS-C3750G Gig 1/0/25
+SW-111           Gig 2/36          140              S I   WS-C3750G Gig 1/0/27
+SW-076           Gig 2/25          171              S I   WS-C3750G Gig 1/0/51
+SW-023           Gig 2/8           171              S I   WS-C3750G Gig 1/0/52
+SW-098           Gig 3/2           179              S I   WS-C3750G Gig 1/0/25
+SW-044           Gig 2/15          136              S I   WS-C3750G Gig 1/0/51
+SW-145           Gig 3/15          176              S I   WS-C3750G Gig 1/0/49
+SW-101           Gig 2/33          169              S I   WS-C3750G Gig 1/0/25
+SW-120           Gig 2/39          137              S I   WS-C3750G Gig 1/0/49
+SW-065           Gig 3/17          176              S I   WS-C3750G Gig 1/0/49
+SW-047           Gig 2/16          172              S I   WS-C3750G Gig 1/0/25
+SW-164           Gig 3/20          120              S I   WS-C3750G Gig 1/0/27
+SW-165           Gig 3/24          147              S I   WS-C3750G Gig 1/0/49
+SW-020           Gig 2/7           142              S I   WS-C3750V Gig 1/0/4
+SW-002           Gig 2/1           133              S I   WS-C3750G Gig 1/0/52
+SW-057           Gig 2/20          173              S I   WS-C3750G Gig 1/0/25
+SW-036           Gig 2/12          145              S I   WS-C3750- Gig 1/0/2
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SW-104           Gig 2/34          172              S I   WS-C3750G Gig 1/0/25
+SW-014           Gig 2/5           170              S I   WS-C3750G Gig 1/0/25
+SW-050           Gig 2/17          172              S I   WS-C3750G Gig 1/0/25
+SW-173           Gig 3/19          147              S I   WS-C3750G Gig 1/0/49
+SW-136           Gig 2/41          138              S I   WS-C3750G Gig 1/0/52
+SW-062           Gig 2/22          140              S I   WS-C3750G Gig 1/0/52
+SW-026           Gig 2/9           136              S I   WS-C3750G Gig 1/0/52
+SW-052           Gig 2/18          170              S I   WS-C3750G Gig 1/0/25
+SW-142           Gig 3/16          168              S I   WS-C3750G Gig 1/0/49
+SW-071           Gig 2/24          132              S I   WS-C3750G Gig 1/0/49
+SW-107           Gig 2/35          171              S I   WS-C3750G Gig 1/0/25
+SW-060           Gig 2/21          170              S I   WS-C3750V Gig 1/0/4
+SW-042           Gig 2/14          170              S I   WS-C3750G Gig 1/0/52
+SW-006           Gig 2/2           171              S I   WS-C3750G Gig 1/0/52
+SW-161           Gig 3/21          162              S I   WS-C3750G Gig 1/0/49
+SW-170           Gig 3/22          140              S I   WS-C3750G Gig 1/0/49
+Switch           Gig 2/10          163              S I   WS-C3750G Gig 1/0/49
+IOT-FAN-PL114    Gig 3/12          171              S I   WS-C3560G Gig 0/28
+SHN4-15-ASR1K-WAN.cisco.com
+                 Ten 4/1           149              R I   ASR1004   Ten 0/0/0
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+sy-2-1-a         Gig 2/11          166              S I   WS-C3750G Gig 1/0/49
+-=15F-CoreSW=-#   sho
+-=15F-CoreSW=-#   show cdp en
+-=15F-CoreSW=-#   show cdp entry * pro
+Protocol information for SW-081 :
+  IP address: 192.168.50.81
+Protocol information for SW-090 :
+  IP address: 192.168.50.90
+Protocol information for SW-108 :
+  IP address: 192.168.50.108
+Protocol information for SW-091 :
+  IP address: 192.168.50.91
+Protocol information for SW-118 :
+  IP address: 192.168.50.116
+Protocol information for SW-008 :
+  IP address: 192.168.50.8
+Protocol information for SW-038 :
+  IP address: 192.168.50.38
+Protocol information for SW-139 :
+  IP address: 192.168.50.139
+Protocol information for SW-129 :
+  IP address: 192.168.50.129
+Protocol information for SW-094 :
+  IP address: 192.168.50.94
+          
+-=15F-CoreSW=-#sho
+-=15F-CoreSW=-#show run
+Building configuration...
+
+Current configuration : 11318 bytes
+!
+! No configuration change since last restart
+!
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service counters max age 5
+!
+hostname -=15F-CoreSW=-
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable password cisco123!
+!
+no aaa new-model
+!         
+!
+no ip domain-lookup
+mls netflow interface
+mls nde sender
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!         
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+diagnostic bootup level minimal
+!
+!
+!
+spanning-tree mode mst
+spanning-tree extend system-id
+!
+spanning-tree mst configuration
+ name 222
+ instance 1 vlan 1-649
+ instance 2 vlan 650-699
+ instance 3 vlan 700-749
+ instance 4 vlan 750-799
+ instance 5 vlan 800-999
+!
+no spanning-tree vlan 680,684-689,691-699,701-749,754-799
+!
+redundancy
+ main-cpu
+  auto-sync running-config
+ mode sso
+!
+vlan internal allocation policy ascending
+vlan access-log ratelimit 2000
+lldp run
+!
+!
+class-map match-all broadcast
+  match destination-address mac FFFF.FFFF.FFFF
+!         
+!
+policy-map pl038
+  class broadcast
+    shape average 80000
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet1/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet1/2
+ description **SNORT-mgmt***
+ switchport
+ switchport access vlan 408
+ switchport trunk encapsulation dot1q
+ switchport mode access
+ media-type rj45
+!
+interface GigabitEthernet2/1
+ description S15P20002
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/2
+ description S15P20006
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/4
+ description S15P20011
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/5
+ description S15P20014
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/6
+ description S15P20016
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/7
+ description S15P20020
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/9
+ description S15P20026
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/10
+ description S15P20029
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/11
+ description S15P20032
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/12
+ description S15P20036
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet2/13
+ description S15P20038
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/14
+ description S15P20042
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/15
+ description S15P20044
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/16
+ description S15P20047
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/17
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/19
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/20
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/21
+ description S15P20060
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/22
+ description S15P20062
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/23
+ description S15P20069
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/24
+ description S15P20071
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/25
+ description S15P20076
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/26
+ description S15P20078
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet2/27
+ description S15P20081
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/28
+ description S15P20087
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/29
+ description S15P20090
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/30
+ description S15P20091
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/31
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/32
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/33
+ description S15P20101
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet2/34
+ description S15P20104
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/35
+ description S15P20107
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/36
+ description S15P20111
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/37
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/38
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/39
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/40
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/41
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/42
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/43
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/44
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/45
+ description S15P20122
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/46
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/47
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/48
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/3
+ description S15P20008
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet3/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet3/9
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/11
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet3/13
+ switchport
+ switchport access vlan 507
+ switchport mode access
+!
+interface GigabitEthernet3/14
+ description S15P20148
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/15
+ description S15P20145
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/16
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/17
+ description S15P20050
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/18
+ description S15P20052
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/19
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/20
+ description S15P20179
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/21
+ description S15P20161
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/22
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/23
+ description S15P20168
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/24
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet4/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet4/2
+ switchport
+ switchport access vlan 43
+ switchport mode access
+ spanning-tree portfast edge
+!
+interface TenGigabitEthernet4/3
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet4/4
+ no ip address
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan50
+ ip address 192.168.50.254 255.255.255.0
+!
+interface Vlan99
+ no ip address
+ ipv6 enable
+!
+interface Vlan124
+ no ip address
+!
+interface Vlan125
+ no ip address
+ shutdown
+!
+interface Vlan401
+ ip address 10.74.50.5 255.255.255.0
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+ip flow-export source Vlan401
+ip flow-export version 9
+ip flow-export template options export-stats
+ip flow-export template options timeout-rate 2
+ip flow-export destination 10.74.30.140 10065
+!
+ip route 0.0.0.0 0.0.0.0 10.74.50.1
+!
+ip sla 20
+ udp-jitter 10.74.5.1 6500 num-packets 20 interval 10
+ precision microseconds
+ip sla schedule 20 life forever start-time now
+logging alarm informational
+!
+snmp-server community cisco RW
+snmp-server community chongqing RO
+snmp-server location beijing
+!
+!
+control-plane
+!
+!
+dial-peer cor custom
+!
+!
+line con 0
+ exec-timeout 0 0
+ password cisco
+line vty 0 4
+ exec-timeout 0 0
+ password cisco
+ login
+ transport input all
+line vty 5 98
+ exec-timeout 0 0
+ password cisco
+ login
+ transport input all
+!
+!
+monitor session 1 source interface Te4/1
+monitor session 1 destination interface Gi3/4
+ntp master
+ntp server 10.74.12.20
+mac address-table aging-time 480
+!
+end
+

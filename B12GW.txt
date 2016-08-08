@@ -1,0 +1,132 @@
+me#show run
+Building configuration...
+
+Current configuration : 2408 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname yourname
+!
+boot-start-marker
+boot-end-marker
+!
+logging buffered 51200 warnings
+!
+no aaa new-model
+!
+resource policy
+!
+ip subnet-zero
+ip cef
+!
+!
+!
+!
+ip domain name yourdomain.com
+!
+username cisco privilege 15 secret 5 $1$rbWe$WC/VVKuAW.SSJMwo0vF8F0
+!
+!
+!
+interface GigabitEthernet0/0
+ description $ETH-LAN$$ETH-SW-LAUNCH$$INTF-INFO-GE 0/0$
+ ip address 10.74.43.22 255.255.255.252
+ duplex auto
+ speed auto
+ media-type sfp
+ negotiation auto
+!         
+interface GigabitEthernet0/1
+ ip address 100.100.100.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ negotiation auto
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.74.43.21
+ip route 10.74.23.0 255.255.255.0 100.100.100.2
+ip route 10.74.61.0 255.255.255.0 100.100.100.2
+ip route 10.74.104.0 255.255.255.0 100.100.100.2
+ip route 10.74.105.0 255.255.255.0 100.100.100.2
+ip route 10.79.47.0 255.255.255.0 100.100.100.2
+ip route 10.140.100.0 255.255.255.0 100.100.100.2
+ip route 10.140.104.0 255.255.255.0 100.100.100.2
+ip route 10.140.105.0 255.255.255.0 100.100.100.2
+!
+ip http server
+ip http access-class 23
+ip http authentication local
+ip http timeout-policy idle 60 life 86400 requests 10000
+!
+access-list 23 permit 10.10.10.0 0.0.0.7
+!
+control-plane
+!
+banner login ^C
+-----------------------------------------------------------------------
+Cisco Router and Security Device Manager (SDM) is installed on this device. 
+This feature requires the one-time use of the username "cisco" 
+with the password "cisco". The default username and password have a privilege level of 15.
+
+Please change these publicly known initial credentials using SDM or the IOS CLI. 
+Here are the Cisco IOS commands.
+
+username <myuser>  privilege 15 secret 0 <mypassword>
+no username cisco
+
+Replace <myuser> and <mypassword> with the username and password you want to use. 
+
+For more information about SDM please follow the instructions in the QUICK START 
+GUIDE for your router or go to http://www.cisco.com/go/sdm 
+-----------------------------------------------------------------------
+^C
+!
+line con 0
+ login local
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ privilege level 15
+ login local
+ transport input telnet
+line vty 5 15
+ access-class 23 in
+ privilege level 15
+ login local
+ transport input telnet
+!
+scheduler allocate 20000 1000
+!
+end
+
+yourname#  sho
+yourname#  show cdp
+yourname#  show cdp ne
+yourname#  show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+shn7-lab-gw1.cisco.com
+                 Gig 0/0            145        R S I      WS-C6504-EGig 2/3
+IS-Newcore6509-R19-61.1
+                 Gig 0/1            137        R S I      WS-C6509-EGig 5/3
+yourname#sho
+yourname#show vtp status
+VTP Version                     : 2
+Configuration Revision          : 0
+Maximum VLANs supported locally : 256
+Number of existing VLANs        : 5
+VTP Operating Mode              : Server
+VTP Domain Name                 : 
+VTP Pruning Mode                : Disabled
+VTP V2 Mode                     : Disabled
+VTP Traps Generation            : Disabled
+MD5 digest                      : 0xBF 0x86 0x94 0x45 0xFC 0xDF 0xB5 0x70 
+Configuration last modified by 0.0.0.0 at 0-0-00 00:00:00
+Local updater ID is 10.74.43.22 on interface Gi0/0 (first interface found)

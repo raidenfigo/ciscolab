@@ -1,0 +1,823 @@
+S-Newcore6509-R19-61.1#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SH-Nexus5548-R19-104.79(SSI180305T2)
+                 Ten 7/6           121            R S I C N5K-C5548 Eth 1/32
+nexus5548-61.165(SSI182801BD)
+                 Ten 7/5           145            R S I C N5K-C5548 Eth 1/2
+Nexus5548-2(SSI17150H1M)
+                 Ten 7/1           125            R S I C N5K-C5548 Eth 1/1
+Nexus5548-R20-10.74.61.32(SSI1845024E)
+                 Ten 7/4           136            R S I C N5K-C5548 Eth 1/32
+IS-Perf-7606-61.29
+                 Gig 3/41          174             R S I  CISCO7606 Gig 4/48
+L-42R            Gig 3/27          155             R S I  WS-C4948- Gig 1/47
+SH-IPTV-SW-L39R-61.16
+                 Gig 3/43          124              S I   WS-C3750G Gig 1/0/48
+nexus-5548-05(SSI1828018J)
+                 Ten 7/2           135            R S I C N5K-C5548 Eth 1/32
+Nexus5548-10.74.23.122(SSI17130BYE)
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+                 Ten 7/3           139            R S I C N5K-C5548 Eth 1/23
+IS-R16-7604-61.20
+                 Ten 5/4           136             R S I  CISCO7604 Ten 4/8
+IS-R16-7604-61.20
+                 Gig 3/8           136             R S I  CISCO7604 Gig 2/48
+SH-Nexus5548-R29-61.21(SSI17150EM4)
+                 Ten 7/8           179            R S I C N5K-C5548 Eth 1/1
+R22-Nexus5548-10.74.61.227(SSI194502CH)
+                 Ten 7/7           128            R S I C N5K-C5548 Eth 1/32
+L-19R(FOC1934R14J)
+                 Gig 3/39          178            R S I C N3K-C3048 Eth 1/48
+yourname.yourdomain.com
+                 Gig 5/3           176             R S I  3825      Gig 0/1
+SH-IPTV-SW-L34-61.22
+                 Gig 3/9           133              S I   WS-C3750G Gig 2/0/24
+SH-IPTV-SW-L33-61.24
+                 Gig 3/10          161              S I   WS-C3750G Gig 4/0/24
+SH-IPTV-SW-R19-61.27
+                 Gig 3/5           152              S I   WS-C3750G Gig 1/0/24
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SH-IPTV-SW-R18-61.26
+                 Gig 3/7           166             R S I  WS-C3750G Gig 2/0/48
+SH-IPTV-SW-R23-61.19
+                 Gig 3/47          141             R S I  WS-C4948  Gig 1/48
+SH-IPTV-SW-R20-61.28
+                 Gig 3/48          149              S I   WS-C3750G Gig 2/0/48
+SH-IPTV-SW-R24-61.23
+                 Gig 3/44          137             R S I  WS-C3750G Gig 1/0/48
+SH-IPTV-SW-R21   Gig 3/37          132              S I   WS-C3750G Gig 1/0/24
+SH-IPTV-SW-R22-61.17
+                 Gig 3/46          135              S I   WS-C3750G Gig 1/0/48
+SH-IPTV-SW-R16-61.12
+                 Gig 3/4           123             R S I  WS-C4948- Gig 1/48
+SH-IPTV-SW-R13-61.10
+                 Gig 3/1           140              S I   WS-C3750G Gig 1/0/48
+SH-IPTV-SW-R17-61.25
+                 Gig 3/6           125              S I   WS-C3750G Gig 1/0/24
+SH-IPTV-SW-R14-61.14
+                 Gig 3/3           173              S I   WS-C3750G Gig 1/0/48
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SH-IPTV-SW-R15-61.15
+                 Gig 3/2           174              S I   WS-C3750G Gig 1/0/48
+IS-Newcore6509-R19-61.1#     sho
+IS-Newcore6509-R19-61.1#     show ip route
+Codes: C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route
+
+Gateway of last resort is 100.100.100.1 to network 0.0.0.0
+
+     100.0.0.0/24 is subnetted, 1 subnets
+C       100.100.100.0 is directly connected, GigabitEthernet5/3
+     18.0.0.0/8 is variably subnetted, 9 subnets, 2 masks
+C       18.18.18.0/24 is directly connected, Vlan222
+C       18.102.1.0/24 is directly connected, Vlan102
+C       18.103.1.0/24 is directly connected, Vlan103
+S       18.106.1.0/24 [1/0] via 10.74.61.20
+C       18.104.1.0/24 is directly connected, Vlan104
+C       18.105.1.0/24 is directly connected, Vlan105
+C       18.208.1.0/24 is directly connected, Vlan208
+S       18.203.1.0/24 [1/0] via 10.74.61.21
+C       18.111.0.0/16 is directly connected, Vlan111
+     111.0.0.0/24 is subnetted, 1 subnets
+S       111.111.111.0 [1/0] via 10.74.61.18
+     10.0.0.0/8 is variably subnetted, 10 subnets, 2 masks
+C       10.140.104.128/25 is directly connected, Vlan116
+C       10.74.61.0/24 is directly connected, Vlan999
+C       10.140.100.0/24 is directly connected, Vlan115
+C       10.74.104.0/24 is directly connected, Vlan997
+C       10.74.23.0/24 is directly connected, Vlan998
+C       10.140.104.0/25 is directly connected, Vlan140
+C       10.201.59.0/24 is directly connected, Vlan21
+C       10.79.47.0/24 is directly connected, Vlan117
+C       10.140.105.0/24 is directly connected, Vlan996
+C       10.201.56.0/24 is directly connected, Vlan20
+S    192.168.1.0/24 [1/0] via 10.74.23.190
+S*   0.0.0.0/0 [1/0] via 100.100.100.1
+IS-Newcore6509-R19-61.1# sho
+IS-Newcore6509-R19-61.1# show run
+IS-Newcore6509-R19-61.1# show running-config 
+Building configuration...
+
+Current configuration : 14958 bytes
+!
+! Last configuration change at 09:14:50 UTC Wed Jun 22 2016 by admin
+!
+version 12.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service counters max age 5
+!
+hostname IS-Newcore6509-R19-61.1
+!
+boot-start-marker
+boot system flash sup-bootdisk:
+boot-end-marker
+!
+security passwords min-length 1
+enable password 7 131314020919242939202B
+!         
+username admin password 7 1421111B0E110A28362C30
+no aaa new-model
+no ip domain-lookup
+!
+!
+!
+ipv6 unicast-routing
+mls netflow interface
+!
+power redundancy-mode combined
+diagnostic bootup level minimal
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+no spanning-tree vlan 222
+access-list 1 permit 12.0.0.25
+!         
+redundancy
+ main-cpu
+  auto-sync running-config
+ mode sso
+!
+vlan internal allocation policy ascending
+vlan access-log ratelimit 2000
+!
+!
+!
+interface Loopback0
+ no ip address
+!
+interface Port-channel1
+ switchport
+ switchport access vlan 80
+ switchport mode access
+!
+interface Port-channel2
+ switchport
+ switchport access vlan 159
+ switchport mode access
+!
+interface Port-channel3
+ switchport
+ switchport access vlan 104
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface Port-channel4
+ switchport
+ switchport access vlan 222
+ switchport mode access
+!
+interface GigabitEthernet2/1
+ switchport
+ switchport access vlan 80
+ switchport mode access
+ channel-group 1 mode on
+!
+interface GigabitEthernet2/2
+ switchport
+ switchport access vlan 80
+ switchport mode access
+ channel-group 1 mode on
+!
+interface GigabitEthernet2/3
+ switchport
+ switchport access vlan 80
+ switchport mode access
+ channel-group 1 mode on
+!
+interface GigabitEthernet2/4
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/5
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/6
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/7
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/8
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/9
+ no ip address
+ shutdown
+!         
+interface GigabitEthernet2/10
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/11
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/12
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/13
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/14
+ no ip address
+ shutdown 
+!
+interface GigabitEthernet2/15
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/16
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/17
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/18
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/19
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/20
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/21
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/22
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/23
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/24
+ no ip address
+ shutdown
+!
+interface GigabitEthernet3/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet3/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/9
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/11
+ switchport
+ switchport access vlan 222
+ switchport mode access
+ channel-group 4 mode on
+!
+interface GigabitEthernet3/12
+ switchport
+ switchport access vlan 222
+ switchport mode access
+ channel-group 4 mode on
+!
+interface GigabitEthernet3/13
+ switchport
+ switchport access vlan 999
+ switchport mode access
+!
+interface GigabitEthernet3/14
+ switchport
+ switchport access vlan 999
+ switchport mode access
+!
+interface GigabitEthernet3/15
+ switchport
+ switchport access vlan 159
+ switchport mode access
+ channel-group 2 mode on
+!
+interface GigabitEthernet3/16
+ switchport
+ switchport access vlan 159
+ switchport mode access
+ channel-group 2 mode on
+!
+interface GigabitEthernet3/17
+ switchport
+ switchport access vlan 159
+ switchport mode access
+ channel-group 2 mode on
+!
+interface GigabitEthernet3/18
+ switchport
+ switchport access vlan 159
+ switchport mode access
+ channel-group 2 mode on
+!
+interface GigabitEthernet3/19
+ switchport
+ switchport access vlan 222
+ switchport mode access
+ channel-group 4 mode on
+!
+interface GigabitEthernet3/20
+ switchport
+ switchport access vlan 222
+ switchport mode access
+ channel-group 4 mode on
+!
+interface GigabitEthernet3/21
+ switchport
+ switchport access vlan 105
+ switchport mode access
+!
+interface GigabitEthernet3/22
+ no ip address
+!
+interface GigabitEthernet3/23
+ switchport
+ switchport access vlan 59
+ switchport mode access
+!
+interface GigabitEthernet3/24
+ switchport
+ switchport access vlan 59
+ switchport mode access
+!
+interface GigabitEthernet3/25
+ switchport
+ switchport access vlan 159
+ switchport mode access
+!
+interface GigabitEthernet3/26
+ no ip address
+!
+interface GigabitEthernet3/27
+ switchport
+ switchport trunk encapsulation dot1q
+!
+interface GigabitEthernet3/28
+ switchport
+ switchport access vlan 222
+ switchport mode access
+!
+interface GigabitEthernet3/29
+ switchport
+ switchport access vlan 222
+ switchport mode access
+!
+interface GigabitEthernet3/30
+ switchport
+ switchport access vlan 222
+ switchport mode access
+!
+interface GigabitEthernet3/31
+ switchport
+ switchport access vlan 159
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet3/32
+ switchport
+ switchport access vlan 159
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet3/33
+ switchport
+ switchport access vlan 159
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet3/34
+ switchport
+ switchport access vlan 159
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet3/35
+ switchport
+ switchport access vlan 999
+ switchport mode access
+!
+interface GigabitEthernet3/36
+ switchport
+ switchport access vlan 998
+ switchport mode access
+!         
+interface GigabitEthernet3/37
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/38
+ switchport
+ switchport access vlan 999
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface GigabitEthernet3/39
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 116
+ switchport mode trunk
+!
+interface GigabitEthernet3/40
+ switchport
+ switchport access vlan 104
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface GigabitEthernet3/41
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/42
+ switchport
+ switchport access vlan 104
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface GigabitEthernet3/43
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/44
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/45
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/46
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/47
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet3/48
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet5/1
+ no ip address
+!
+interface GigabitEthernet5/2
+ no ip address
+ shutdown
+!
+interface GigabitEthernet5/3
+ description uplinktoIT
+ ip address 100.100.100.2 255.255.255.0
+!
+interface TenGigabitEthernet5/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet5/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet7/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet7/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface TenGigabitEthernet7/3
+ switchport
+ switchport access vlan 80
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet7/4
+ switchport
+ switchport access vlan 80
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet7/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet7/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet7/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface TenGigabitEthernet7/8
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ no ip address
+ shutdown
+!
+interface Vlan12
+ no ip address
+!
+interface Vlan14
+ no ip address
+ shutdown
+!
+interface Vlan20
+ ip address 10.201.56.1 255.255.255.0
+!
+interface Vlan21
+ ip address 10.201.59.1 255.255.255.0
+!
+interface Vlan59
+ ip address 59.59.59.1 255.255.255.0
+!
+interface Vlan70
+ ip address 18.70.1.1 255.255.255.0
+!
+interface Vlan102
+ ip address 18.102.1.1 255.255.255.0
+!
+interface Vlan103
+ ip address 18.103.1.1 255.255.255.0
+ ipv6 address FEC0:0:3:7::1/64
+!
+interface Vlan104
+ ip address 18.104.1.1 255.255.255.0
+ ipv6 address FEC0:0:3:5::1/64
+ ipv6 enable
+ ipv6 nd dad attempts 0
+!
+interface Vlan105
+ ip address 18.105.1.1 255.255.255.0
+ ipv6 address FEC0:0:3:8::1/64
+!         
+interface Vlan108
+ no ip address
+ ipv6 address FEC0:0:3:B::1/64
+!
+interface Vlan109
+ no ip address
+ ipv6 address FEC0:0:3:C::1/64
+!
+interface Vlan111
+ ip address 18.111.1.1 255.255.0.0
+!
+interface Vlan112
+ ip address 18.112.1.1 255.255.255.0
+!
+interface Vlan114
+ ip address 18.114.1.1 255.255.255.0
+!
+interface Vlan115
+ ip address 10.140.100.1 255.255.255.0
+!
+interface Vlan116
+ ip address 10.140.104.129 255.255.255.128
+!
+interface Vlan117
+ ip address 10.79.47.1 255.255.255.0
+!
+interface Vlan140
+ ip address 10.140.104.1 255.255.255.128
+!
+interface Vlan159
+ ip address 11.11.11.1 255.255.255.0 secondary
+ ip address 18.159.1.1 255.255.255.0
+ no ip redirects
+ ipv6 address FEC0:0:3:D::1/64
+!
+interface Vlan208
+ ip address 18.208.1.1 255.255.255.0
+!         
+interface Vlan222
+ ip address 18.18.18.1 255.255.255.0
+!
+interface Vlan996
+ ip address 10.140.105.1 255.255.255.0
+!
+interface Vlan997
+ ip address 10.74.104.1 255.255.255.0
+ ipv6 address FEC0:0:3:E::1/64
+ ipv6 nd ra suppress
+!
+interface Vlan998
+ ip address 10.74.23.1 255.255.255.0
+ ipv6 address FEC0:0:3:6::1/64
+ ipv6 enable
+!
+interface Vlan999
+ ip address 10.74.61.1 255.255.255.0
+ ipv6 address FEC0:0:3:3::1/64
+ ipv6 enable
+ ipv6 nd ra suppress
+!
+ip classless
+ip forward-protocol nd
+ip route 0.0.0.0 0.0.0.0 100.100.100.1
+ip route 17.159.1.94 255.255.255.255 18.159.1.94
+ip route 18.106.1.0 255.255.255.0 10.74.61.20
+ip route 18.107.1.0 255.255.255.0 10.74.0.20
+ip route 18.203.1.0 255.255.255.0 10.74.61.21
+ip route 111.111.111.0 255.255.255.0 10.74.61.18
+ip route 192.168.1.0 255.255.255.0 10.74.23.190
+ip route 192.168.150.0 255.255.255.0 10.74.27.13
+no ip http server
+!
+!
+!
+snmp-server community public RO
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps chassis
+snmp-server enable traps module
+snmp-server enable traps transceiver all
+snmp-server enable traps ds1
+snmp-server enable traps call-home message-send-fail server-fail
+snmp-server enable traps tty
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface-old
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps eigrp
+snmp-server enable traps rep
+snmp-server enable traps auth-framework sec-violation
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps flex-links status
+snmp-server enable traps csg agent quota-server database
+snmp-server enable traps sonet
+snmp-server enable traps dot1x auth-fail-vlan guest-vlan no-auth-fail-vlan no-guest-vlan
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps energywise
+snmp-server enable traps fru-ctrl ps-output-change status
+snmp-server enable traps entity
+snmp-server enable traps l2tc threshold sys-threshold
+snmp-server enable traps module-auto-shutdown sys-action auto-shutdown
+snmp-server enable traps cpu threshold
+snmp-server enable traps rsvp
+snmp-server enable traps srp
+snmp-server enable traps udld link-fail-rpt
+snmp-server enable traps udld status-change
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps c6kxbar intbus-crcexcd intbus-crcrcvrd swbus tm-channel tm-swbus
+snmp-server enable traps entity-diag boot-up-fail hm-test-recover hm-thresh-reached scheduled-test-fail
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps port-security
+snmp-server enable traps vswitch vsl
+snmp-server enable traps slb real virtual csrp
+snmp-server enable traps atm subif
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps event-manager
+snmp-server enable traps hsrp
+snmp-server enable traps ipmulticast
+snmp-server enable traps MAC-Notification change move threshold
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps rf
+snmp-server enable traps rtr
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps errdisable
+snmp-server enable traps vlan-mac-limit
+!
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ session-timeout 30 
+ exec-timeout 0 0
+ password 7 0007010207
+ logging synchronous
+ login local
+line vty 5 10
+ login local
+!
+mac-address-table aging-time 480
+no event manager policy Mandatory.go_switchbus.tcl type system
+!
+end
+
+IS-Newcore6509-R19-61.1#     sho
+IS-Newcore6509-R19-61.1#     show vtp status
+VTP Version                     : 3 (capable)
+Configuration Revision          : 194
+Maximum VLANs supported locally : 1005
+Number of existing VLANs        : 39
+VTP Operating Mode              : Server
+VTP Domain Name                 : iptv
+VTP Pruning Mode                : Disabled (Operationally Disabled)
+VTP V2 Mode                     : Enabled
+VTP Traps Generation            : Enabled
+MD5 digest                      : 0xA4 0xCC 0x67 0xB2 0x43 0xA2 0x4A 0x09 
+Configuration last modified by 10.201.56.1 at 6-22-16 09:14:50
+Local updater ID is 10.201.56.1 on interface Vl20 (lowest numbered VLAN interface found)
+VTP version running             : 2
+IS-Newcore6509-R19-61.1#sho
+IS-Newcore6509-R19-61.1#show vtp pass
+IS-Newcore6509-R19-61.1#show vtp password 
+VTP Encrypted Password: 0706315858
+IS-Newcore6509-R19-61.1#
+

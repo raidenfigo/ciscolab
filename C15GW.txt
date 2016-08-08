@@ -1,0 +1,1279 @@
+HN4-15-ASR1K-WAN#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+shn4-lab-gw1.cisco.com
+                 Gig 0/1/0         151             R S I  WS-C6504- Gig 2/9
+-=15F-CoreSW=-   Ten 0/0/0         135             R S I  WS-C6504- Ten 4/1
+
+Total cdp entries displayed : 2
+SHN4-15-ASR1K-WAN#sho
+SHN4-15-ASR1K-WAN#show cdp
+SHN4-15-ASR1K-WAN#show cdp en
+SHN4-15-ASR1K-WAN#show cdp entry * pro
+Protocol information for shn4-lab-gw1.cisco.com :
+  IP address: 10.74.46.73
+  IPv6 address: 2001:420:5889:1::  (global unicast)
+  IPv6 address: FE80::21C:FFF:FE5F:C2C0  (link-local)
+Protocol information for -=15F-CoreSW=- :
+  IP address: 192.168.50.254
+SHN4-15-ASR1K-WAN#sho
+SHN4-15-ASR1K-WAN#show run
+Building configuration...
+
+  
+  
+Current configuration : 42444 bytes
+!
+! No configuration change since last restart
+!
+version 15.6
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+no platform punt-keepalive disable-kernel-core
+platform shell
+!
+hostname SHN4-15-ASR1K-WAN
+!
+boot-start-marker
+boot system bootflash:asr1000rp2-adventerprisek9.03.17.00.S.156-1.S-std.bin
+boot-end-marker
+!
+aqm-register-fnf
+!
+vrf definition Mgmt-intf
+ !        
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+!
+!
+!
+!
+!
+aaa session-id common
+!
+transport-map type persistent webui web
+ server   
+ secure-server
+!
+clock timezone China 8 0
+!
+!
+!
+!
+!
+!
+!
+ip nbar custom UnionPay_Apple http host "*unionpay.com"  
+ip nbar custom TME_Chrome http user-agent "*Chrome*" url "*tme*"  
+ip nbar custom 001FOO http referer "*unionpay.com"  
+ip nbar custom 002HTTPSUNIONPAY ssl unique-name "*unionpay.com"  
+!
+!
+
+
+ip name-server 64.104.123.144 171.70.168.183
+          
+ip domain name cisco.com
+ip dhcp excluded-address 192.168.32.2
+ip dhcp excluded-address 192.168.222.2
+!
+ip dhcp pool VLAN8
+ network 192.168.8.0 255.255.255.0
+ default-router 192.168.8.1 
+ dns-server 64.104.123.245 
+ domain-name cisco.com
+!
+ip dhcp pool VLAN32
+ network 192.168.32.0 255.255.255.0
+ default-router 192.168.32.1 
+ dns-server 64.104.123.245 
+ domain-name cisco.com
+!
+ip dhcp pool AP_ACCESS
+ import all
+ network 192.168.222.0 255.255.255.0
+ default-router 192.168.222.1 
+ option 43 ascii "192.168.222.2"
+!
+ip dhcp pool client
+ network 192.168.155.0 255.255.255.0
+ default-router 192.168.155.1 
+ domain-name cisco.com
+ dns-server 64.104.123.245 
+ lease 0 0 30
+!
+!
+!
+ipv6 unicast-routing
+ipv6 multicast rpf use-bgp
+ipv6 multicast vrf Mgmt-intf rpf use-bgp
+!
+!
+!
+!
+!
+!         
+!
+subscriber templating
+!
+!
+!
+!
+flow record type performance-monitor flowdia-Host-Usage-Report
+ match ipv4 protocol
+ match ipv4 source address
+ match ipv4 destination address
+ match interface input
+ match interface output
+ match flow direction
+ match application name account-on-resolution
+ match connection client ipv4 address
+ collect ipv4 dscp
+ collect flow sampler
+ collect counter bytes long
+ collect counter packets
+ collect connection initiator
+ collect connection new-connections
+ collect connection sum-duration
+ collect connection server transport port
+!
+!
+flow record type performance-monitor flowdia-Rtp-Report
+ match routing vrf input
+ match ipv4 protocol
+ match ipv4 source address
+ match ipv4 destination address
+ match transport source-port
+ match transport destination-port
+ match transport rtp ssrc
+ match interface input
+ match interface output
+ match routing vrf output
+ collect ipv4 dscp
+ collect ipv4 ttl
+ collect transport packets expected counter
+ collect transport packets lost counter
+ collect transport packets lost rate
+ collect transport event packet-loss counter
+ collect transport rtp jitter mean
+ collect transport rtp jitter minimum
+ collect transport rtp jitter maximum
+ collect flow direction
+ collect counter bytes long
+ collect counter packets
+ collect counter bytes rate
+ collect application name
+ collect transport rtp payload-type
+!
+!
+flow exporter flowdia_NMS
+ destination 10.74.30.32
+ source TenGigabitEthernet0/0/0.504
+ transport udp 10065
+ export-protocol ipfix
+ option interface-table timeout 300
+ option exporter-stats timeout 300
+ option application-table timeout 300
+ option sub-application-table timeout 300
+ option application-attributes timeout 300
+!
+!
+flow exporter test
+ export-protocol netflow-v5
+!
+!
+flow monitor type performance-monitor flowdia_Host_Usage_Mon
+ record flowdia-Host-Usage-Report
+ exporter flowdia_NMS
+ cache entries 500000
+ cache timeout synchronized 60
+!
+!
+flow monitor type performance-monitor flowdia_RTP_Mon
+ record flowdia-Rtp-Report
+ exporter flowdia_NMS
+ cache timeout synchronized 60
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-1073145120
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1073145120
+ revocation-check none
+ rsakeypair TP-self-signed-1073145120
+!
+!
+crypto pki certificate chain TP-self-signed-1073145120
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31303733 31343531 3230301E 170D3135 31303132 30373533 
+  34315A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 30373331 
+  34353132 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100B706 CD2F48CC E9B07A54 2E34BEE5 FE9D1F3E BAC24BA6 5297EB49 49364C3F 
+  22F1EA67 13709426 606B88D6 1B2EC780 A22AEE93 004C40CC 01CD5869 914A8413 
+  D3BC4768 FF413EEF FA346DAF 9AC75554 D119DBA7 6A5D43FA 1B41F584 62356011 
+  626601B2 97BBFAE6 619FEB14 16D27662 6282D237 C1461309 E55D0674 BDB7F932 
+  99270203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14FE2578 33D1DB5F 6AA37198 C529A75F F65C5008 BE301D06 
+  03551D0E 04160414 FE257833 D1DB5F6A A37198C5 29A75FF6 5C5008BE 300D0609 
+  2A864886 F70D0101 05050003 81810009 69E0AC17 60C21E00 3B313DBB F30A0987 
+  582BB9E5 2146F304 CF526CC6 FE262484 943972B0 40EB3317 7DBA2345 8102014F 
+  45972522 F9028BEC 420F3013 16A07B39 AB52FA5E F339794B B518032F 9830A602 
+  D692FBC7 C870DC70 8841E013 4D784D55 1DCAC19B 9B2F30EF 058CFC5C 8357BD72 
+  36E4C3B8 E7503D5C 72174308 26D8AA
+  	quit
+!
+performance monitor context flowdia profile application-experience
+ exporter destination 10.74.30.32 source TenGigabitEthernet0/0/0.504 transport udp port 10065 
+ traffic-monitor application-response-time
+ traffic-monitor url sampling-rate 1
+!
+!
+spanning-tree extend system-id
+!
+username zhiyfang privilege 15 password 0 w0c@0n!d@ye
+username sheli2 privilege 15 password 0 cisco123!
+username onep privilege 15 password 0 fuck
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+cdp run
+!         
+lldp run
+!
+class-map match-all vmware
+ match protocol vmware-vsphere
+class-map match-any flowdia_CMAP_RTP
+ match protocol telepresence-media
+ match protocol rtp
+class-map match-all flowdia_CMAP_ipv4
+ match protocol ip
+class-map match-all flowdia_media
+ match protocol ip
+ match class-map flowdia_CMAP_RTP
+!
+policy-map limitvmware
+ class vmware
+  shape average 10000000   
+policy-map type performance-monitor flowdia_AVC
+ parameter default account-on-resolution
+ class flowdia_media
+  flow monitor flowdia_RTP_Mon
+  flow monitor flowdia_Host_Usage_Mon
+ class flowdia_CMAP_ipv4
+  flow monitor flowdia_Host_Usage_Mon
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!         
+! 
+! 
+! 
+! 
+!
+!
+interface Tunnel11
+ description Smartpdu-to-SHN15
+ bandwidth 100000
+ ip address 1.11.11.2 255.255.255.0
+ tunnel source 10.74.46.74
+ tunnel destination 10.74.43.50
+!
+interface TenGigabitEthernet0/0/0
+ description ***LAN-to-LAB-Core***
+ no ip address
+ load-interval 30
+ plim qos input map ip dscp-based
+ cdp enable
+!         
+interface TenGigabitEthernet0/0/0.5
+ encapsulation dot1Q 5
+ ip address 10.1.51.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.6
+ encapsulation dot1Q 6
+ ip address 10.110.1.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.7
+ encapsulation dot1Q 7
+ ip address 192.168.222.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.8
+ encapsulation dot1Q 8
+ ip address 192.168.8.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.10
+ description Easy-for-lab-user-dhcp-192.168.100.0
+ encapsulation dot1Q 10
+ ip address 192.168.100.1 255.255.255.0
+ ip nat inside
+ ipv6 enable
+!
+interface TenGigabitEthernet0/0/0.20
+ description ENG-DEMO-LAB-NMS
+ encapsulation dot1Q 20
+ ip address 81.0.3.44 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.31
+ encapsulation dot1Q 31
+ ip address 192.168.155.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.32
+ description ****CMX-DEMO****
+ encapsulation dot1Q 32
+ ip address 192.168.32.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.45
+ encapsulation dot1Q 45
+ ip address 192.168.101.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.50
+ description ***15F-Lab-Pub-SW-NMS
+ encapsulation dot1Q 50
+ ip address 192.168.50.1 255.255.255.0
+ ip nat inside
+!
+interface TenGigabitEthernet0/0/0.51
+ encapsulation dot1Q 51
+ ip address 10.74.28.1 255.255.255.192
+ ip nbar protocol-discovery
+!
+interface TenGigabitEthernet0/0/0.52
+ encapsulation dot1Q 52
+ ip address 10.74.28.65 255.255.255.192
+ ip nbar protocol-discovery
+!
+interface TenGigabitEthernet0/0/0.53
+ encapsulation dot1Q 53
+ ip address 10.74.28.129 255.255.255.192
+!
+interface TenGigabitEthernet0/0/0.54
+ encapsulation dot1Q 54
+ ip address 10.74.28.193 255.255.255.192
+!
+interface TenGigabitEthernet0/0/0.55
+ encapsulation dot1Q 55
+ ip address 10.75.163.1 255.255.255.0
+ ip nbar protocol-discovery
+ cdp enable
+!
+interface TenGigabitEthernet0/0/0.56
+ encapsulation dot1Q 56
+ ip address 10.124.22.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.57
+ encapsulation dot1Q 57
+ ip address 10.124.23.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.58
+ encapsulation dot1Q 58
+ ip address 10.124.24.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.59
+ encapsulation dot1Q 59
+ ip address 10.124.31.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.99
+ encapsulation dot1Q 99
+ ipv6 address 2001:420:5889:2000:1:1:2:1/116
+ ipv6 enable
+!
+interface TenGigabitEthernet0/0/0.100
+ encapsulation dot1Q 100
+ ipv6 address 2001:420:5889:2000:1:1:1:1/116
+ ipv6 enable
+!
+interface TenGigabitEthernet0/0/0.101
+ encapsulation dot1Q 101
+ ip address 10.74.57.2 255.255.255.240
+ standby 0 ip 10.74.57.1
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-101-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.102
+ encapsulation dot1Q 102
+ ip address 10.74.57.34 255.255.255.240
+ standby 0 ip 10.74.57.33
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-102-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.103
+ encapsulation dot1Q 103
+ ip address 10.74.57.66 255.255.255.240
+ standby 0 ip 10.74.57.65
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-103-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.104
+ encapsulation dot1Q 104
+ ip address 10.74.57.109 255.255.255.240
+ standby 0 ip 10.74.57.97
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-104-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.105
+ encapsulation dot1Q 105
+ ip address 10.74.57.130 255.255.255.240
+ standby 0 ip 10.74.57.129
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-105-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.106
+ encapsulation dot1Q 106
+ ip address 10.74.57.146 255.255.255.240
+ standby 0 ip 10.74.57.145
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-106-HSRP-Master
+!         
+interface TenGigabitEthernet0/0/0.107
+ encapsulation dot1Q 107
+ ip address 10.74.57.162 255.255.255.240
+ standby 0 ip 10.74.57.161
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-107-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.108
+ encapsulation dot1Q 108
+ ip address 10.74.57.178 255.255.255.240
+ standby 0 ip 10.74.57.177
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-108-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.109
+ encapsulation dot1Q 109
+ ip address 10.74.57.194 255.255.255.240
+ standby 0 ip 10.74.57.193
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-109-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.110
+ encapsulation dot1Q 110
+ ip address 10.74.57.210 255.255.255.240
+ standby 0 ip 10.74.57.209
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-110-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.111
+ encapsulation dot1Q 111
+ ip address 10.74.57.226 255.255.255.240
+ ip nbar protocol-discovery
+ standby 0 ip 10.74.57.225
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-111-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.112
+ encapsulation dot1Q 112
+ ip address 10.74.57.242 255.255.255.240
+ standby 0 ip 10.74.57.241
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-112-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.113
+ encapsulation dot1Q 113
+ ip address 10.74.57.18 255.255.255.240
+ standby 0 ip 10.74.57.17
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-113-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.114
+ encapsulation dot1Q 114
+ ip address 10.74.57.50 255.255.255.240
+ standby 0 ip 10.74.57.49
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-114-HSRP-Master
+ ip ospf authentication-key cisco
+!
+interface TenGigabitEthernet0/0/0.115
+ encapsulation dot1Q 115
+ ip address 10.74.57.82 255.255.255.240
+ standby 0 ip 10.74.57.81
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-115-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.116
+ encapsulation dot1Q 116
+ ip address 10.74.57.114 255.255.255.240
+ standby 0 ip 10.74.57.113
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-116-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.117
+ encapsulation dot1Q 117
+ ip address 172.16.111.111 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.118
+ encapsulation dot1Q 118
+ ip address 192.168.111.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.119
+ encapsulation dot1Q 119
+ ip address 172.16.100.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.120
+ encapsulation dot1Q 120
+ ip address 172.16.101.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.121
+ encapsulation dot1Q 121
+ ip address 172.16.102.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.122
+ encapsulation dot1Q 122
+ ip address 172.16.103.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.123
+ encapsulation dot1Q 123
+ ip address 172.16.104.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.124
+ encapsulation dot1Q 124
+ ip address 10.79.58.129 255.255.255.128
+!
+interface TenGigabitEthernet0/0/0.125
+ encapsulation dot1Q 125
+ ip address 10.124.10.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.201
+ encapsulation dot1Q 201
+ ip address 10.74.48.2 255.255.255.240
+ standby 0 ip 10.74.48.1
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-201-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.203
+ encapsulation dot1Q 203
+ ip address 10.74.48.18 255.255.255.240
+ standby 0 ip 10.74.48.17
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-203-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.205
+ encapsulation dot1Q 205
+ ip address 10.74.49.2 255.255.255.240
+ standby 0 ip 10.74.49.1
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-205-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.211
+ encapsulation dot1Q 211
+ ip address 10.74.48.34 255.255.255.240
+ standby 0 ip 10.74.48.33
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-211-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.213
+ encapsulation dot1Q 213
+ ip address 10.74.48.50 255.255.255.240
+ ip nat inside
+ standby 0 ip 10.74.48.49
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-213-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.215
+ encapsulation dot1Q 215
+ ip address 10.74.49.18 255.255.255.240
+ standby 0 ip 10.74.49.17
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-215-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.221
+ encapsulation dot1Q 221
+ ip address 10.74.48.66 255.255.255.224
+ ip nat inside
+ standby 0 ip 10.74.48.65
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-221-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.225
+ encapsulation dot1Q 225
+ ip address 10.74.49.34 255.255.255.240
+ standby 0 ip 10.74.49.33
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-225-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.231
+ encapsulation dot1Q 231
+ ip address 10.74.48.98 255.255.255.224
+ ip nbar protocol-discovery
+ standby 0 ip 10.74.48.97
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-231-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.235
+ encapsulation dot1Q 235
+ ip address 10.74.49.50 255.255.255.240
+ standby 0 ip 10.74.49.49
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-235-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.241
+ encapsulation dot1Q 241
+ ip address 10.74.48.130 255.255.255.224
+ standby 0 ip 10.74.48.129
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-241-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.245
+ encapsulation dot1Q 245
+ ip address 10.74.49.66 255.255.255.240
+ standby 0 ip 10.74.49.65
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-245-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.251
+ encapsulation dot1Q 251
+ ip address 10.74.48.162 255.255.255.224
+ standby 0 ip 10.74.48.161
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-251-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.255
+ encapsulation dot1Q 255
+ ip address 10.74.49.82 255.255.255.240
+ standby 0 ip 10.74.49.81
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-255-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.261
+ encapsulation dot1Q 261
+ ip address 10.74.48.194 255.255.255.224
+ standby 0 ip 10.74.48.193
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-261-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.265
+ encapsulation dot1Q 265
+ ip address 10.74.49.98 255.255.255.240
+ standby 0 ip 10.74.49.97
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-265-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.271
+ encapsulation dot1Q 271
+ ip address 10.74.48.226 255.255.255.224
+ standby 0 ip 10.74.48.225
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-271-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.275
+ encapsulation dot1Q 275
+ ip address 10.74.49.114 255.255.255.240
+ standby 0 ip 10.74.49.113
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-275-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.281
+ encapsulation dot1Q 281
+ ip address 10.74.49.130 255.255.255.224
+ standby 0 ip 10.74.49.129
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-281-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.282
+ encapsulation dot1Q 282
+ ip address 10.74.49.162 255.255.255.224
+ standby 0 ip 10.74.49.161
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-282-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.291
+ encapsulation dot1Q 291
+ ip address 10.74.49.194 255.255.255.192
+ standby 0 ip 10.74.49.193
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-291-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.300
+ encapsulation dot1Q 300
+ ip address 10.74.56.18 255.255.255.240
+ standby 0 ip 10.74.56.17
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-300-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.301
+ encapsulation dot1Q 301
+ ip address 10.74.56.34 255.255.255.224
+ standby 0 ip 10.74.56.33
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-301-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.302
+ encapsulation dot1Q 302
+ ip address 10.74.56.65 255.255.255.192
+!
+interface TenGigabitEthernet0/0/0.303
+ encapsulation dot1Q 303
+ ip address 10.74.56.129 255.255.255.192
+!
+interface TenGigabitEthernet0/0/0.304
+ encapsulation dot1Q 304
+ ip address 10.74.56.193 255.255.255.192
+!
+interface TenGigabitEthernet0/0/0.401
+ encapsulation dot1Q 401
+ ip address 10.74.50.2 255.255.255.192
+ standby 0 ip 10.74.50.1
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-401-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.402
+ encapsulation dot1Q 402
+ ip address 10.74.50.66 255.255.255.192
+ standby 0 ip 10.74.50.65
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-402-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.403
+ encapsulation dot1Q 403
+ ip address 10.74.50.130 255.255.255.224
+ ip nat inside
+ standby 0 ip 10.74.50.129
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-403-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.404
+ encapsulation dot1Q 404
+ ip address 10.74.50.162 255.255.255.224
+ standby 0 ip 10.74.50.161
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-404-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.405
+ encapsulation dot1Q 405
+ ip address 10.74.50.194 255.255.255.224
+ standby 0 ip 10.74.50.193
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-405-HSRP-Slaver
+!
+interface TenGigabitEthernet0/0/0.406
+ encapsulation dot1Q 406
+ ip address 10.74.50.226 255.255.255.224
+ standby 0 ip 10.74.50.225
+ standby 0 priority 95
+ standby 0 preempt
+ standby 0 name Ten0/0/0.-406-HSRP-Master
+!
+interface TenGigabitEthernet0/0/0.407
+ encapsulation dot1Q 407
+ ip address 10.74.56.1 255.255.255.240
+!
+interface TenGigabitEthernet0/0/0.408
+ encapsulation dot1Q 408
+ ip address 10.74.5.1 255.255.255.0
+ ip nat outside
+ ip nbar protocol-discovery
+ cdp enable
+!         
+interface TenGigabitEthernet0/0/0.500
+ encapsulation dot1Q 500
+ ip address 10.10.0.1 255.255.0.0
+!
+interface TenGigabitEthernet0/0/0.501
+ encapsulation dot1Q 501
+ ip address 10.20.0.1 255.255.0.0
+!
+interface TenGigabitEthernet0/0/0.502
+ encapsulation dot1Q 502
+!
+interface TenGigabitEthernet0/0/0.503
+ encapsulation dot1Q 503
+ ip address 10.74.9.1 255.255.255.0
+ ip nbar protocol-discovery
+!
+interface TenGigabitEthernet0/0/0.504
+ encapsulation dot1Q 504
+ ip address 10.74.30.1 255.255.255.0
+ ip nbar protocol-discovery
+ cdp enable
+!
+interface TenGigabitEthernet0/0/0.505
+ encapsulation dot1Q 505
+ ip address 10.74.6.1 255.255.255.0
+ ip nbar protocol-discovery
+ cdp enable
+!
+interface TenGigabitEthernet0/0/0.506
+ encapsulation dot1Q 506
+ ip address 10.75.221.1 255.255.255.0
+ standby 0 priority 95
+ standby 0 preempt
+!
+interface TenGigabitEthernet0/0/0.507
+ description connect-to-VCPBU-GW
+ encapsulation dot1Q 507
+ ip address 20.20.20.1 255.255.255.252
+!
+interface TenGigabitEthernet0/0/0.508
+ encapsulation dot1Q 508
+ ip address 10.124.19.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.509
+ encapsulation dot1Q 509
+ ip address 10.75.7.1 255.255.255.128
+!
+interface TenGigabitEthernet0/0/0.906
+ description Smart-PDU
+ encapsulation dot1Q 906
+ ip address 192.168.170.1 255.255.255.0
+ ip nat inside
+ ip ospf authentication-key cisco
+!
+interface TenGigabitEthernet0/0/0.908
+ encapsulation dot1Q 908
+ ip address 10.75.167.1 255.255.255.0
+ ip nbar protocol-discovery
+!
+interface TenGigabitEthernet0/0/0.909
+ encapsulation dot1Q 909
+ ip address 10.75.212.1 255.255.255.0
+ ip nbar protocol-discovery
+!
+interface TenGigabitEthernet0/0/0.941
+ encapsulation dot1Q 941
+ ip address 192.168.94.1 255.255.255.0
+!
+interface TenGigabitEthernet0/0/0.987
+ encapsulation dot1Q 987
+ xconnect 1.1.1.1 10 encapsulation mpls
+!
+interface GigabitEthernet0/1/0
+ description ***15F-Lab-WAN***
+ ip address 10.74.46.74 255.255.255.252
+ ip nat outside
+ ip nbar protocol-discovery
+ load-interval 30
+ media-type rj45
+ negotiation auto
+ ipv6 address 2001:420:5889:1::1/127
+ performance monitor context flowdia 
+ cdp enable
+ service-policy type performance-monitor input flowdia_AVC
+ service-policy type performance-monitor output flowdia_AVC
+!
+interface GigabitEthernet0/1/1
+ no ip address
+ media-type rj45
+ negotiation auto
+ cdp enable
+ service instance 100 ethernet
+  encapsulation dot1q 1-4094
+ !
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ negotiation auto
+!         
+router ospf 2
+ area 3 authentication
+ network 1.9.9.0 0.0.0.255 area 3
+ network 1.10.10.0 0.0.0.255 area 3
+ network 192.168.170.0 0.0.0.255 area 3
+!
+router bgp 64701
+ bgp log-neighbor-changes
+ neighbor 2001:420:5889:1:: remote-as 65535
+ neighbor 2001:420:5889:1:: description shn4-lab-gw1
+ !
+ address-family ipv4
+  no neighbor 2001:420:5889:1:: activate
+ exit-address-family
+ !
+ address-family ipv6
+  network 2001:420:5889:2000::/64
+  neighbor 2001:420:5889:1:: activate
+ exit-address-family
+!         
+ip nat inside source static 192.168.100.2 10.74.5.100 extendable
+ip nat inside source static tcp 20.21.23.184 443 10.74.5.101 8888 extendable
+ip nat inside source static tcp 192.168.170.2 443 10.74.5.101 10002 extendable
+ip nat inside source static tcp 192.168.170.3 443 10.74.5.101 10003 extendable
+ip nat inside source static tcp 192.168.170.4 443 10.74.5.101 10004 extendable
+ip nat inside source static tcp 192.168.170.5 443 10.74.5.101 10005 extendable
+ip nat inside source static tcp 192.168.170.6 443 10.74.5.101 10006 extendable
+ip nat inside source static tcp 192.168.170.7 443 10.74.5.101 10007 extendable
+ip nat inside source static tcp 192.168.170.9 443 10.74.5.101 10009 extendable
+ip nat inside source static tcp 192.168.170.11 443 10.74.5.101 10011 extendable
+ip nat inside source static tcp 192.168.170.12 443 10.74.5.101 10012 extendable
+ip nat inside source static tcp 192.168.170.13 443 10.74.5.101 10013 extendable
+ip nat inside source static tcp 192.168.170.14 443 10.74.5.101 10014 extendable
+ip nat inside source static tcp 192.168.170.15 443 10.74.5.101 10015 extendable
+ip nat inside source static tcp 192.168.170.16 443 10.74.5.101 10016 extendable
+ip nat inside source static tcp 192.168.170.19 443 10.74.5.101 10019 extendable
+ip nat inside source static tcp 192.168.170.20 443 10.74.5.101 10020 extendable
+ip nat inside source static tcp 192.168.170.21 443 10.74.5.101 10021 extendable
+ip nat inside source static tcp 192.168.170.22 443 10.74.5.101 10022 extendable
+ip nat inside source static tcp 192.168.170.23 443 10.74.5.101 10023 extendable
+ip nat inside source static tcp 192.168.170.24 443 10.74.5.101 10024 extendable
+ip nat inside source static tcp 192.168.170.25 443 10.74.5.101 10025 extendable
+ip nat inside source static tcp 192.168.170.26 443 10.74.5.101 10026 extendable
+ip nat inside source static tcp 192.168.170.27 443 10.74.5.101 10027 extendable
+ip nat inside source static tcp 192.168.170.30 443 10.74.5.101 10030 extendable
+ip nat inside source static tcp 192.168.170.32 443 10.74.5.101 10032 extendable
+ip nat inside source static tcp 192.168.170.33 443 10.74.5.101 10033 extendable
+ip nat inside source static tcp 192.168.170.35 443 10.74.5.101 10035 extendable
+ip nat inside source static tcp 192.168.170.39 443 10.74.5.101 10039 extendable
+ip nat inside source static tcp 192.168.170.40 443 10.74.5.101 10040 extendable
+ip nat inside source static tcp 192.168.170.42 443 10.74.5.101 10042 extendable
+ip nat inside source static tcp 192.168.170.43 443 10.74.5.101 10043 extendable
+ip nat inside source static tcp 192.168.170.44 443 10.74.5.101 10044 extendable
+ip nat inside source static tcp 192.168.170.45 443 10.74.5.101 10045 extendable
+ip nat inside source static tcp 192.168.170.49 443 10.74.5.101 10049 extendable
+ip nat inside source static tcp 192.168.170.50 443 10.74.5.101 10050 extendable
+ip nat inside source static tcp 192.168.170.52 443 10.74.5.101 10052 extendable
+ip nat inside source static tcp 192.168.170.53 443 10.74.5.101 10053 extendable
+ip nat inside source static tcp 192.168.170.54 443 10.74.5.101 10054 extendable
+ip nat inside source static tcp 192.168.170.56 443 10.74.5.101 10056 extendable
+ip nat inside source static tcp 192.168.170.59 443 10.74.5.101 10059 extendable
+ip nat inside source static tcp 192.168.170.61 443 10.74.5.101 10061 extendable
+ip nat inside source static tcp 192.168.170.62 443 10.74.5.101 10062 extendable
+ip nat inside source static tcp 192.168.170.64 443 10.74.5.101 10064 extendable
+ip nat inside source static tcp 192.168.170.68 443 10.74.5.101 10068 extendable
+ip nat inside source static tcp 192.168.170.69 443 10.74.5.101 10069 extendable
+ip nat inside source static tcp 192.168.170.71 443 10.74.5.101 10071 extendable
+ip nat inside source static tcp 192.168.170.72 443 10.74.5.101 10072 extendable
+ip nat inside source static tcp 192.168.170.73 443 10.74.5.101 10073 extendable
+ip nat inside source static tcp 192.168.170.74 443 10.74.5.101 10074 extendable
+ip nat inside source static tcp 192.168.170.76 443 10.74.5.101 10076 extendable
+ip nat inside source static tcp 192.168.170.78 443 10.74.5.101 10078 extendable
+ip nat inside source static tcp 192.168.170.80 443 10.74.5.101 10080 extendable
+ip nat inside source static tcp 192.168.170.82 443 10.74.5.101 10082 extendable
+ip nat inside source static tcp 192.168.170.83 443 10.74.5.101 10083 extendable
+ip nat inside source static tcp 192.168.170.86 443 10.74.5.101 10086 extendable
+ip nat inside source static tcp 192.168.170.89 443 10.74.5.101 10089 extendable
+ip nat inside source static tcp 192.168.170.91 443 10.74.5.101 10091 extendable
+ip nat inside source static tcp 192.168.170.92 443 10.74.5.101 10092 extendable
+ip nat inside source static tcp 192.168.170.93 443 10.74.5.101 10093 extendable
+ip nat inside source static tcp 192.168.170.94 443 10.74.5.101 10094 extendable
+ip nat inside source static tcp 192.168.170.95 443 10.74.5.101 10095 extendable
+ip nat inside source static tcp 192.168.170.97 443 10.74.5.101 10097 extendable
+ip nat inside source static tcp 192.168.170.99 443 10.74.5.101 10099 extendable
+ip nat inside source static tcp 192.168.170.101 443 10.74.5.101 10101 extendable
+ip nat inside source static tcp 192.168.170.103 443 10.74.5.101 10103 extendable
+ip nat inside source static tcp 192.168.170.104 443 10.74.5.101 10104 extendable
+ip nat inside source static tcp 192.168.170.105 443 10.74.5.101 10105 extendable
+ip nat inside source static tcp 192.168.170.106 443 10.74.5.101 10106 extendable
+ip nat inside source static tcp 192.168.170.107 443 10.74.5.101 10107 extendable
+ip nat inside source static tcp 192.168.170.108 443 10.74.5.101 10108 extendable
+ip nat inside source static tcp 192.168.170.109 443 10.74.5.101 10109 extendable
+ip nat inside source static tcp 192.168.170.110 443 10.74.5.101 10110 extendable
+ip nat inside source static tcp 192.168.170.111 443 10.74.5.101 10111 extendable
+ip nat inside source static tcp 192.168.170.117 443 10.74.5.101 10117 extendable
+ip nat inside source static tcp 192.168.170.118 443 10.74.5.101 10118 extendable
+ip nat inside source static tcp 192.168.170.119 443 10.74.5.101 10119 extendable
+ip nat inside source static tcp 192.168.170.120 443 10.74.5.101 10120 extendable
+ip nat inside source static tcp 192.168.170.121 443 10.74.5.101 10121 extendable
+ip nat inside source static tcp 192.168.170.123 443 10.74.5.101 10123 extendable
+ip nat inside source static tcp 192.168.170.125 443 10.74.5.101 10125 extendable
+ip nat inside source static tcp 192.168.170.126 443 10.74.5.101 10126 extendable
+ip nat inside source static tcp 192.168.170.129 443 10.74.5.101 10129 extendable
+ip nat inside source static tcp 192.168.170.134 443 10.74.5.101 10134 extendable
+ip nat inside source static tcp 192.168.170.135 443 10.74.5.101 10135 extendable
+ip nat inside source static tcp 192.168.170.138 443 10.74.5.101 10138 extendable
+ip nat inside source static tcp 192.168.170.139 443 10.74.5.101 10139 extendable
+ip nat inside source static tcp 192.168.170.142 443 10.74.5.101 10142 extendable
+ip nat inside source static tcp 192.168.170.143 443 10.74.5.101 10143 extendable
+ip nat inside source static tcp 192.168.170.145 443 10.74.5.101 10145 extendable
+ip nat inside source static tcp 192.168.170.146 443 10.74.5.101 10146 extendable
+ip nat inside source static tcp 192.168.170.147 443 10.74.5.101 10147 extendable
+ip nat inside source static tcp 192.168.170.148 443 10.74.5.101 10148 extendable
+ip nat inside source static tcp 192.168.170.149 443 10.74.5.101 10149 extendable
+ip nat inside source static tcp 192.168.170.162 443 10.74.5.101 10162 extendable
+ip nat inside source static tcp 192.168.170.164 443 10.74.5.101 10164 extendable
+ip nat inside source static tcp 192.168.170.166 443 10.74.5.101 10166 extendable
+ip nat inside source static tcp 192.168.170.168 443 10.74.5.101 10168 extendable
+ip nat inside source static tcp 192.168.170.169 443 10.74.5.101 10169 extendable
+ip nat inside source static tcp 192.168.170.170 443 10.74.5.101 10170 extendable
+ip nat inside source static tcp 192.168.170.71 443 10.74.5.101 10171 extendable
+ip nat inside source static tcp 192.168.170.172 443 10.74.5.101 10172 extendable
+ip nat inside source static tcp 192.168.170.173 443 10.74.5.101 10173 extendable
+ip nat inside source static tcp 192.168.170.174 443 10.74.5.101 10174 extendable
+ip nat inside source static tcp 192.168.170.176 443 10.74.5.101 10176 extendable
+ip nat inside source static tcp 192.168.170.200 443 10.74.5.101 10200 extendable
+ip nat inside source static tcp 192.168.170.253 443 10.74.5.101 10253 extendable
+ip nat inside source static tcp 192.168.170.254 443 10.74.5.101 10254 extendable
+ip nat inside source static tcp 192.168.50.2 23 10.74.5.101 20002 extendable
+ip nat inside source static tcp 192.168.50.6 23 10.74.5.101 20006 extendable
+ip nat inside source static tcp 192.168.50.8 23 10.74.5.101 20008 extendable
+ip nat inside source static tcp 192.168.50.11 23 10.74.5.101 20011 extendable
+ip nat inside source static tcp 192.168.50.14 23 10.74.5.101 20014 extendable
+ip nat inside source static tcp 192.168.50.16 23 10.74.5.101 20016 extendable
+ip nat inside source static tcp 192.168.50.20 23 10.74.5.101 20020 extendable
+ip nat inside source static tcp 192.168.50.23 23 10.74.5.101 20023 extendable
+ip nat inside source static tcp 192.168.50.25 23 10.74.5.101 20025 extendable
+ip nat inside source static tcp 192.168.50.29 23 10.74.5.101 20029 extendable
+ip nat inside source static tcp 192.168.50.32 23 10.74.5.101 20032 extendable
+ip nat inside source static tcp 192.168.50.34 23 10.74.5.101 20034 extendable
+ip nat inside source static tcp 192.168.50.38 23 10.74.5.101 20038 extendable
+ip nat inside source static tcp 192.168.50.42 23 10.74.5.101 20042 extendable
+ip nat inside source static tcp 192.168.50.44 23 10.74.5.101 20044 extendable
+ip nat inside source static tcp 192.168.50.47 23 10.74.5.101 20047 extendable
+ip nat inside source static tcp 192.168.50.50 23 10.74.5.101 20050 extendable
+ip nat inside source static tcp 192.168.50.52 23 10.74.5.101 20052 extendable
+ip nat inside source static tcp 192.168.50.54 23 10.74.5.101 20054 extendable
+ip nat inside source static tcp 192.168.50.56 23 10.74.5.101 20056 extendable
+ip nat inside source static tcp 192.168.50.57 23 10.74.5.101 20057 extendable
+ip nat inside source static tcp 192.168.50.59 23 10.74.5.101 20059 extendable
+ip nat inside source static tcp 192.168.50.60 23 10.74.5.101 20060 extendable
+ip nat inside source static tcp 192.168.50.62 23 10.74.5.101 20062 extendable
+ip nat inside source static tcp 192.168.50.69 23 10.74.5.101 20069 extendable
+ip nat inside source static tcp 192.168.50.71 23 10.74.5.101 20071 extendable
+ip nat inside source static tcp 192.168.50.76 23 10.74.5.101 20076 extendable
+ip nat inside source static tcp 192.168.50.78 23 10.74.5.101 20078 extendable
+ip nat inside source static tcp 192.168.50.81 23 10.74.5.101 20081 extendable
+ip nat inside source static tcp 192.168.50.87 23 10.74.5.101 20087 extendable
+ip nat inside source static tcp 192.168.50.90 23 10.74.5.101 20090 extendable
+ip nat inside source static tcp 192.168.50.91 23 10.74.5.101 20091 extendable
+ip nat inside source static tcp 192.168.50.94 23 10.74.5.101 20094 extendable
+ip nat inside source static tcp 192.168.50.98 23 10.74.5.101 20098 extendable
+ip nat inside source static tcp 192.168.50.101 23 10.74.5.101 20101 extendable
+ip nat inside source static tcp 192.168.50.104 23 10.74.5.101 20104 extendable
+ip nat inside source static tcp 192.168.50.107 23 10.74.5.101 20107 extendable
+ip nat inside source static tcp 192.168.50.111 23 10.74.5.101 20111 extendable
+ip nat inside source static tcp 192.168.50.114 23 10.74.5.101 20114 extendable
+ip nat inside source static tcp 192.168.50.117 23 10.74.5.101 20117 extendable
+ip nat inside source static tcp 192.168.50.120 23 10.74.5.101 20120 extendable
+ip nat inside source static tcp 192.168.50.122 23 10.74.5.101 20122 extendable
+ip nat inside source static tcp 192.168.50.126 23 10.74.5.101 20126 extendable
+ip nat inside source static tcp 192.168.50.129 23 10.74.5.101 20129 extendable
+ip nat inside source static tcp 192.168.50.133 23 10.74.5.101 20133 extendable
+ip nat inside source static tcp 192.168.50.136 23 10.74.5.101 20136 extendable
+ip nat inside source static tcp 192.168.50.139 23 10.74.5.101 20139 extendable
+ip nat inside source static tcp 192.168.50.142 23 10.74.5.101 20142 extendable
+ip nat inside source static tcp 192.168.50.145 23 10.74.5.101 20145 extendable
+ip nat inside source static tcp 192.168.50.148 23 10.74.5.101 20148 extendable
+ip nat inside source static tcp 192.168.50.152 23 10.74.5.101 20152 extendable
+ip nat inside source static tcp 192.168.50.155 23 10.74.5.101 20155 extendable
+ip nat inside source static tcp 192.168.50.157 23 10.74.5.101 20157 extendable
+ip nat inside source static tcp 192.168.50.161 23 10.74.5.101 20161 extendable
+ip nat inside source static tcp 192.168.50.164 23 10.74.5.101 20164 extendable
+ip nat inside source static tcp 192.168.50.165 23 10.74.5.101 20165 extendable
+ip nat inside source static tcp 192.168.50.168 23 10.74.5.101 20168 extendable
+ip nat inside source static tcp 192.168.50.170 23 10.74.5.101 20170 extendable
+ip nat inside source static tcp 192.168.50.173 23 10.74.5.101 20173 extendable
+ip nat inside source static tcp 192.168.170.52 23 10.74.5.101 30052 extendable
+ip nat inside source static tcp 192.168.170.54 23 10.74.5.101 30054 extendable
+ip nat inside source static tcp 192.168.170.166 23 10.74.5.101 30166 extendable
+ip nat inside source static tcp 192.168.170.168 23 10.74.5.101 30168 extendable
+ip nat inside source static tcp 192.168.170.169 23 10.74.5.101 30169 extendable
+ip nat inside source static tcp 192.168.170.170 23 10.74.5.101 30170 extendable
+ip nat inside source static 120.1.1.10 10.74.48.20 extendable
+ip nat inside source static 120.1.1.20 10.74.48.21 extendable
+ip forward-protocol nd
+!
+ip ftp source-interface GigabitEthernet0/1/0
+ip http server
+ip http authentication local
+ip http secure-server
+ip tftp source-interface GigabitEthernet0/1/0
+ip route 0.0.0.0 0.0.0.0 10.74.46.73 name **DEFAULT-TO-LAB-WAN**
+ip route 10.30.220.50 255.255.255.255 10.74.46.73
+ip route 10.74.3.64 255.255.255.192 Tunnel11
+ip route 10.74.5.107 255.255.255.255 10.75.221.212 name **xiaji-vpfr-test**
+ip route 10.74.48.236 255.255.255.255 10.0.120.9 name sh-violet-pgw-india
+ip route 10.74.48.237 255.255.255.255 10.0.120.10 name ***Automation10-Share-2-IP-in-same-Eth***
+ip route 10.74.90.0 255.255.255.128 Tunnel11
+ip route 10.79.47.0 255.255.255.0 20.20.20.2
+ip route 10.124.19.142 255.255.255.255 10.124.19.110 name AIP_2596_wenxianl
+ip route 10.124.22.194 255.255.255.255 10.124.22.223 name **xiaji-vpfr-demo**
+ip route 10.160.62.0 255.255.255.0 10.0.28.73 name ***Test-asr1006-7-SBC-Manual-iwk***
+ip route 120.1.1.0 255.255.255.0 192.168.50.89
+ip route 192.168.188.0 255.255.255.0 10.74.5.185 name **TEMP-for-welv-ISG**
+ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 10.74.5.1
+ip ssh version 2
+!
+ip access-list standard smartpdu-mail
+ permit 192.168.170.0 0.0.0.255
+!
+ip access-list extended lab_sw
+ permit ip 192.168.50.0 0.0.0.255 any
+!
+ip sla responder
+ip sla 1
+ icmp-echo 10.74.5.227 source-ip 10.74.46.74
+ip sla schedule 1 life forever start-time now
+ip sla 2
+ path-echo 64.104.170.1
+ tag CHECK_CORE_CONNECTIVITY
+ history hours-of-statistics-kept 4
+ paths-of-statistics-kept 10
+ history statistics-distribution-interval 10
+ samples-of-history-kept 10
+ip sla schedule 2 life forever start-time now
+ip sla 333
+ udp-jitter 10.74.30.197 6500 num-packets 20 interval 10
+ precision microseconds
+ optimize timestamp
+ owner flowdia
+ tag A-B
+ threshold 123
+ip sla schedule 333 life forever start-time now
+ip sla logging traps
+logging source-interface TenGigabitEthernet0/0/0.504
+logging host 10.74.30.32
+logging host 10.74.30.140
+logging host 10.74.30.139
+access-list 11 permit 192.168.156.0 0.0.0.255
+arp 10.74.9.109 0050.56a2.5199 ARPA
+ipv6 route 2001:420:5889:2000::/64 Null0 250
+!
+snmp-server community cisco RW
+snmp-server community public RO
+snmp-server community ciscoprivate RW
+snmp-server contact eng@cisco.com
+snmp ifmib ifindex persist
+!
+!         
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+mediatrace responder
+mediatrace initiator source-ip 10.74.5.1
+!
+!
+!
+!
+banner motd ^C
+
+                          oooo$$$$$$$$$$$$oooo
+                      oo$$$$$$$$$$$$$$$$$$$$$$$$o
+                   oo$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$o         o$   $$ o$
+   o $ oo        o$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$o       $$ $$ $$o$
+oo $ $ "$      o$$$$$$$$$    $$$$$$$$$$$$$    $$$$$$$$$o       $$$o$$o$
+"$$$$$$o$     o$$$$$$$$$      $$$$$$$$$$$      $$$$$$$$$$o    $$$$$$$$
+  $$$$$$$    $$$$$$$$$$$      $$$$$$$$$$$      $$$$$$$$$$$$$$$$$$$$$$$
+  $$$$$$$$$$$$$$$$$$$$$$$    $$$$$$$$$$$$$    $$$$$$$$$$$$$$  """$$$
+   "$$$""""$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     "$$$
+    $$$   o$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     "$$$o
+   o$$"   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$       $$$o
+   $$$    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" "$$$$$$ooooo$$$$o
+  o$$$oooo$$$$$  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   o$$$$$$$$$$$$$$$$$
+  $$$$$$$$"$$$$   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     $$$$""""""""
+ """"       $$$$    "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"      o$$$
+            "$$$o     """$$$$$$$$$$$$$$$$$$"$$"         $$$
+              $$$o          "$$""$$$$$$""""           o$$$
+               $$$$o                                o$$$"
+                "$$$$o      o$$$$$$o"$$$$o        o$$$$
+                  "$$$$$oo     ""$$$$o$$$$$o   o$$$$""
+                     ""$$$$$oooo  "$$$o$$$$$$$$$"""
+                        ""$$$$$$$oo $$$$$$$$$$
+                                """"$$$$$$$$$$$
+                                    $$$$$$$$$$$$
+                                     $$$$$$$$$$"
+                                      "$$$""""
+
+
+
+ .:|:.:|:.             Lab Admin: qshi2@cisco.com
+ C I S C O             Lab Ops:crdc-labs@cisco.com
+
+UNAUTHORIZED ACCESS TO THIS NETWORK DEVICE IS PROHIBITED.
+You must have explicit permission to access or configure this
+device.  All activities performed on this device are logged and
+violations of this policy may result in disciplinary action.
+^C
+alias exec linuxrpa request platform software system shell rp active
+alias exec linuxrps request platform software system shell rp standby
+alias exec linuxfps request platform software system shell fp standby
+alias exec linuxfpa request platform software system shell fp active
+alias exec shfw sh platform ha qfp ac feature firewall 
+alias exec cppdrop show plat hard qfp ac stat drop
+alias exec shcpphw sh platform hardware qfp ac 
+alias exec shcppsw sh platform software
+alias exec getimghda copy ftp://web:web@10.74.57.167/ harddisk:
+alias exec getimghds copy ftp://web:web@10.74.57.167/ stby-harddisk:
+alias exec cppload show plat hard qfp ac data u
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ exec-timeout 0 0
+ privilege level 15
+line vty 5 97
+ exec-timeout 0 0
+ privilege level 15
+!
+!
+monitor session 111 type erspan-source
+ shutdown
+ destination
+  mtu 1464
+!         
+!
+transport type persistent webui input web
+!
+ntp master 4
+ntp server 10.74.5.1
+ntp server 10.74.12.20
+onep
+ service set vty
+!
+end
+
+     

@@ -1,0 +1,365 @@
+h-cable-l3-core-2#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone, 
+                  D - Remote, C - CVTA, M - Two-port Mac Relay 
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SHN4F13-GW-CABU  Gig 1/0/27        120              R I   ASR1006   Gig 0/0/4
+sh-cable-l3-dst-srv
+                 Ten 1/0/1         165             R S I  WS-C4948- Ten 1/49
+sh-cable-l3-dst-4
+                 Gig 1/0/8         120             R S I  WS-C3560G Gig 0/48
+sh-cable-l3-dst-2
+                 Gig 1/0/4         136             R S I  WS-C3750G Gig 1/0/4
+sh-cable-l3-dst-2
+                 Gig 1/0/3         136             R S I  WS-C3750G Gig 1/0/3
+sh-cable-l3-dst-3
+                 Gig 1/0/6         135             R S I  WS-C3560G Gig 0/48
+sh-cable-l3-dst-3
+                 Gig 1/0/5         135             R S I  WS-C3560G Gig 0/47
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+sh-cable-l3-dst-1
+                 Gig 1/0/2         120             R S I  WS-C3560G Gig 0/6
+sh-cable-l3-dst-1
+                 Gig 1/0/1         120             R S I  WS-C3560G Gig 0/5
+sh-cable-l3-core-2#  sho
+sh-cable-l3-core-2#  show cdp
+sh-cable-l3-core-2#  show cdp en
+sh-cable-l3-core-2#  show cdp entry * pro
+Protocol information for SHN4F13-GW-CABU :
+  IP address: 100.100.250.1
+  IPv6 address: 2001:100:100:250::1  (global unicast)
+  IPv6 address: FE80::BE16:65FF:FED4:5004  (link-local)
+Protocol information for sh-cable-l3-dst-srv :
+  IP address: 3.3.3.2
+  IPv6 address: 2001:3:3:3::2  (global unicast)
+  IPv6 address: FE80::1EDF:FFF:FE35:D13F  (link-local)
+Protocol information for sh-cable-l3-dst-4 :
+  IP address: 3.3.9.2
+Protocol information for sh-cable-l3-dst-2 :
+  IP address: 3.3.5.2
+Protocol information for sh-cable-l3-dst-2 :
+  IP address: 3.3.5.2
+Protocol information for sh-cable-l3-dst-3 :
+  IP address: 3.3.7.2
+Protocol information for sh-cable-l3-dst-3 :
+  IP address: 3.3.7.2
+Protocol information for sh-cable-l3-dst-1 :
+  IP address: 3.3.2.2
+Protocol information for sh-cable-l3-dst-1 :
+  IP address: 3.3.2.2
+sh-cable-l3-core-2# sho
+sh-cable-l3-core-2# show run
+Building configuration...
+
+Current configuration : 7083 bytes
+!
+! No configuration change since last restart
+! NVRAM config last updated at 01:29:06 UTC Wed Mar 30 2011
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname sh-cable-l3-core-2
+!
+boot-start-marker
+boot-end-marker
+!
+no logging console
+enable secret 4 gBtTKzxOiuCJuR.3cMRYP8p978i7QhDTlQFNglBr/72
+!         
+no aaa new-model
+switch 1 provision ws-c3750e-24td
+system mtu routing 1500
+ip routing
+!
+!
+ipv6 unicast-routing
+vtp mode transparent
+udld enable
+
+!
+no mls qos rewrite ip dscp
+!
+crypto pki trustpoint TP-self-signed-3184834816
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3184834816
+ revocation-check none
+ rsakeypair TP-self-signed-3184834816
+!         
+!
+crypto pki certificate chain TP-self-signed-3184834816
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33313834 38333438 3136301E 170D3131 30333330 30313239 
+  30355A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 31383438 
+  33343831 3630819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100B207 22D548EE CC597348 BDBA084F 5B9C2F65 AEF20EA6 C72B1371 29E6373B 
+  462CF427 5C666360 8EE66C79 5A0C8062 0C46652E 564CFDEA CC89E4C9 4FDA1B5F 
+  2E98423C 25CC6D48 3908202B 01A131B8 A3D4D6C6 B5468302 CBDB588D 2E4FE0AA 
+  C3A45299 AAB78096 B562C6EE 0E8B573F A160CE09 891BC9B4 1BFB062E 7C6A9FC9 
+  A4EF0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14F0A7F2 B1F0DD98 B409243A 1BDCEA94 5BE64950 68301D06 
+  03551D0E 04160414 F0A7F2B1 F0DD98B4 09243A1B DCEA945B E6495068 300D0609 
+  2A864886 F70D0101 05050003 81810095 DCEF4329 5FE95DB0 D6B5F326 F71A267B 
+  A379BFD8 B3474923 0D47ADBD B6A518D2 436595D6 16A19829 C29CBE6B AE4F2F9C 
+  DB755EDE A8A436B8 28FE35E9 B94C8AE2 E19C7F87 58E4ED75 B75E197A BC141D6F 
+  D498F694 87E024AD 22CB26ED B8059E5C 97F973DE 590EE255 478B83C7 F5B3154A 
+  0FFA06CF 8B5E5AAB FE528A2D 5549DE
+  	quit
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+no spanning-tree vlan 1-4094
+!
+!
+!
+!
+!
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 888,1000-1001,2001-2030 
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel3
+ description connect-to-area1
+ no switchport
+ ip address 3.3.2.1 255.255.255.0
+ ip verify unicast source reachable-via rx allow-default
+ ip verify unicast notification threshold 10
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco123!
+ ipv6 address 2001:3:3:2::1/64
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Port-channel4
+ description connect-to-area2
+ no switchport
+ ip address 3.3.5.1 255.255.255.0
+ ip verify unicast source reachable-via rx allow-default
+ ip verify unicast notification threshold 10
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco123!
+ ipv6 address 2001:3:3:5::1/64
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Port-channel5
+ description connect-to-P05
+ no switchport
+ ip address 3.3.7.1 255.255.255.0
+ ip verify unicast source reachable-via rx allow-default
+ ip verify unicast notification threshold 10
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco123!
+ ipv6 address 2001:3:3:7::1/64
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Port-channel6
+ description connect-to-area4
+ no switchport
+ ip address 3.3.9.1 255.255.255.0
+ ip verify unicast source reachable-via rx allow-default
+ ip verify unicast notification threshold 10
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco123!
+ ipv6 address 2001:3:3:9::1/64
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Tunnel7
+ description connect-to-svr-dst
+ no ip address
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco123!
+ ipv6 enable
+ ipv6 ospf authentication null
+ ipv6 ospf 1 area 0
+!
+interface FastEthernet0
+ no ip address
+ no ip route-cache
+!
+interface GigabitEthernet1/0/1
+ no switchport
+ no ip address
+ channel-group 3 mode on
+!
+interface GigabitEthernet1/0/2
+ no switchport
+ no ip address
+ channel-group 3 mode on
+!
+interface GigabitEthernet1/0/3
+ no switchport
+ no ip address
+ channel-group 4 mode on
+!
+interface GigabitEthernet1/0/4
+ no switchport
+ no ip address
+ channel-group 4 mode on
+!
+interface GigabitEthernet1/0/5
+ no switchport
+ no ip address
+ channel-group 5 mode on
+!
+interface GigabitEthernet1/0/6
+ no switchport
+ no ip address
+ channel-group 5 mode on
+!
+interface GigabitEthernet1/0/7
+ no switchport
+ no ip address
+ channel-group 6 mode on
+!
+interface GigabitEthernet1/0/8
+ no switchport
+ no ip address
+ channel-group 6 mode on
+!
+interface GigabitEthernet1/0/9
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/10
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/11
+ no switchport
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/12
+ no switchport
+ no ip address
+ shutdown
+!         
+interface GigabitEthernet1/0/13
+!
+interface GigabitEthernet1/0/14
+!
+interface GigabitEthernet1/0/15
+!
+interface GigabitEthernet1/0/16
+!
+interface GigabitEthernet1/0/17
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/0/25
+!
+interface GigabitEthernet1/0/26
+!
+interface GigabitEthernet1/0/27
+ description to-labGW
+ no switchport
+ ip address 100.100.250.2 255.255.255.0
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco123!
+ ipv6 address 2001:100:100:250::2/64
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!         
+interface GigabitEthernet1/0/28
+!
+interface TenGigabitEthernet1/0/1
+ no switchport
+ ip address 3.3.3.1 255.255.255.0
+ ip ospf authentication
+ ip ospf message-digest-key 1 md5 cisco123!
+ ipv6 address 2001:3:3:3::1/64
+ ipv6 ospf authentication null
+ ipv6 ospf 1 area 0
+!
+interface TenGigabitEthernet1/0/2
+ no switchport
+ no ip address
+!
+interface Vlan1
+ no ip address
+ shutdown
+!         
+router ospf 100
+ router-id 100.100.250.2
+ network 3.3.2.0 0.0.0.255 area 0
+ network 3.3.3.0 0.0.0.255 area 0
+ network 3.3.5.0 0.0.0.255 area 0
+ network 3.3.7.0 0.0.0.255 area 0
+ network 3.3.9.0 0.0.0.255 area 0
+ network 100.100.250.0 0.0.0.255 area 0
+!
+ip http server
+ip http secure-server
+!
+!
+ipv6 router ospf 1
+ router-id 100.100.250.2
+ area 0 authentication ipsec spi 256 md5 48573947302838720572038564759343
+!
+!
+!         
+banner motd ^C
+You have entered $(hostname).$(domain) on vty $(line)
+
+ .:|:.:|:.             Lab Admin:sheli2@cisco.com (Santo Li)
+ C I S C O             Lab Ops:crdc-labs@cisco.com
+
+UNAUTHORIZED ACCESS TO THIS NETWORK DEVICE IS PROHIBITED.
+You must have explicit permission to access or configure this
+device.  All activities performed on this device are logged an
+violations of this policy may result in disciplinary action.^C
+!
+line con 0
+ exec-timeout 0 0
+ password cisco
+ logging synchronous
+ login
+line vty 0 4
+ password cisco
+ login    
+line vty 5 15
+ password cisco
+ login
+!
+end
+
