@@ -1,0 +1,6240 @@
+SHN15-L4-GW#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+PG-IPV6-S11-GW   Gig 2/42          142          R S I     2811      Fas 0/0
+CGR1240-SDK-RF-REMOTE-WPAN.cisco.com
+                 Gig 2/32          133         R B S I    CGR1240/K Gig 2/1
+CTEO-P09-F       Gig 2/10          158           S I      WS-C3750G Gig 1/0/24
+CENBU-F06-sw-1   Gig 2/7           129           S I      CGS-2520- Gig 0/1
+crdc-demo-sw01   Gig 2/12          122          R S I     WS-C3750G Gig 1/0/47
+Stage11-D12-GW   Gig 2/15          151          R S I     CISCO7606 Gig 2/1
+NMTGS-CAT3750E-NAM
+                 Gig 2/19          157          R S I     WS-C3750E Gig 1/0/1
+Fishbowl-Public2 Gig 2/29          120           S I      WS-C3560G Gig 0/48
+stag11-vms-sw-D09-01
+                 Gig 2/3           159          R S I     WS-C3750G Gig 1/0/47
+1941-LS-1        Gig 2/22          140          R S I     CISCO1941 Gig 0/0
+shn15-4-lab-sw1.cisco.com
+                 Gig 1/8           140          R S I     WS-C6506- Gig 5/8
+Smart-PDU-Swtich Gig 2/24          133           S I      WS-C2960- Fas 0/24
+RACK-G12-kum     Gig 2/8           173           S I      WS-C2960- Fas 0/24
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+Switch           Gig 2/41          149           S I      WS-C3750G Gig 1/0/47
+Switch           Gig 2/47          163           S I      WS-C3560G Gig 0/23
+Switch           Gig 2/27          150           S I      WS-C3560G Gig 0/24
+CGR1120-CRDC-SDK-RF.cisco.com
+                 Gig 2/32          172         R B S I    CGR1120/K Gig 2/2
+SAVTG-Bruce      Gig 2/30          139           S I      WS-C2960G Gig 0/20
+RACK-U08-SWITCH-1-mli3
+                 Gig 2/9           174           S I      WS-C2960- Gig 0/1
+N5K-VSR-C03-xiaosong(SSI154604MC)
+                 Gig 2/18          158           S I      N5K-C5548 Eth 1/32
+f07-sw           Gig 2/39          160           S I      WS-C2960X Gig 0/24
+N7K-LS-1(JAF1548ASPS)
+                 Gig 2/25          153          R S I     N7K-C7010 Eth 1/17
+PLC_SDK_Rel.cisco.com
+                 Gig 2/32          140         R B S I    CGR1120/K Gig 2/2
+CENBU-Rack-J02-Yulan
+                 Gig 2/37          124           S I      WS-C3750G Gig 1/0/48
+G08              Gig 2/5           170           S I      WS-C3750G Gig 1/0/48
+CENBU-Rack-J03-Yulan
+                 Gig 2/38          131           S I      WS-C3750G Gig 1/0/48
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+Fishbowl-private1
+                 Gig 2/26          165           S I      WS-C3560G Gig 0/48
+S11-CABU-GW      Gig 2/16          173          R S I     CISCO2921 Gig 0/1
+CSPG-N5K-S03(SSI13470FTT)
+                 Gig 2/35          119           S I      N5K-C5020 Eth 1/1
+SAVTG-SW2-vlan602-603
+                 Gig 2/40          177           S I      WS-C3560G Gig 0/23
+sh-lab-vm-sw-1   Gig 2/33          173           S I      WS-C3750G Gig 1/0/48
+Nexus-5548-2(SSI1549021B)
+                 Gig 2/11          159           S I      N5K-C5548 Eth 1/20
+NMTGS-C3845-0-1R.cisco.com
+                 Gig 2/34          142          R S I     3845      Gig 0/0/0
+VCPBU-Stage11-4F Gig 2/20          135           S I      WS-C3560G Gig 0/46
+SW3750-A.xiazhu-test
+                 Gig 2/36          154          R S I     WS-C3750G Gig 1/0/23
+Fishbowl-Private2
+                 Gig 2/21          152           S I      WS-C3550- Fas 0/48
+CSPG-F04-SW1     Gig 2/2           177           S I      WS-C2960S Gig 1/0/24
+N5K-VSR-K07(SSI16450D2Q)
+                 Gig 2/6           179          R S I     N5K-C5548 Eth 1/32
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SBTG-LAB-SW@L4ITRM
+                 Gig 2/4           155           S I      WS-C2960- Gig 0/1
+ISBU-HW-SW1@RB01 Gig 2/1           125           S I      WS-C2950- Fas 0/1
+SHN15-L4-GW#  sho
+SHN15-L4-GW#  show cdp
+SHN15-L4-GW#  show cdp en
+SHN15-L4-GW#  show cdp entry * pro
+Protocol information for PG-IPV6-S11-GW :
+  IP address: 10.74.3.84
+Protocol information for CGR1240-SDK-RF-REMOTE-WPAN.cisco.com :
+  IP address: 10.75.172.18
+  IPv6 address: 2010:DB8::43  (global unicast)
+  IPv6 address: FE80::AA9D:21FF:FEA1:1A41  (link-local)
+Protocol information for CTEO-P09-F :
+  IP address: 10.75.161.254
+Protocol information for CENBU-F06-sw-1 :
+  IP address: 10.79.52.190
+Protocol information for crdc-demo-sw01 :
+  IP address: 10.74.24.94
+Protocol information for Stage11-D12-GW :
+  IP address: 81.1.1.1
+Protocol information for NMTGS-CAT3750E-NAM :
+  IP address: 211.211.0.2
+Protocol information for Fishbowl-Public2 :
+  IP address: 10.74.3.190
+Protocol information for stag11-vms-sw-D09-01 :
+  IP address: 10.74.15.2
+Protocol information for 1941-LS-1 :
+  IP address: 10.75.165.2
+Protocol information for shn15-4-lab-sw1.cisco.com :
+  IP address: 101.101.101.1
+Protocol information for Smart-PDU-Swtich :
+  IP address: 192.168.171.250
+Protocol information for RACK-G12-kum :
+  IP address: 10.79.49.130
+Protocol information for Switch :
+Protocol information for Switch :
+Protocol information for Switch :
+  IP address: 10.75.170.10
+Protocol information for CGR1120-CRDC-SDK-RF.cisco.com :
+  IP address: 10.75.172.19
+  IPv6 address: 2010:DB8::5  (global unicast)
+  IPv6 address: FE80::BE16:65FF:FE31:5482  (link-local)
+Protocol information for SAVTG-Bruce :
+  IP address: 10.75.170.2
+Protocol information for RACK-U08-SWITCH-1-mli3 :
+Protocol information for N5K-VSR-C03-xiaosong(SSI154604MC) :
+  IP address: 10.74.3.72
+Protocol information for f07-sw :
+  IP address: 10.124.104.66
+Protocol information for N7K-LS-1(JAF1548ASPS) :
+  IP address: 10.75.165.62
+Protocol information for PLC_SDK_Rel.cisco.com :
+  IP address: 10.75.172.26
+  IPv6 address: 2010:DB8::4  (global unicast)
+  IPv6 address: FE80::7626:ACFF:FE72:4CA2  (link-local)
+Protocol information for CENBU-Rack-J02-Yulan :
+  IP address: 10.75.172.58
+Protocol information for G08 :
+  IP address: 10.124.11.253
+Protocol information for CENBU-Rack-J03-Yulan :
+  IP address: 10.75.172.90
+Protocol information for Fishbowl-private1 :
+  IP address: 10.74.127.253
+Protocol information for S11-CABU-GW :
+  IP address: 10.74.3.38
+Protocol information for CSPG-N5K-S03(SSI13470FTT) :
+  IP address: 10.79.62.254
+Protocol information for SAVTG-SW2-vlan602-603 :
+  IP address: 10.74.11.2
+Protocol information for sh-lab-vm-sw-1 :
+  IP address: 10.74.3.99
+Protocol information for Nexus-5548-2(SSI1549021B) :
+  IP address: 10.75.173.254
+Protocol information for NMTGS-C3845-0-1R.cisco.com :
+  IP address: 100.100.100.2
+  IPv6 address: FE80::21C:F6FF:FEE5:4D73  (link-local)
+  IPv6 address: 2011:0:0:100::2  (global unicast)
+Protocol information for VCPBU-Stage11-4F :
+  IP address: 10.74.15.3
+Protocol information for SW3750-A.xiazhu-test :
+Protocol information for Fishbowl-Private2 :
+  IP address: 10.74.3.192
+Protocol information for CSPG-F04-SW1 :
+  IP address: 10.75.165.76
+Protocol information for N5K-VSR-K07(SSI16450D2Q) :
+  IP address: 10.74.116.3
+Protocol information for SBTG-LAB-SW@L4ITRM :
+  IP address: 192.168.68.2
+Protocol information for ISBU-HW-SW1@RB01 :
+  IP address: 192.168.0.251
+SHN15-L4-GW#  sho
+SHN15-L4-GW#  show run
+Building configuration...
+
+Current configuration : 91693 bytes
+!
+! Last configuration change at 13:55:29 UTC Tue Aug 2 2016 by feiwan2
+! NVRAM config last updated at 13:50:46 UTC Tue Aug 2 2016 by feiwan2
+!
+upgrade fpd auto
+version 12.2
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+service counters max age 10
+!
+hostname SHN15-L4-GW
+!
+boot-start-marker
+boot system sup-bootdisk:s3223-ipservicesk9_wan-mz.122-33.SRA2.bin
+boot system bootdisk:s3223-ipservicesk9_wan-mz.122-33.SRA2.bin
+boot-end-marker
+!
+logging buffered 64000 debugging
+logging monitor informational
+enable secret 5 $1$YvW/$Ml.rzwFnp5FYCvsGH6Tei.
+!
+aaa new-model
+aaa authentication login lab group tacacs+ enable
+aaa authentication login cisco group tacacs+ enable
+!
+aaa session-id common
+clock timezone UTC 8
+ip subnet-zero
+!
+!
+no ip dhcp conflict logging
+ip dhcp excluded-address 10.74.10.1
+ip dhcp excluded-address 10.74.11.1 10.74.11.3
+ip dhcp excluded-address 10.74.11.5 10.74.11.15
+ip dhcp excluded-address 10.75.175.241
+ip dhcp excluded-address 10.74.10.225
+ip dhcp excluded-address 10.74.10.225 10.74.10.254
+ip dhcp excluded-address 10.74.3.65 10.74.3.70
+!
+ip dhcp pool SAVTG-Vlan603
+   network 10.74.11.16 255.255.255.240
+   default-router 10.74.11.17 
+   dns-server 64.104.123.144 
+   domain-name cisco.com
+!
+ip dhcp pool SAVTG-Probe-Nanwa
+   network 10.74.11.0 255.255.255.240
+   default-router 10.74.11.1 
+   domain-name cisco.com
+   dns-server 64.104.123.144 
+!
+ip dhcp pool CCIE-EXAM
+   network 10.74.3.64 255.255.255.192
+   default-router 10.74.3.65 
+   dns-server 64.104.123.144 171.70.168.173 
+!
+ip dhcp pool WuLinDaHui
+   network 172.161.1.0 255.255.255.0
+   default-router 172.161.1.254 
+   domain-name cisco.com
+!
+ip flow-cache entries 4000
+ip flow-cache timeout inactive 100
+ip multicast-routing 
+no ip domain-lookup
+ip domain-name cisco.com
+ip name-server 64.104.123.144
+ip dhcp-server 10.74.126.161
+ipv6 unicast-routing
+mls ip multicast flow-stat-timer 9
+no mls flow ip
+no mls flow ipv6
+no mls acl tcam share-global
+mls cef error action freeze
+!
+!
+!
+!         
+!
+!
+!
+!
+redundancy
+ keepalive-enable
+ mode sso
+ main-cpu
+  auto-sync running-config
+!
+spanning-tree mode pvst
+spanning-tree portfast default
+spanning-tree extend system-id
+spanning-tree vlan 100-101 priority 8192
+spanning-tree vlan 102-400 priority 24576
+system flowcontrol bus auto
+diagnostic cns publish cisco.cns.device.diag_results
+diagnostic cns subscribe cisco.cns.device.diag_commands
+no errdisable detect cause loopback
+errdisable recovery cause loopback
+!
+vlan internal allocation policy ascending
+vlan access-log ratelimit 2000
+!
+vlan 3000 
+!
+!
+!
+interface Tunnel0
+ description description TO-VCPBU-10.74.60.26-chaolian-unused
+ no ip address
+ ip pim dense-mode
+ tunnel source 10.74.3.37
+ tunnel destination 10.74.43.6
+!
+interface Tunnel6
+ no ip address
+ ipv6 address 2001:1ABC:2ABC:3ABC::1/64
+ tunnel source 10.74.43.50
+ tunnel destination 10.74.90.130
+!
+interface Tunnel10
+ description to-IPCBU-for-SBTG
+ bandwidth 1000000
+ ip address 1.1.100.1 255.255.255.252
+ tunnel source 10.74.43.50
+ tunnel destination 10.74.43.6
+!
+interface Tunnel11
+ description smartpdd-to-SHN4/15F
+ bandwidth 1000000
+ ip address 1.11.11.1 255.255.255.0
+ tunnel source 10.74.43.50
+ tunnel destination 10.74.46.74
+!
+interface Tunnel12
+ description smartpdu-to-SHN4/13F
+ bandwidth 10000000
+ ip address 1.12.12.1 255.255.255.0
+ tunnel source 10.74.43.50
+ tunnel destination 10.74.46.130
+!
+interface Tunnel20
+ description to-B12-VCP-BU
+ bandwidth 1000000
+ ip address 1.1.101.1 255.255.255.252
+ tunnel source 10.74.3.37
+ tunnel destination 10.74.60.1
+!
+interface Tunnel30
+ ip address 1.1.201.1 255.255.255.0
+ tunnel source 10.74.43.50
+ tunnel destination 10.74.90.130
+!
+interface Loopback10
+ no ip address
+ ipv6 address 2001::1/64
+!
+interface GigabitEthernet1/1
+ description T0_SW@R01
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 20.00
+ storm-control multicast level 20.00
+!
+interface GigabitEthernet1/2
+ description TO_SW@R02
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 20.00
+ storm-control multicast level 20.00
+!
+interface GigabitEthernet1/3
+ description connect to RACK-C03
+ switchport
+ switchport access vlan 901
+ switchport mode access
+ speed nonegotiate
+ storm-control broadcast level 20.00
+ storm-control multicast level 20.00
+!
+interface GigabitEthernet1/4
+ switchport
+ switchport access vlan 901
+ switchport mode access
+ storm-control broadcast level 20.00
+ storm-control multicast level 20.00
+!
+interface GigabitEthernet1/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet1/6
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 20.00
+ storm-control multicast level 20.00
+!
+interface GigabitEthernet1/7
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 20.00
+ storm-control multicast level 20.00
+!
+interface GigabitEthernet1/8
+ description TO_IT
+ ip address 101.101.101.2 255.255.255.0 secondary
+ ip address 10.74.43.50 255.255.255.252
+ no ip redirects
+ ip mtu 1400
+ ip nat outside
+ ipv6 address 2001:420:588C:2000::2/64
+!
+interface GigabitEthernet1/9
+ no ip address
+!
+interface GigabitEthernet2/1
+ description TO-ISBU-HW@RackB01-01
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface GigabitEthernet2/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/3
+ description connect to C04-port-01
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/5
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/6
+ switchport
+ switchport access vlan 832
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 813,832,837
+ switchport mode trunk
+!
+interface GigabitEthernet2/7
+ description connect to RACK-F05-03
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/8
+ description connect-to-rack-g12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/9
+ description connect to RACK-U08-switch01-mli3
+ switchport
+ switchport access vlan 300
+ switchport mode access
+!
+interface GigabitEthernet2/10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/11
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/12
+ description connect to RACK-K04-port 5 - Wissen
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/13
+ switchport
+ switchport access vlan 4
+ switchport mode access
+!
+interface GigabitEthernet2/14
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet2/15
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ load-interval 30
+!
+interface GigabitEthernet2/16
+ description TO-CABU-GW
+ ip address 10.74.3.37 255.255.255.252
+!
+interface GigabitEthernet2/17
+ description G9 ipvs kevin wang
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/18
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/19
+ ip address 211.211.0.1 255.255.255.252
+!
+interface GigabitEthernet2/20
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/21
+ description R9 fashbowl
+ switchport
+ switchport access vlan 821
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,500,887,888
+ switchport mode trunk
+!
+interface GigabitEthernet2/22
+ switchport
+ switchport access vlan 833
+ switchport mode access
+!
+interface GigabitEthernet2/23
+ description connect to RACK-R5-ipv6_Switch-TIPBU-ChenJian
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/24
+ description connect to Smart PDU-Swtich
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/25
+ switchport
+ switchport access vlan 833
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!         
+interface GigabitEthernet2/26
+ description R7 fashbowl
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/27
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/28
+ switchport
+ switchport access vlan 824
+ switchport mode access
+!
+interface GigabitEthernet2/29
+ description R8 fashbowl
+ switchport
+ switchport access vlan 824
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,500,887,888
+ switchport mode trunk
+!
+interface GigabitEthernet2/30
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/31
+ description RACK-J01-port 1
+ switchport
+ switchport access vlan 821
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface GigabitEthernet2/32
+ description connect to RACK-J01-port 12
+ switchport
+ switchport access vlan 822
+!
+interface GigabitEthernet2/33
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/34
+ ip address 100.100.100.1 255.255.255.0
+ ipv6 address 2011:0:0:100::1/64
+ ipv6 enable
+!
+interface GigabitEthernet2/35
+ description connect to s03-n5k
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/36
+ description connect to RACK-H07-biosQA
+ switchport
+ switchport access vlan 818
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface GigabitEthernet2/37
+ description connect to RACK-J02-port 12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/38
+ description connect to J03-port 12
+ switchport
+ switchport access vlan 600
+!
+interface GigabitEthernet2/39
+ description connect to I07
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/40
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/41
+ switchport
+ switchport access vlan 818
+ switchport mode access
+!
+interface GigabitEthernet2/42
+ switchport
+ switchport access vlan 3
+ switchport mode access
+!
+interface GigabitEthernet2/43
+ switchport
+ switchport access vlan 301
+ switchport mode access
+!
+interface GigabitEthernet2/44
+ description asr9k-1-hub
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 934
+ switchport mode trunk
+!
+interface GigabitEthernet2/45
+ no ip address
+!
+interface GigabitEthernet2/46
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/47
+ switchport
+ switchport access vlan 300
+ switchport mode access
+!         
+interface GigabitEthernet2/48
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan2
+ ip address 192.168.68.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan3
+ ip address 10.74.3.65 255.255.255.192
+ ip nat outside
+ ip flow ingress
+ ip flow egress
+ ipv6 address 2001:10:74:3::1/64
+!
+interface Vlan4
+ ip address 10.74.90.1 255.255.255.128
+ ip flow ingress
+ ip flow egress
+ ipv6 address 2001:10:74:90::1/64
+!
+interface Vlan5
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan6
+ ip address 10.74.15.1 255.255.255.0
+!
+interface Vlan7
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan8
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan9
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan10
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan11
+ ip address 192.168.1.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan12
+ ip address 192.168.2.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan13
+ ip address 192.168.3.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan14
+ ip address 192.168.4.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan15
+ ip address 192.168.5.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan16
+ ip address 192.168.6.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan17
+ ip address 192.168.7.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan18
+ ip address 192.168.8.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan19
+ ip address 192.168.9.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan20
+ ip address 192.168.10.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan21
+ ip address 192.168.0.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan22
+ ip address 10.79.48.1 255.255.255.128 secondary
+ ip address 10.74.126.33 255.255.255.224
+ no ip redirects
+ ip flow ingress
+ ip flow egress
+ ipv6 address 2001:420:588C:2001::1/64
+ ipv6 enable
+!
+interface Vlan23
+ ip address 1.1.1.1 255.255.255.0
+ ip helper-address 10.74.3.93
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan24
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan25
+ description IPV6
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan26
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan27
+ ip address 10.124.26.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan28
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan29
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan30
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan31
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan32
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan33
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan34
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan35
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan36
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan37
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan38
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan39
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan40
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan41
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan42
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan43
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan44
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan45
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan46
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan47
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan48
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan49
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan50
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan51
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan52
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan53
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan54
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan55
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan56
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan57
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan58
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan59
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan60
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan61
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan62
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan63
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan64
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan65
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan66
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan67
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan68
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan69
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan70
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan71
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan72
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan73
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan74
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan75
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan76
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan77
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan78
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan79
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan80
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan81
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan82
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan83
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan84
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan85
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan86
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan87
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan88
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan89
+ ip address 10.124.11.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan90
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan91
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan92
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan93
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan94
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan95
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan96
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan97
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan98
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan99
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan100
+ no ip address
+ ip access-group 11 in
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan101
+ ip address 10.74.121.1 255.255.255.0
+ ip access-group 11 in
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan102
+ ip address 10.74.10.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan103
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan104
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan105
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan106
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan107
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan108
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan109
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan110
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan111
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan112
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan113
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan114
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan115
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan116
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan117
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan118
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan119
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan120
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan121
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan122
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan123
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan124
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan125
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan126
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan127
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan128
+ ip address 10.124.9.1 255.255.255.128
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan129
+ ip address 10.124.9.129 255.255.255.128
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan130
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan131
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan132
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan133
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan134
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan135
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan136
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan137
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan138
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan139
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan140
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan141
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan142
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan143
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan144
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan145
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan146
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan147
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan148
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan149
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan150
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan151
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan152
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan153
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan154
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan155
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan156
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan157
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan158
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan159
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan160
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan161
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan162
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan163
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan164
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan165
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan166
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan167
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan168
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan169
+ ip address 10.100.169.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan170
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan171
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan172
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan173
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan174
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan175
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan176
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan177
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan178
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan179
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan180
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan181
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan182
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan183
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan184
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan185
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan186
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan187
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan188
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan189
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan190
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan191
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan192
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan193
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan194
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan195
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan196
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan197
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan198
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan199
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan200
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan201
+ ip address 10.79.60.1 255.255.255.128
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan202
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan203
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan204
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan205
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan206
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan207
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan208
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan209
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan210
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan211
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan212
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan213
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan214
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan215
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan216
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan217
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan218
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan219
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan220
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan221
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan222
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan223
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan224
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan225
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan226
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan227
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan228
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan229
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan230
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan231
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan232
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan233
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan234
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan235
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan236
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan237
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan238
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan239
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan240
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan241
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan242
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan243
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan244
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan245
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan246
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan247
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan248
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan249
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan250
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan251
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan252
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan253
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan254
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan255
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan256
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan257
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan258
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan259
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan260
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan261
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan262
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan263
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan264
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan265
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan266
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan267
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan268
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan269
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan270
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan271
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan272
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan273
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan274
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan275
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan276
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan277
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan278
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan279
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan280
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan281
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan282
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan283
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan284
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan285
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan286
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan287
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan288
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan289
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan290
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan291
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan292
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan293
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan294
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan295
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan296
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan297
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan298
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan299
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan300
+ ip address 10.74.22.1 255.255.255.192
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan301
+ ip address 10.74.22.65 255.255.255.192
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan302
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan303
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan304
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan305
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan306
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan307
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan308
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan309
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan310
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan311
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan312
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan313
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan314
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan315
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan316
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan317
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan318
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan319
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan320
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan321
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan322
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan323
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan324
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan325
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan326
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan327
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan328
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan329
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan330
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan331
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan332
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan333
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan334
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan335
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan336
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan337
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan338
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan339
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan340
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan341
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan342
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan343
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan344
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan345
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan346
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan347
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan348
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan349
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan350
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan351
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan352
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan353
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan354
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan355
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan356
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan357
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan358
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan359
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan360
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan361
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan362
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan363
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan364
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan365
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan366
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan367
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan368
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan369
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan370
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan371
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan372
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan373
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan374
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan375
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan376
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan377
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan378
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan379
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan380
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan381
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan382
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan383
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan384
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan385
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan386
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan387
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan388
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan389
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan390
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan391
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan392
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan393
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan394
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan395
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan396
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan397
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan398
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan399
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan400
+ ip address 10.74.126.113 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!         
+interface Vlan401
+ ip address 10.74.126.145 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan402
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan403
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan404
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan405
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan406
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan407
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan408
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan409
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan410
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan411
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan412
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan413
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan414
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan415
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan416
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan417
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan418
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan419
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan420
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan421
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan422
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan423
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan424
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan425
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan426
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan427
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan428
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan429
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan430
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan431
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan432
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan433
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan434
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan435
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan436
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan437
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan438
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan439
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan440
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan441
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan442
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan443
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan444
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan445
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan446
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan447
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan448
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan449
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan450
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan451
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan452
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan453
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan454
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan455
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan456
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan457
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan458
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan459
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan460
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan461
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan462
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan463
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan464
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan465
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan466
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan467
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan468
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan469
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan470
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan471
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan472
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan473
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan474
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan475
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan476
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan477
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan478
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan479
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan480
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan481
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan482
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan483
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan484
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan485
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan486
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan487
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan488
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan489
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan490
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan491
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan492
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan493
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan494
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan495
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan496
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan497
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan498
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan499
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan500
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan501
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan502
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan503
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan504
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan505
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan506
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan507
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan508
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan509
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan510
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan511
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan512
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan513
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan514
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan515
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan516
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan517
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan518
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan519
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan520
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan521
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan522
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan523
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan524
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan525
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan526
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan527
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan528
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan529
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan530
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan531
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan532
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan533
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan534
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan535
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan536
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan537
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan538
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan539
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan540
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan541
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan542
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan543
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan544
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan545
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan546
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan547
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan548
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan549
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan550
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan551
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan552
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan553
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan554
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan555
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan556
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan557
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan558
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan559
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan560
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan561
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan562
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan563
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan564
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan565
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan566
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan567
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan568
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan569
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan570
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan571
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan572
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan573
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan574
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan575
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan576
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan577
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan578
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan579
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan580
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan581
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan582
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan583
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan584
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan585
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan586
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan587
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan588
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan589
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan590
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan591
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan592
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan593
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan594
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan595
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan596
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan597
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan598
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan599
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan600
+ ip address 10.74.126.161 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan601
+ ip address 10.74.126.177 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan602
+ ip address 10.74.11.1 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan603
+ ip address 10.74.11.17 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan604
+ ip address 10.79.60.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan605
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan606
+ ip address 10.124.104.65 255.255.255.192
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan607
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan608
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan609
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan610
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan611
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan612
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan613
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan614
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan615
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan616
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan617
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan618
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan619
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan620
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan621
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan622
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan623
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan624
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan625
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan626
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan627
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan628
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan629
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan630
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan631
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan632
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan633
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan634
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan635
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan636
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan637
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan638
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan639
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan640
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan641
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan642
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan643
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan644
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan645
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan646
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan647
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan648
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan649
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan650
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan651
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan652
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan653
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan654
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan655
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan656
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan657
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan658
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan659
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan660
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan661
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan662
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan663
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan664
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan665
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan666
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan667
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan668
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan669
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan670
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan671
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan672
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan673
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan674
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan675
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan676
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan677
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan678
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan679
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan680
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan681
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan682
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan683
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan684
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan685
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan686
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan687
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan688
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan689
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan690
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan691
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan692
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan693
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan694
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan695
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan696
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan697
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan698
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan699
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan700
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan701
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan702
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan703
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan704
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan705
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan706
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan707
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan708
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan709
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan710
+ ip address 10.75.214.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan711
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan712
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan713
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan714
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan715
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan716
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan717
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan718
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan719
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan720
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan721
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan722
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan723
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan724
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan725
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan726
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan727
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan728
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan729
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan730
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan731
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan732
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan733
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan734
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan735
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan736
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan737
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan738
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan739
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan740
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan741
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan742
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan743
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan744
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan745
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan746
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan747
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan748
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan749
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan750
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan751
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan752
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan753
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan754
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan755
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan756
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan757
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan758
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan759
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan760
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan761
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan762
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan763
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan764
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan765
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan766
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan767
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan768
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan769
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan770
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan771
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan772
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan773
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan774
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan775
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan776
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan777
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan778
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan779
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan780
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan781
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan782
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan783
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan784
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan785
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan786
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan787
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan788
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan789
+ ip address 172.161.1.254 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan790
+ ip address 10.124.21.1 255.255.255.128
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan791
+ ip address 10.124.21.129 255.255.255.128
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan792
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan793
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan794
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan795
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan796
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan797
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan798
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan799
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan800
+ ip address 10.74.11.33 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan801
+ ip address 10.74.11.49 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan802
+ ip address 10.74.11.65 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan803
+ ip address 10.74.11.81 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan804
+ ip address 10.74.11.97 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan805
+ ip address 10.74.11.126 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan806
+ ip address 10.74.11.129 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan807
+ ip address 10.74.11.145 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan808
+ ip address 10.74.11.161 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan809
+ ip address 10.74.11.177 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan810
+ ip address 10.74.11.193 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan811
+ ip address 10.74.11.209 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan812
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan813
+ ip address 10.74.14.1 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan814
+ ip address 10.74.14.33 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan815
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan816
+ ip address 10.74.126.193 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan817
+ ip address 10.74.31.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan818
+ ip address 10.74.22.193 255.255.255.192
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan819
+ ip address 10.74.126.225 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan820
+ ip address 10.75.171.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan821
+ ip address 10.75.172.1 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan822
+ ip address 10.75.172.17 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!         
+interface Vlan823
+ ip address 10.75.173.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan824
+ ip address 10.75.170.1 255.255.255.128
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan825
+ ip address 10.74.11.225 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan826
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+!
+interface Vlan827
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan828
+ ip address 100.200.1.1 255.255.255.192
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan829
+ ip address 10.74.14.65 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan830
+ ip address 10.75.174.1 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan831
+ ip address 10.75.175.241 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan832
+ ip address 10.74.116.1 255.255.255.128
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan833
+ ip address 10.75.165.1 255.255.255.192
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan834
+ ip address 100.200.2.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan835
+ ip address 10.74.14.97 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan836
+ ip address 10.74.14.129 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan837
+ ip address 10.74.116.129 255.255.255.128
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan838
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan839
+ ip address 192.168.171.254 255.255.255.0
+ ip nat inside
+ ip flow ingress
+ ip flow egress
+ ip ospf authentication-key cisco
+!
+interface Vlan840
+ ip address 10.75.165.65 255.255.255.192
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan841
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown 
+ ipv6 address 2011:0:0:169::1/64
+ ipv6 enable
+!
+interface Vlan842
+ ip address 10.79.49.1 255.255.255.128
+ ip access-group 105 in
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan843
+ ip address 10.79.49.129 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan844
+ ip address 10.74.24.33 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan845
+ ip address 10.74.24.65 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan846
+ ip address 10.74.24.193 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan847
+ ip address 10.75.161.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan848
+ ip address 100.200.3.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan849
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan850
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan851
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan852
+ ip address 10.75.211.1 255.255.255.128
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan853
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan854
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan855
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan856
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan857
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan858
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan859
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan860
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan861
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan862
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan863
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan864
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan865
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan866
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan867
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan868
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan869
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan870
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan871
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan872
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan873
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan874
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan875
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan876
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan877
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan878
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan879
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan880
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan881
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan882
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan883
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan884
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan885
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!         
+interface Vlan886
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan887
+ ip address 10.74.127.129 255.255.255.128
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan888
+ ip address 10.74.3.129 255.255.255.128
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan889
+ ip address 10.75.172.33 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan890
+ ip address 10.75.172.65 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan891
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan892
+ no ip address
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan893
+ ip address 10.79.50.1 255.255.255.128
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan894
+ ip address 10.79.50.129 255.255.255.192
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan895
+ ip address 10.79.52.1 255.255.255.240
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan896
+ ip address 10.79.52.129 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan897
+ ip address 10.79.52.161 255.255.255.224
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan898
+ ip address 10.79.52.193 255.255.255.192
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan899
+ no ip address
+ ip flow ingress
+ ip flow egress
+ shutdown
+!
+interface Vlan900
+ ip address 10.79.62.1 255.255.255.0
+ ip flow ingress
+ ip flow egress
+!
+interface Vlan901
+ description temp for yinisun
+ no ip address
+ shutdown
+!
+interface Vlan930
+ ip address 10.79.53.1 255.255.255.0
+ shutdown
+!
+interface Vlan931
+ ip address 10.79.53.1 255.255.255.0
+ ip access-group 156 in
+ ip access-group 156 out
+!
+interface Vlan932
+ ip address 10.79.55.254 255.255.255.0
+!
+interface Vlan933
+ description feiyang2
+ ip address 10.79.56.1 255.255.255.0
+!
+interface Vlan934
+ description reroute-to-B16
+ ip address 10.79.57.1 255.255.255.0
+ shutdown
+!
+interface Vlan935
+ no ip address
+!
+interface Vlan936
+ ip address 10.124.20.1 255.255.255.128
+!
+interface Vlan937
+ ip address 10.124.27.1 255.255.255.0
+!
+interface Vlan938
+ ip address 10.124.28.1 255.255.255.128
+!
+interface Vlan939
+ ip address 10.124.28.129 255.255.255.128
+!
+interface Vlan1000
+ ip address 100.1.1.1 255.255.255.0
+ ip nat inside
+!
+router ospf 2
+ log-adjacency-changes
+ area 3 authentication
+ network 1.9.9.0 0.0.0.255 area 3
+ network 192.168.171.0 0.0.0.255 area 3
+!
+router ospf 100
+ log-adjacency-changes
+!
+ip nat inside source static tcp 192.168.171.1 443 10.74.3.100 10001 extendable
+ip nat inside source static tcp 192.168.171.5 80 10.74.3.100 10005 extendable
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.74.43.49 name TO-IT-GW
+ip route 10.74.24.128 255.255.255.224 10.74.43.62
+ip route 10.74.25.0 255.255.255.192 10.74.43.62
+ip route 10.74.25.128 255.255.255.128 10.74.43.62
+ip route 10.74.54.0 255.255.255.0 10.74.3.38 name TO-CABU-GW
+ip route 10.74.124.0 255.255.255.0 1.1.101.2
+ip route 10.74.125.0 255.255.255.0 100.100.100.2
+ip route 10.75.162.0 255.255.255.0 100.100.100.2
+ip route 10.75.169.0 255.255.255.128 211.211.0.2
+ip route 10.75.172.34 255.255.255.255 10.74.3.84 name PowerGreen
+ip route 10.75.172.35 255.255.255.255 10.74.3.84 name PowerGreen
+ip route 10.75.172.36 255.255.255.255 10.74.3.84 name PowerGreen
+ip route 10.75.210.0 255.255.255.0 GigabitEthernet2/45 10.75.210.130 2
+ip route 10.75.211.0 255.255.255.0 GigabitEthernet2/45 10.75.210.130 2
+ip route 10.75.212.0 255.255.255.0 GigabitEthernet2/45 10.75.210.130 2
+ip route 10.75.213.0 255.255.255.0 GigabitEthernet2/45 10.75.210.130 2
+ip route 10.75.214.0 255.255.255.0 GigabitEthernet2/45 10.75.210.130 2
+ip route 10.75.215.0 255.255.255.0 GigabitEthernet2/45 10.75.210.130 2
+ip route 10.79.43.0 255.255.255.0 100.100.100.2
+ip route 10.79.46.0 255.255.255.0 211.211.0.2
+ip route 10.79.60.4 255.255.255.255 10.74.3.112
+ip route 10.124.21.0 255.255.255.0 100.100.100.2
+ip route 10.124.25.0 255.255.255.0 100.100.100.2
+ip route 20.20.20.0 255.255.255.0 Tunnel30
+ip route 100.100.0.0 255.255.0.0 1.1.100.2
+ip route 100.100.28.0 255.255.255.0 1.1.100.2
+ip route 110.0.0.0 255.255.255.0 10.74.3.84
+ip route 172.168.1.0 255.255.255.0 10.74.51.8
+ip route 172.168.2.0 255.255.255.0 10.74.51.8
+ip route 172.168.3.0 255.255.255.0 10.74.51.8
+ip route 172.168.4.0 255.255.255.0 10.74.51.8
+ip route 172.168.5.0 255.255.255.0 10.74.51.8
+ip route 172.168.6.0 255.255.255.0 10.74.51.8
+ip route 172.168.7.0 255.255.255.0 10.74.51.8
+ip route 172.168.8.0 255.255.255.0 10.74.51.8
+ip route 172.168.9.0 255.255.255.0 10.74.51.8
+ip route 172.168.10.0 255.255.255.0 10.74.51.8
+ip route 192.168.170.0 255.255.255.0 Tunnel11
+ip route 192.168.173.0 255.255.255.0 Tunnel12
+ip route 192.168.200.0 255.255.255.0 Tunnel0
+!
+ip flow-top-talkers
+ top 100
+ sort-by bytes
+ cache-timeout 30000
+ match source address 10.74.0.0 255.255.0.0
+!
+ip http server
+no ip http secure-server
+!
+ip access-list extended NMTG-10.75.169.13
+ deny   ip host 10.75.169.13 any
+ permit ip any any
+ip access-list extended santo-sb
+ deny   ip host 10.75.169.14 any
+ permit ip any any
+ip access-list extended test
+!
+access-list 1 deny   10.74.51.202
+access-list 1 permit any
+access-list 10 permit 64.36.4.1 10.74.43.50
+access-list 11 deny   102.0.0.254
+access-list 11 permit any
+access-list 100 deny   ip any any
+access-list 105 deny   ip host 10.79.49.105 host 10.79.49.109
+access-list 105 permit ip any any
+access-list 156 deny   ip host 10.79.53.34 host 10.75.168.147
+access-list 156 permit ip any any
+access-list 187 permit ip host 10.74.90.105 172.161.0.0 0.0.255.255
+access-list 187 deny   ip host 10.74.90.105 any
+access-list 187 permit ip any any
+arp 10.74.3.75 000c.29b5.6c65 ARPA
+arp 10.74.3.84 0022.90af.d180 ARPA
+arp 10.74.90.92 0050.5686.29e6 ARPA
+ipv6 route 2011:0:0:2::/64 2011:0:0:100::2
+ipv6 route 2011:0:0:162::/64 2011:0:0:100::2
+ipv6 route 2011:0:0:200::/64 2011:0:0:100::2
+ipv6 route ::/0 2001:420:588C:2000::1
+snmp-server community public RO
+snmp-server community ciscoprivate RW
+snmp-server location SHN15-4F
+snmp-server contact Simon
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps chassis
+snmp-server enable traps module
+snmp-server enable traps transceiver all
+snmp-server enable traps ds1
+snmp-server enable traps casa
+snmp-server enable traps tty
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface-old
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps atm subif
+snmp-server enable traps bgp
+snmp-server enable traps bulkstat collection transfer
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps event-manager
+snmp-server enable traps frame-relay
+snmp-server enable traps frame-relay subif
+snmp-server enable traps hsrp
+snmp-server enable traps ipmulticast
+snmp-server enable traps MAC-Notification move threshold
+snmp-server enable traps msdp
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps rf
+snmp-server enable traps rtr
+snmp-server enable traps slb real virtual csrp
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps flex-links status
+snmp-server enable traps sonet
+snmp-server enable traps dial
+snmp-server enable traps fru-ctrl
+snmp-server enable traps entity
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps cpu threshold
+snmp-server enable traps rsvp
+snmp-server enable traps srp
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps flash insertion removal
+snmp-server enable traps c6kxbar intbus-crcexcd intbus-crcrcvrd
+snmp-server enable traps envmon fan shutdown supply temperature status
+snmp-server enable traps csg agent quota database
+snmp-server enable traps port-security
+snmp-server enable traps alarms
+snmp-server enable traps vlan-mac-limit
+snmp-server host 10.74.21.20 public 
+snmp-server host 10.74.90.2 public 
+tacacs-server host 171.70.168.112
+tacacs-server host 173.38.203.29
+tacacs-server host 64.104.123.61
+tacacs-server host 171.70.168.246
+tacacs-server host 64.102.6.243
+tacacs-server host 64.104.123.228
+tacacs-server host 144.254.71.234
+tacacs-server timeout 15
+tacacs-server directed-request
+!
+radius-server source-ports 1645-1646
+radius-server key cisco
+!
+control-plane
+!
+!
+dial-peer cor custom
+!
+!
+!
+banner motd ^CCC
+
+You have entered $(hostname).$(domain) on vty $(line)
+
+          
+ .:|:.:|:.             Lab Admin: qshi2@cisco.com 
+ C I S C O             Lab Ops:crdc-labs@cisco.com
+
+UNAUTHORIZED ACCESS TO THIS NETWORK DEVICE IS PROHIBITED.
+You must have explicit permission to access or configure this
+device.  All activities performed on this device are logged and
+violations of this policy may result in disciplinary action.
+^C
+!
+line con 0
+ exec-timeout 0 0
+ password ansg@crdc
+ logging synchronous
+line vty 0 4
+ exec-timeout 0 0
+ login authentication lab
+ transport input all
+line vty 5 15
+ exec-timeout 5 30
+ login authentication lab
+ transport input all
+!
+ntp clock-period 17179863
+ntp server 172.20.136.1
+ntp server 171.68.10.80
+ntp server 171.68.10.150
+mac-address-table static 0019.07aa.2d80 vlan 21 drop
+mac-address-table static 0019.bb25.2a65 vlan 21 drop
+mac-address-table static 0022.5524.28c0 vlan 21 drop
+mac-address-table static 00a0.0900.0018 vlan 21 drop
+mac-address-table static 00a0.0900.0064 vlan 21 drop
+mac-address-table static 00a0.c900.0000 vlan 21 drop
+mac-address-table static 0015.1791.421d vlan 100 drop
+mac-address-table static 0015.1791.421d vlan 101 drop
+end
+
+SHN15-L4-GW#     sho
+SHN15-L4-GW#     show vtp status
+VTP Version                     : 2
+Configuration Revision          : 290
+Maximum VLANs supported locally : 1005
+Number of existing VLANs        : 157
+VTP Operating Mode              : Server
+VTP Domain Name                 : ansg
+VTP Pruning Mode                : Disabled
+VTP V2 Mode                     : Disabled
+VTP Traps Generation            : Enabled
+MD5 digest                      : 0xC4 0xEA 0x34 0x1B 0xB8 0x85 0x4D 0x29 
+Configuration last modified by 192.168.68.1 at 6-30-16 07:10:42
+Local updater ID is 192.168.68.1 on interface Vl2 (lowest numbered VLAN interface found)
+SHN15-L4-GW#sho
+SHN15-L4-GW#show vtp
+SHN15-L4-GW#show vtp passw
+SHN15-L4-GW#show vtp password 
+VTP Password: ansg
+SHN15-L4-GW#Connection closed by foreign host.
+FEIWAN2-M-V0AA:ciscolab feiwan2$ 

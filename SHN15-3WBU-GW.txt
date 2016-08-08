@@ -1,0 +1,1202 @@
+SHN15-3WBU-GW#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+S11-IS-SW-Q9     Gig 2/43          176            S       WS-C3750G Gig 2/0/48
+S11-IS-SW-Q8     Gig 2/22          137           S I      WS-C3750E Gig 1/0/48
+Stage11-D12-GW   Gig 2/13          129          R S I     CISCO7606 Gig 2/17
+S11-3WBU-SW-D01-new
+                 Gig 2/36          144           S I      WS-C3750E Gig 1/0/48
+shn15-4-lab-sw1.cisco.com
+                 Gig 6/2           178          R S I     WS-C6506- Gig 1/18
+S11-IS-SW-H01    Gig 2/27          171          R S I     WS-C3750G Gig 1/0/48
+3WBU-C2811-R2.yourdomain.com
+                 Gig 2/4           129          R S I     2811      Fas 0/0
+S11-3WBU-SW-D04  Gig 2/25          126           S I      WS-C3750G Gig 1/0/48
+3WBU-PERF-R7301-D06
+                 Gig 2/46          164            R       7301      Gig 0/2
+S11-3WBU-SW-D03  Gig 2/34          140          R S I     WS-C3750G Gig 1/0/48
+S11-3750-01      Gig 2/9           138           S I      WS-C3750G Gig 1/0/47
+S11-3WBU-SW-Q01  Gig 2/5           137           S I      WS-C3750G Gig 1/0/48
+3WBU-PERF-3750E-D06
+          
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+                 Gig 2/47          172          R S I     WS-C3750E Gig 1/0/46
+S11-3WBU-SW-Q03  Gig 2/37          150           S I      WS-C3750G Gig 1/0/48
+S11-3WBU-SW-Q05  Gig 2/39          135           S I      WS-C3750G Gig 1/0/48
+S11-3WBU-SW-Q06  Gig 2/40          146           S I      WS-C3750G Gig 1/0/48
+S11-3WBU-SW-Q07  Gig 2/42          163           S I      WS-C3750G Gig 2/0/48
+3WBU-C2811-QO3.yourdomain.com
+                 Gig 2/45          148          R S I     2811      Fas 0/0
+S11-3WBU-SW-Q02-02
+                 Gig 2/1           145           S I      WS-C3750E Gig 1/0/48
+SHN15-3WBU-GW# sho
+SHN15-3WBU-GW# show cdp
+SHN15-3WBU-GW# show cdp en
+SHN15-3WBU-GW# show cdp entry * pro
+Protocol information for S11-IS-SW-Q9 :
+  IP address: 10.74.27.9
+Protocol information for S11-IS-SW-Q8 :
+  IP address: 10.74.27.215
+Protocol information for Stage11-D12-GW :
+  IP address: 7.7.7.8
+Protocol information for S11-3WBU-SW-D01-new :
+  IP address: 10.75.168.2
+Protocol information for shn15-4-lab-sw1.cisco.com :
+  IP address: 101.101.101.1
+Protocol information for S11-IS-SW-H01 :
+  IP address: 10.74.27.12
+Protocol information for 3WBU-C2811-R2.yourdomain.com :
+  IP address: 10.74.26.19
+Protocol information for S11-3WBU-SW-D04 :
+  IP address: 10.74.26.37
+Protocol information for 3WBU-PERF-R7301-D06 :
+  IP address: 10.74.26.18
+Protocol information for S11-3WBU-SW-D03 :
+  IP address: 10.74.26.188
+Protocol information for S11-3750-01 :
+  IP address: 10.75.168.57
+Protocol information for S11-3WBU-SW-Q01 :
+  IP address: 10.74.25.5
+Protocol information for 3WBU-PERF-3750E-D06 :
+  IP address: 10.74.26.14
+Protocol information for S11-3WBU-SW-Q03 :
+  IP address: 10.74.27.3
+Protocol information for S11-3WBU-SW-Q05 :
+  IP address: 10.74.27.5
+Protocol information for S11-3WBU-SW-Q06 :
+  IP address: 10.74.27.2
+Protocol information for S11-3WBU-SW-Q07 :
+  IP address: 10.74.27.6
+Protocol information for 3WBU-C2811-QO3.yourdomain.com :
+  IP address: 10.74.26.250
+Protocol information for S11-3WBU-SW-Q02-02 :
+  IP address: 10.74.26.2
+SHN15-3WBU-GW#  sho
+SHN15-3WBU-GW#  show run
+Building configuration...
+
+Current configuration : 28240 bytes
+!
+! Last configuration change at 15:05:29 UTC Mon Jul 25 2016
+! NVRAM config last updated at 10:31:00 UTC Mon Jul 18 2016
+!
+version 12.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service counters max age 10
+!
+hostname SHN15-3WBU-GW
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$../E$st7lCgMJgl4TTSnHFeV8r/
+!
+no aaa new-model
+!         
+!
+!
+clock timezone UTC 8
+svclc multiple-vlan-interfaces
+svclc vlan-group 50  100,201,203
+ip source-route
+!
+!
+ip multicast-routing 
+ip domain name cisco.com
+ip name-server 64.104.123.144
+ip name-server 171.70.168.183
+!
+!
+ipv6 unicast-routing
+!
+!
+mls flow ip interface-full
+mls flow ipv6 full
+no mls acl tcam share-global
+mls cef error action reset
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+spanning-tree vlan 1,100,200-204 priority 28672
+diagnostic cns publish cisco.cns.device.diag_results
+diagnostic cns subscribe cisco.cns.device.diag_commands
+no errdisable detect cause pagp-flap
+no errdisable detect cause dtp-flap
+no errdisable detect cause link-flap
+no errdisable detect cause l2ptguard
+no errdisable detect cause gbic-invalid
+no errdisable detect cause arp-inspection
+no errdisable detect cause loopback
+errdisable recovery cause udld
+errdisable recovery cause bpduguard
+errdisable recovery cause security-violation
+errdisable recovery cause channel-misconfig
+errdisable recovery cause pagp-flap
+errdisable recovery cause dtp-flap
+errdisable recovery cause link-flap
+errdisable recovery cause gbic-invalid
+errdisable recovery cause l2ptguard
+errdisable recovery cause psecure-violation
+errdisable recovery cause gbic-invalid
+errdisable recovery cause dhcp-rate-limit
+errdisable recovery cause mac-limit
+errdisable recovery cause unicast-flood
+errdisable recovery cause vmps
+errdisable recovery cause storm-control
+errdisable recovery cause arp-inspection
+errdisable recovery cause link-monitor-failure
+errdisable recovery cause oam-remote-failure
+errdisable recovery cause loopback
+!
+redundancy
+ main-cpu
+  auto-sync running-config
+ mode sso
+!
+vlan internal allocation policy ascending
+vlan access-log ratelimit 2000
+!
+vlan 3333 
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+interface Loopback1
+ no ip address
+!
+interface Port-channel100
+ description for ip-nas
+ switchport
+ switchport access vlan 100
+!
+interface Tunnel10
+ no ip address
+!
+interface TenGigabitEthernet1/1
+ switchport
+ switchport access vlan 201
+!
+interface TenGigabitEthernet1/2
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet1/3
+ no ip address
+!
+interface TenGigabitEthernet1/4
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/1
+ description connect to S11-3WBU-SW-Q02-02
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/2
+ no ip address
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/4
+ description 3WBU-C2811-R2
+ switchport
+ switchport access vlan 100
+ switchport trunk allowed vlan 200
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/5
+ description connect to S11-3WBU-SW-Q01
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/6
+ description connect to S11-3WBU-SW-Q02
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/7
+ description connect to 3WBU-NAS326
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/8
+ description connect to UCS109 for vCenter
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/9
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/10
+ switchport
+ switchport access vlan 100
+ switchport mode access
+!
+interface GigabitEthernet2/11
+ switchport
+ switchport access vlan 100
+ switchport mode access
+!
+interface GigabitEthernet2/12
+ switchport
+ switchport access vlan 100
+ switchport mode access
+!
+interface GigabitEthernet2/13
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 101,102,177,502,777,851,933,999
+ switchport mode trunk
+!
+interface GigabitEthernet2/14
+ description connect to UCS-100 traffic
+ switchport
+ switchport access vlan 204
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/15
+ switchport
+ switchport access vlan 102
+ switchport mode access
+!
+interface GigabitEthernet2/16
+ description connect to UCS-91 traffic
+ switchport
+ switchport access vlan 204
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/17
+ description 3wbu-ucs-18
+ switchport
+ switchport access vlan 100
+ switchport mode access
+!         
+interface GigabitEthernet2/18
+ description connect to UCS-73 traffic
+ switchport
+ switchport access vlan 203
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 203
+ switchport trunk allowed vlan 100,203
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/19
+ switchport
+ switchport access vlan 101
+ switchport mode access
+!
+interface GigabitEthernet2/20
+ switchport
+ switchport access vlan 101
+ switchport mode access
+!
+interface GigabitEthernet2/21
+ switchport
+ switchport access vlan 101
+ switchport mode access
+!
+interface GigabitEthernet2/22
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/23
+ switchport
+ switchport access vlan 101
+ switchport mode access
+!
+interface GigabitEthernet2/24
+ switchport
+ switchport access vlan 101
+ switchport mode access
+!
+interface GigabitEthernet2/25
+ description connect to UCS-103 mgmt
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/26
+ description connect to UCS-100 mgmt
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/27
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/28
+ description connect to UCS-91 mgmt
+ switchport
+ switchport access vlan 200
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/29
+ switchport
+ switchport access vlan 100
+ switchport mode access
+!
+interface GigabitEthernet2/30
+ description connect to XCP-QA-1
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/31
+ description connect to XCP-QA-1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/32
+ description connect to UCS-73 mgmt
+ switchport
+ switchport access vlan 200
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/33
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/34
+ switchport
+ switchport access vlan 102
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/35
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/36
+ description connect to S11-3WBU-SW-D01
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/37
+ description connect to S11-3WBU-SW-Q03
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/38
+ description connect to S11-3WBU-SW-Q04
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/39
+ description connect to S11-3WBU-SW-Q05
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/40
+ description connect to S11-3WBU-SW-Q06
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/41
+ switchport
+ switchport access vlan 288
+ switchport mode access
+!
+interface GigabitEthernet2/42
+ description Connect to S11-3WBU-SW-Q07
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/43
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/44
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/45
+ description connect to 3WBU-C2811-QO3
+ switchport
+ switchport access vlan 100
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/46
+ description connect to 3WBU-PERF-R7301-D06
+ switchport
+ switchport access vlan 100
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/47
+ description connect to 3WBU-PERF-3750E-D06 for layer2 acces
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet2/48
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/1
+ description connect to S11-3WBU-SW-Q02-02
+ switchport
+ switchport access vlan 201
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/2
+ no ip address
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/4
+ description 3WBU-C2811-R2
+ switchport
+ switchport access vlan 100
+ switchport trunk allowed vlan 200
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/5
+ description connect to S11-3WBU-SW-Q01
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/6
+ description connect to S11-3WBU-SW-Q02
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/7
+ description connect to 3WBU-NAS326
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/8
+ description connect to UCS109 for vCenter
+ switchport
+ switchport access vlan 101
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/9
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!         
+interface GigabitEthernet3/10
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/11
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/12
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/13
+ description connect to UCS-103 traffic
+ switchport
+ switchport access vlan 202
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/14
+ description connect to UCS-100 traffic
+ switchport
+ switchport access vlan 204
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/15
+ description connect to UCS-79 traffic
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 210
+ switchport trunk allowed vlan 203,210
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/16
+ description connect to UCS-91 traffic
+ switchport
+ switchport access vlan 204
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/17
+ description connect to UCS-76 traffic
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 210
+ switchport trunk allowed vlan 203,210
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/18
+ description connect to UCS-73 traffic
+ switchport
+ switchport access vlan 203
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 203
+ switchport trunk allowed vlan 100,203
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/19
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/20
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/21
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/22
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/23
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/24
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/25
+ description connect to UCS-103 mgmt
+ switchport
+ switchport access vlan 200
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/26
+ description connect to UCS-100 mgmt
+ switchport
+ switchport access vlan 200
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/27
+ description connect to UCS-79 mgmt
+ switchport
+ switchport access vlan 200
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/28
+ description connect to UCS-91 mgmt
+ switchport
+ switchport access vlan 200
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/29
+ description connect to UCS-76 mgmt
+ switchport
+ switchport access vlan 200
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/30
+ description connect to XCP-QA-1
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/31
+ description connect to XCP-QA-1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/32
+ description connect to UCS-73 mgmt
+ switchport
+ switchport access vlan 200
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/33
+ description connect to 3WBU-C2811-R1
+ switchport
+ switchport access vlan 100
+ switchport mode access
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/34
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/35
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/36
+ description connect to S11-3WBU-SW-D01
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/37
+ description connect to S11-3WBU-SW-Q03
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!         
+interface GigabitEthernet3/38
+ description connect to S11-3WBU-SW-Q04
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/39
+ description connect to S11-3WBU-SW-Q05
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/40
+ description connect to S11-3WBU-SW-Q06
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/41
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/42
+ description Connect to S11-3WBU-SW-Q07
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/43
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/44
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/45
+ description connect to 3WBU-C2811-QO3
+ switchport
+ switchport access vlan 100
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!         
+interface GigabitEthernet3/46
+ description connect to 3WBU-PERF-R7301-D06
+ switchport
+ switchport access vlan 100
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/47
+ description connect to 3WBU-PERF-3750E-D06 for layer2 acces
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet3/48
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ storm-control broadcast level 30.00
+ storm-control multicast level 30.00
+!
+interface GigabitEthernet6/1
+ no ip address
+ shutdown
+!
+interface GigabitEthernet6/2
+ description TO-IT-SW/P18
+ ip address 10.74.43.62 255.255.255.252
+ ip mtu 1476
+ ip nat outside
+ ip tcp adjust-mss 1436
+ media-type rj45
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan11
+ description MOS Mgmt VLAN
+ ip address 100.10.10.1 255.255.255.0
+ ip nat inside
+!
+interface Vlan12
+ description MOS Ingest VLAN
+ ip address 100.20.10.1 255.255.255.0
+ ip pim sparse-dense-mode
+ ip igmp version 3
+!
+interface Vlan13
+ description MOS Storage VLAN
+ ip address 100.30.10.1 255.255.255.0
+ ip pim sparse-dense-mode
+ ip igmp version 3
+!
+interface Vlan44
+ description MOS Output VLAN
+ ip address 100.40.10.1 255.255.255.0
+ ip nat inside
+!         
+interface Vlan84
+ no ip address
+ shutdown
+!
+interface Vlan100
+ ip address 10.74.26.1 255.255.255.0
+!
+interface Vlan101
+ ip address 10.75.168.1 255.255.255.0
+!
+interface Vlan102
+ ip address 10.74.27.1 255.255.255.0
+ ip nat inside
+!
+interface Vlan177
+ ip address 3.3.3.1 255.255.255.0
+ ipv6 address FEC0:0:3:88::1/64
+!
+interface Vlan200
+ ip address 172.16.0.1 255.255.255.0
+ ip nat inside
+ ipv6 address 2001:DB8::172:16:0:1/112
+ ipv6 enable
+!
+interface Vlan201
+ ip address 172.16.1.1 255.255.255.0
+ ip nat inside
+ ipv6 address 2001:DB8::172:16:1:1/112
+ ipv6 enable
+!
+interface Vlan202
+ ip address 172.16.2.1 255.255.255.0
+ ip nat inside
+ ipv6 address 2001:DB8::172:16:2:1/112
+ ipv6 enable
+!
+interface Vlan203
+ ip address 172.16.3.1 255.255.255.0
+ ip helper-address 172.17.1.10
+ ip helper-address 10.74.27.10
+ ip nat inside
+ ipv6 address 2001:DB8::172:16:3:1/112
+ ipv6 enable
+!
+interface Vlan204
+ ip address 172.16.4.1 255.255.255.0
+ ip nat inside
+ ipv6 address 2001:DB8::172:16:4:1/112
+ ipv6 enable
+!
+interface Vlan206
+ ip address 172.16.6.1 255.255.255.0
+!
+interface Vlan207
+ ip address 172.16.7.1 255.255.255.0
+ ip nat inside
+ ipv6 address 2001:DB8::172:16:7:1/112
+ ipv6 enable
+!
+interface Vlan208
+ ip address 172.16.8.1 255.255.255.0
+ ip nat inside
+ ipv6 address 2001:DB8::172:16:8:1/112
+ ipv6 enable
+!
+interface Vlan210
+ description dynamic reserved for de
+ ip address 172.16.100.1 255.255.255.0
+ ip nat inside
+ ipv6 address 2001:DB8::172:16:100:1/112
+ ipv6 enable
+!
+interface Vlan211
+ description testing
+ ip address 172.160.100.1 255.255.255.0
+!
+interface Vlan288
+ ip address 4.4.4.4 255.255.255.0
+!
+interface Vlan300
+ ip address 172.17.0.1 255.255.255.0
+ ip nat inside
+!
+interface Vlan301
+ ip address 172.17.1.1 255.255.255.0
+ ip nat inside
+!
+interface Vlan302
+ ip address 172.17.2.1 255.255.255.0
+ ip nat inside
+!
+interface Vlan303
+ ip address 172.17.3.1 255.255.255.0
+ ip nat inside
+!
+interface Vlan304
+ ip address 172.17.4.1 255.255.255.0
+ ip nat inside
+!
+interface Vlan305
+ ip address 172.17.5.1 255.255.255.0
+ ip nat inside
+ ipv6 address 2001:DB8::172:17:5:1/112
+ ipv6 enable
+!
+interface Vlan306
+ ip address 172.17.6.1 255.255.255.0
+ ip nat inside
+!
+interface Vlan502
+ ip address 18.0.0.1 255.0.0.0
+!
+interface Vlan777
+ ip address 7.7.7.7 255.255.255.0
+!
+interface Vlan849
+ ip address 10.74.25.1 255.255.255.192
+!
+interface Vlan850
+ ip address 10.74.25.129 255.255.255.128
+!
+interface Vlan851
+ ip address 10.74.24.129 255.255.255.224
+ ip nat inside
+!
+interface Vlan999
+ no ip address
+!
+interface GMPLS2
+ no ip address
+ no keepalive
+!
+interface GMPLS2.48
+!
+!
+router eigrp 10
+ network 10.74.24.128 0.0.0.31
+ network 10.74.25.0 0.0.0.63
+ network 10.74.25.128 0.0.0.127
+ network 10.74.26.0 0.0.0.255
+ network 10.74.27.0 0.0.0.255
+ network 10.75.168.0 0.0.0.255
+ network 172.16.0.0
+ network 172.16.100.0 0.0.0.255
+ network 172.17.0.0
+!
+!
+router eigrp 100
+!
+ip nat inside source static 172.16.0.154 10.74.24.154
+ip nat inside source static 172.16.8.100 10.74.25.31
+ip nat inside source static 172.16.0.144 10.74.25.32
+ip nat inside source static 172.16.8.111 10.74.25.41
+ip nat inside source static 172.16.8.112 10.74.25.42
+ip nat inside source static 172.16.8.113 10.74.25.43
+ip nat inside source static 172.16.8.114 10.74.25.44
+ip nat inside source static 172.16.8.115 10.74.25.45
+ip nat inside source static 172.16.8.116 10.74.25.46
+ip nat inside source static 172.16.8.117 10.74.25.47
+ip nat inside source static 172.16.8.118 10.74.25.48
+ip nat inside source static 172.16.8.119 10.74.25.49
+ip nat inside source static 172.16.8.120 10.74.25.50
+ip nat inside source static 172.16.8.121 10.74.25.51
+ip nat inside source static 172.16.8.126 10.74.25.56
+ip nat inside source static 172.16.8.127 10.74.25.57
+ip nat inside source static 172.16.8.128 10.74.25.58
+ip nat inside source static 172.16.0.194 10.74.26.78
+ip nat inside source static 172.16.0.139 10.74.26.187
+ip nat inside source static 172.16.0.142 10.74.26.191
+ip nat inside source static 172.16.8.108 10.74.26.194
+ip nat inside source static 172.16.8.132 10.74.26.195
+ip nat inside source static 172.16.8.136 10.74.26.196
+ip nat inside source static 192.168.70.54 10.74.26.221
+ip nat inside source static 192.168.70.158 10.74.26.222
+ip nat inside source static 192.168.70.21 10.74.26.245
+ip nat inside source static 172.16.0.148 10.74.26.246
+ip nat inside source static 172.16.0.151 10.74.26.248
+ip nat inside source static 172.16.0.152 10.74.26.249
+ip nat inside source static 172.17.0.140 10.74.27.46
+ip nat inside source static 172.17.0.141 10.74.27.47
+ip nat inside source static 172.17.0.114 10.74.27.53
+ip nat inside source static 172.17.0.132 10.74.27.56
+ip nat inside source static 172.17.0.137 10.74.27.61
+ip nat inside source static 172.17.0.139 10.74.27.63
+ip nat inside source static 172.17.6.10 10.74.27.64
+ip nat inside source static 172.17.3.18 10.74.27.79
+ip nat inside source static 172.17.4.16 10.74.27.91
+ip nat inside source static 172.17.2.19 10.74.27.92
+ip nat inside source static 172.17.6.19 10.74.27.94
+ip nat inside source static 172.17.5.34 10.74.27.97
+ip nat inside source static 172.17.0.188 10.74.27.113
+ip nat inside source static 172.17.5.17 10.74.27.120
+ip nat inside source static 172.17.6.120 10.74.27.126
+ip nat inside source static 172.17.3.15 10.74.27.155
+ip nat inside source static 172.17.5.12 10.74.27.169
+ip nat inside source static 172.17.3.110 10.74.27.189
+ip nat inside source static 172.17.6.9 10.74.27.221
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 10.74.43.61
+ip route 10.79.53.0 255.255.255.0 7.7.7.8
+ip route 10.79.56.0 255.255.255.0 7.7.7.8
+ip route 19.102.1.0 255.255.255.0 7.7.7.8
+ip route 19.106.1.0 255.255.255.0 7.7.7.8
+!
+access-list 10 deny   10.74.27.148
+!
+route-map 1 permit 10
+ match ip address 1
+ set ip next-hop 10.74.27.1
+!
+!
+tacacs-server host 171.70.168.246
+tacacs-server host 64.102.6.243
+tacacs-server host 64.104.123.228
+tacacs-server host 144.254.71.234
+tacacs-server timeout 15
+tacacs-server directed-request
+!         
+control-plane
+!
+banner motd ^C
+CCC
+You have entered $(hostname).$(domain) on vty $(line)
+
+ 
+.:|:.:|:.              Lab Admin: casliu@cisco.com, 
+C I S C O                         mingle@cisco.com
+                       Lab Ops:crdc-labs@cisco.com
+
+UNAUTHORIZED ACCESS TO THIS NETWORK DEVICE IS PROHIBITED.
+You must have explicit permission to access or configure this
+device.  All activities performed on this device are logged and
+violations of this policy may result in disciplinary action.
+^C
+!
+line con 0
+ session-timeout 5 
+ exec-timeout 5 0
+ logging synchronous
+line vty 0 4
+ session-timeout 30 
+ exec-timeout 30 0
+ password 7 06051D254F
+ login
+ transport input all
+line vty 5 15
+ session-timeout 30 
+ exec-timeout 30 0
+ password 7 06051D254F
+ login
+!
+exception crashinfo buffersize 80
+!
+monitor session 1 source interface Gi6/2
+monitor session 1 destination interface Gi2/15
+ntp clock-period 17179909
+ntp server 172.20.136.1
+ntp server 171.68.10.80
+ntp server 171.68.10.150
+!
+end

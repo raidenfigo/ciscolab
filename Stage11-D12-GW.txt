@@ -1,0 +1,1117 @@
+Stage11-D12-GW#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+SH-VCPB-SW-S11-D10
+                 Gig 2/2           175           S I      WS-C3750G Gig 1/0/48
+SHN15-3WBU-GW.cisco.com
+                 Gig 2/17          153          R S I     CISCO7606 Gig 2/13
+s11-D13-switch3750
+                 Gig 2/4           155           S I      WS-C3750G Gig 3/0/1
+SHN15-L4-GW.cisco.com
+                 Gig 2/1           122          R S I     CISCO7604 Gig 2/15
+s11-D14-sw3750   Gig 2/5           153           S I      WS-C3750G Gig 1/0/48
+4F-D10-6509      Gig 2/3           146          R S I     WS-C6509- Gig 5/3
+H06-27.4         Gig 2/47          136            S       WS-C3750G Gig 1/0/1
+stage11_d11_cisco2811
+                 Gig 2/6           166           S I      2811      Fas 0/0
+Stage11-D12-GW# sho
+Stage11-D12-GW# show cdp
+Stage11-D12-GW# show cdp en
+Stage11-D12-GW# show cdp entry * pro
+Protocol information for SH-VCPB-SW-S11-D10 :
+  IP address: 101.0.0.2
+Protocol information for SHN15-3WBU-GW.cisco.com :
+  IP address: 10.75.168.1
+Protocol information for s11-D13-switch3750 :
+  IP address: 18.0.121.2
+Protocol information for SHN15-L4-GW.cisco.com :
+  IP address: 192.168.68.1
+Protocol information for s11-D14-sw3750 :
+  IP address: 81.1.1.2
+Protocol information for 4F-D10-6509 :
+  IP address: 18.127.1.1
+Protocol information for H06-27.4 :
+  IP address: 192.168.1.1
+Protocol information for stage11_d11_cisco2811 :
+  IP address: 10.74.11.189
+Stage11-D12-GW#sho
+Stage11-D12-GW#show run
+Building configuration...
+
+Current configuration : 18347 bytes
+!
+! Last configuration change at 05:42:32 UTC Wed Jul 27 2016
+!
+version 12.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service counters max age 10
+!
+hostname Stage11-D12-GW
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$YzJ/$hV9OFmv8smdys4YcnXroo/
+!
+no aaa new-model
+!
+!
+!         
+ip source-route
+!
+!
+ip multicast-routing 
+!
+!
+ipv6 unicast-routing
+!
+!
+vtp domain ansg
+vtp mode transparent
+mls flow ip interface-full
+no mls flow ipv6
+no mls acl tcam share-global
+mls cef error action reset
+multilink bundle-name authenticated
+!
+!
+!
+!         
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+diagnostic cns publish cisco.cns.device.diag_results
+diagnostic cns subscribe cisco.cns.device.diag_commands
+username crdc privilege 15 secret 5 $1$lECA$.iVxsZusNMF7aiMNCBM5L.
+!
+redundancy
+ main-cpu
+  auto-sync running-config
+ mode sso
+!
+vlan internal allocation policy ascending
+vlan access-log ratelimit 2000
+!
+vlan 2
+ name SW-Mgrmt
+!
+vlan 3
+ name lab-team-10.74.3.64/26
+!
+vlan 4
+ name Virtulization-support
+!
+vlan 5
+ name lab-reserve2
+!
+vlan 6
+ name VCPBU-Xiaosong-10.74.15.0/24
+!
+vlan 7
+ name lab-reserve4
+!
+vlan 8
+ name lab-reserve5
+!
+vlan 9
+ name lab-reserve6
+!
+vlan 10   
+ name lab-reserve7
+!
+vlan 11
+ name SBTG-Zhaoqwan-Private-1
+!
+vlan 12
+ name SBTG-Zhaoqwan-Private-2
+!
+vlan 13
+ name SBTG-Zhaoqwan-Private-3
+!
+vlan 14
+ name SBTG-Zhaoqwan-Private-4
+!
+vlan 15
+ name SBTG-Zhaoqwan-Private-5
+!
+vlan 16
+ name SBTG-Zhaoqwan-Private-6
+!         
+vlan 17
+ name SBTG-Zhaoqwan-Private-7
+!
+vlan 18
+ name SBTG-Zhaoqwan-Private-8
+!
+vlan 19
+ name SBTG-Zhaoqwan-Private-9
+!
+vlan 20
+ name SBTG-Zhaoqwan-Private-10
+!
+vlan 21
+ name ISBU-192.168.0.0/24
+!
+vlan 22
+ name 10.74.126.32/27
+!
+vlan 23 
+!         
+vlan 25
+ name IPV6
+!
+vlan 26
+ name NMTG-sliqun-10.124.21.0/24
+!
+vlan 27
+ name SPVSS-10.124.26.0/24
+!
+vlan 28
+ name 10.124.25.0/sliqun
+!
+vlan 81-84 
+!
+vlan 89
+ name 10.124.11.0/24/mli3
+!
+vlan 100
+ name SBSBU-10.74.51.0/24
+!         
+vlan 101
+ name 3wbu-10.75.168.0/24
+!
+vlan 102
+ name 3WBU-10.74.27.0/24
+!
+vlan 106 
+!
+vlan 121
+ name VCPBU-jiamei-18.0.121
+!
+vlan 122
+ name VCPBU-jiamei-18.0.122
+!
+vlan 123-127 
+!
+vlan 128
+ name 10.124.9.0/25-no-use-now
+!
+vlan 129  
+ name 10.124.9.128/25-SAVTG
+!
+vlan 168
+ name vlan168
+!
+vlan 169
+ name connect-B16-cubic
+!
+vlan 177
+ name vlan177
+!
+vlan 192
+ name https-19.102.1.1
+!
+vlan 196
+ name https-19.106.1.1
+!
+vlan 201
+ name LDSG-temporary-use
+!         
+vlan 300
+ name 10.74.22.1/26-mli3
+!
+vlan 301
+ name 10.74.22.65/26-mli3
+!
+vlan 400
+ name GREEN-10.74.126.112/28
+!
+vlan 401
+ name GREEN-10.74.126.144/28
+!
+vlan 500
+ name Fishbowl-Private
+!
+vlan 502
+ name testbed-wujin
+!
+vlan 503
+ name tianxin
+!
+vlan 600
+ name SAVTG-10.74.126.160/28
+!
+vlan 601
+ name SAVTG-10.74.126.176/28
+!
+vlan 602
+ name SAVTG-10.74.11.0/28
+!
+vlan 603
+ name SAVTG-10.74.11.16/28
+!
+vlan 604
+ name VCPBU-feyang2
+!
+vlan 605
+ name NMTG-liqun-10.79.46.0/24
+!
+vlan 606  
+ name Networks-BU-xma2-10.124.104.64/2
+!
+vlan 700
+ name spare
+!
+vlan 701
+ name SARFT-NGB-Jianwu-10.75.211.0/24
+!
+vlan 702
+ name SARFT-NGB-Jianwu-10.75.212.0/24
+!
+vlan 703
+ name SARFT-NGB-Jianwu-10.75.213.0/24
+!
+vlan 704
+ name SARFT-NGB-Jianwu-10.75.214.0/24
+!
+vlan 705
+ name SARFT-NGB-Jianwu-10.75.215.0/24
+!         
+vlan 710
+ name VCPBU-jianli-10.75.214.0/24
+!
+vlan 737
+ name ipv6test
+!
+vlan 777
+ name vlan777
+!
+vlan 789
+ name WuLinDaHui-172.161.1.0/24
+!
+vlan 790
+ name 10.124.21.0/25
+!
+vlan 791
+ name 10.124.21.128/25
+!
+vlan 800
+ name VCPBU-guozwang-10.74.11.32/28
+!
+vlan 801
+ name VCPBU-guozwang-10.74.11.48/28
+!
+vlan 802
+ name VCPBU-guozwang-10.74.11.64/28
+!
+vlan 803
+ name VCPBU-guozwang-10.74.11.80/28
+!
+vlan 804
+ name VCPBU-guozwang-10.74.11.96/28
+!
+vlan 805
+ name VCPBU-guozwang-10.74.11.112/28
+!
+vlan 806
+ name VCPBU-guozwang-10.74.11.128/28
+!
+vlan 807  
+ name SPVTG-xbao-10.74.11.144/28
+!
+vlan 808
+ name SPVTG-xbao-10.74.11.160/28
+!
+vlan 809
+ name VCPBU-jiamei-10.74.11.176/28
+!
+vlan 810
+ name UABU-chaoche-10.74.11.192/28
+!
+vlan 811
+ name UABU-chaoche-10.74.11.208/28
+!
+vlan 812
+ name reserved-xiaosong-VCPBU
+!
+vlan 813
+ name VCPBU-xiaosong-10.74.14.0/27
+!         
+vlan 814
+ name VCPBU-xiancao-10.74.14.32/27
+!
+vlan 815 
+!
+vlan 816
+ name SAVTG-10.74.126.192/28
+!
+vlan 817
+ name VCPBU-junche2-10.74.31.0/24
+!
+vlan 818
+ name DCBU-10.74.22.192/26
+!
+vlan 819
+ name SAVTG-Wuyong-10.74.126.224/27
+!
+vlan 821
+ name 10.75.172.0/28-jingm
+!         
+vlan 822 
+!
+vlan 823
+ name SPVSS
+!
+vlan 824
+ name SAVTG-lucyang-10.75.170.0/25
+!
+vlan 825
+ name VCPBU-xiaosong-10.74.11.224/27
+!
+vlan 828
+ name SBTG-Private-vlan-100.200.1.0/26
+!
+vlan 829
+ name VCPBU-jiamei-10.74.14.64/27
+!
+vlan 830
+ name SAVTG-bingha-10.75.174.0/27
+!         
+vlan 831
+ name CCIE-exam-10.75.175.240/255.255.
+!
+vlan 832
+ name VCPBU-Xiaogang-10.74.116.0/24
+!
+vlan 833
+ name VCPBU-Xiaogang-10.75.165.0/26
+!
+vlan 834
+ name SBTG-Private-vlan-2-100.200.2.0
+!
+vlan 835
+ name VCPBU-jiamei-10.74.14.96/27
+!
+vlan 836
+ name VCPBU-jiamei-10.74.14.128/27
+!
+vlan 837
+ name K07-10.74.116.0-xiacao
+!
+vlan 839
+ name SMART-PDU-192.168.171.0/24
+!
+vlan 840
+ name VCPBU-sundzhan-10.75.165.64/26
+!
+vlan 841
+ name NMTG-liqun-10.75.169.0/25
+!
+vlan 842
+ name IPVS-jiamei-10.79.49.0/25
+!
+vlan 843
+ name SCM-Kum-10.79.49.128/27
+!
+vlan 844
+ name IPVS-zhxue-10.74.24.32/27
+!
+vlan 845  
+ name IPVS-zhxue-10.74.24.64/27
+!
+vlan 846
+ name IPVS-zhxue-10.74.24.192/27
+!
+vlan 847
+ name CTEO-yiliu4-10.75.161.0/24
+!
+vlan 848
+ name SBTG-Private-vlan-3-100.200.3.0
+!
+vlan 851 
+!
+vlan 852
+ name VCPBU-jianbing-10.75.211.0/25
+!
+vlan 887
+ name Fishbowl-10.74.127.128/25
+!
+vlan 888  
+ name Fishbowl-10.74.3.128/25
+!
+vlan 889
+ name SGBU-yulan-10.75.172.32/27
+!
+vlan 890
+ name SGBU-yulan-10.75.172.64/27
+!
+vlan 891
+ name NMTG-liqun-10.74.125.0/24-to-100
+!
+vlan 892
+ name NMTG-liqun-10.75.162.0/24-to-100
+!
+vlan 893
+ name Network-kumseng-10.79.50.0/25
+!
+vlan 894
+ name SAVTG-sundzhan-10.79.50.128/26
+!         
+vlan 895
+ name 10.79.52.0/28-CHSBU-Phillip
+!
+vlan 896
+ name SGBU-yulan-10.79.52.128/27
+!
+vlan 897
+ name SGBU-yulan-10.79.52.160/27
+!
+vlan 898
+ name CSPG-zhoqi-10.79.52.192/26
+!
+vlan 899
+ name vlan-for-New-UCS
+!
+vlan 900
+ name CSPG-zhoqi-10.79.62.0/24
+!
+vlan 901-902,929 
+!         
+vlan 930
+ name test
+!
+vlan 931
+ name VCP-feiyang2-10.79.53.0/24
+!
+vlan 932
+ name VCPBU-jianqich-10.79.55.0
+!
+vlan 933
+ name VCPBU-feyang2-10.79.56.0
+!
+vlan 934
+ name NMTG-liqun-10.79.57.0
+!
+vlan 935
+ name 2001:420:588c:2001::/64-weijuhua
+!
+vlan 936
+ name SAVTG-sundzhan-10.124.20.0/25
+!
+vlan 937
+ name 10.124.27.0-xiacao
+!
+vlan 938
+ name 10.124.28.0/25-jingm
+!
+vlan 939
+ name 10.124.28.128/25-talei
+!
+vlan 999
+ name vlan999
+!
+vlan 1000
+ name NAT-qshi
+!
+!
+! 
+!
+!         
+!
+!
+!
+!
+interface GigabitEthernet1/1
+ switchport
+ switchport access vlan 102
+ switchport mode access
+!
+interface GigabitEthernet1/2
+ switchport
+ switchport access vlan 102
+ switchport mode access
+!
+interface GigabitEthernet1/3
+ switchport
+ switchport access vlan 502
+ switchport mode access
+!
+interface GigabitEthernet1/4
+ switchport
+ switchport access vlan 502
+ switchport mode access
+!
+interface GigabitEthernet1/5
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/6
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/7
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/8
+ no ip address
+ shutdown
+!         
+interface GigabitEthernet1/9
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/10
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/11
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ shutdown
+!
+interface GigabitEthernet1/12
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/13
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/14
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/15
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/16
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/17
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/18
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/19
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/20
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/21
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/22
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/23
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/24
+ no ip address
+ shutdown
+!
+interface GigabitEthernet2/1
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ ip access-group 105 in
+!
+interface GigabitEthernet2/2
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/3
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/4
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/5
+ description D14 swtich 
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/6
+ switchport
+ switchport access vlan 809
+ switchport mode access
+!
+interface GigabitEthernet2/7
+ description CT-SR02 port1
+ switchport
+ switchport access vlan 121
+ switchport mode access
+!
+interface GigabitEthernet2/8
+ switchport
+ switchport access vlan 121
+ switchport mode access
+!
+interface GigabitEthernet2/9
+ switchport
+ switchport access vlan 121
+ switchport mode access
+!
+interface GigabitEthernet2/10
+ description CDE220-IS-3
+ switchport
+ switchport access vlan 121
+ switchport mode access
+!         
+interface GigabitEthernet2/11
+ switchport
+ switchport access vlan 829
+ switchport mode access
+!
+interface GigabitEthernet2/12
+ switchport
+ switchport access vlan 829
+ switchport mode access
+!
+interface GigabitEthernet2/13
+ description CDE250-IS-1
+ switchport
+ switchport access vlan 931
+ switchport mode access
+!
+interface GigabitEthernet2/14
+ switchport
+ switchport access vlan 809
+ switchport mode access
+!
+interface GigabitEthernet2/15
+ switchport
+ switchport access vlan 809
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/16
+ switchport
+ switchport access vlan 809
+ switchport mode access
+!
+interface GigabitEthernet2/17
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 101,102,177,502,777,851,933,999
+ switchport mode trunk
+!
+interface GigabitEthernet2/18
+ switchport
+ switchport access vlan 809
+ switchport mode access
+!
+interface GigabitEthernet2/19
+ switchport
+ switchport access vlan 100
+ switchport mode access
+!
+interface GigabitEthernet2/20
+ switchport
+ switchport access vlan 100
+ switchport mode access
+!
+interface GigabitEthernet2/21
+ switchport
+ switchport access vlan 809
+ switchport mode access
+!
+interface GigabitEthernet2/22
+ switchport
+ switchport access vlan 809
+ switchport mode access
+!
+interface GigabitEthernet2/23
+ switchport
+ switchport access vlan 809
+ switchport mode access
+!
+interface GigabitEthernet2/24
+ switchport
+ switchport access vlan 809
+ switchport mode access
+!
+interface GigabitEthernet2/25
+ switchport
+ switchport access vlan 502
+ switchport mode access
+!
+interface GigabitEthernet2/26
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/27
+ switchport
+ switchport access vlan 502
+ switchport mode access
+!
+interface GigabitEthernet2/28
+ switchport
+ switchport access vlan 502
+ switchport mode access
+!
+interface GigabitEthernet2/29
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/30
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/31
+ switchport
+ switchport access vlan 829
+ switchport mode access
+!
+interface GigabitEthernet2/32
+ switchport
+ switchport access vlan 829
+ switchport mode access
+!
+interface GigabitEthernet2/33
+ switchport
+ switchport access vlan 829
+ switchport mode access
+!
+interface GigabitEthernet2/34
+ switchport
+ switchport access vlan 933
+ switchport mode access
+!
+interface GigabitEthernet2/35
+ switchport
+ switchport access vlan 933
+ switchport mode access
+!
+interface GigabitEthernet2/36
+ switchport
+ switchport access vlan 933
+ switchport mode access
+!
+interface GigabitEthernet2/37
+ switchport
+ switchport access vlan 933
+ switchport mode access
+!
+interface GigabitEthernet2/38
+ switchport
+ switchport access vlan 933
+ switchport mode access
+!
+interface GigabitEthernet2/39
+ switchport
+ switchport access vlan 933
+ switchport mode access
+!
+interface GigabitEthernet2/40
+ switchport
+ switchport access vlan 933
+ switchport mode access
+!
+interface GigabitEthernet2/41
+ no ip address
+!
+interface GigabitEthernet2/42
+ no ip address
+!
+interface GigabitEthernet2/43
+ no ip address
+!
+interface GigabitEthernet2/44
+ no ip address
+!
+interface GigabitEthernet2/45
+ no ip address
+!
+interface GigabitEthernet2/46
+ no ip address
+!
+interface GigabitEthernet2/47
+ switchport
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface GigabitEthernet2/48
+ switchport
+ switchport access vlan 899
+ switchport mode access
+!
+interface TenGigabitEthernet3/1
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet3/2
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet3/3
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet3/4
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet3/5
+ switchport
+ switchport access vlan 121
+ switchport mode access
+!
+interface TenGigabitEthernet3/6
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet3/7
+ no ip address
+ shutdown
+!
+interface TenGigabitEthernet3/8
+ no ip address
+ shutdown
+!
+interface GigabitEthernet5/1
+ no ip address
+ shutdown
+!
+interface GigabitEthernet5/2
+ no ip address
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan81
+ description "Mgmt vlan for Wanxiang"
+ ip address 81.1.1.1 255.255.255.0
+!
+interface Vlan82
+ description "Ingest vlan for Wanxiang"
+ ip address 82.1.1.1 255.255.255.0
+ ip pim sparse-mode
+ ip igmp version 3
+!
+interface Vlan83
+ description "Storage vlan for Wanxiang"
+ ip address 83.1.1.1 255.255.255.0
+!
+interface Vlan84
+ description "Output vlan for Wanxiang"
+ ip address 84.1.1.1 255.255.255.0
+!
+interface Vlan100
+ no ip address
+!
+interface Vlan101
+ no ip address
+ ipv6 address FEC0:0:3:9::1/64
+ ipv6 enable
+ ipv6 nd prefix default no-advertise
+ ipv6 nd prefix FEC0:0:3:9::/64 no-advertise
+ ipv6 nd other-config-flag
+ ipv6 nd ra suppress
+!
+interface Vlan102
+ no ip address
+ ipv6 address FEC0:0:3:8::1/64
+ ipv6 enable
+ ipv6 nd reachable-time 100
+ ipv6 nd prefix default no-advertise
+ ipv6 nd prefix FEC0:0:3:8::/64 no-advertise
+ ipv6 nd other-config-flag
+ ipv6 nd ra suppress
+!
+interface Vlan106
+ ip address 18.106.1.1 255.255.255.0
+!
+interface Vlan121
+ ip address 18.0.121.1 255.255.255.0
+ ip nat inside
+ ip pim dense-mode
+ ip igmp snooping querier
+!
+interface Vlan122
+ ip address 18.0.122.1 255.255.255.0
+ ip nat inside
+ ip pim dense-mode
+ ip igmp snooping querier
+!
+interface Vlan123
+ description streaming vlan for subnet 10.79.53.0/24
+ ip address 18.123.1.1 255.255.255.0
+!
+interface Vlan124
+ description management vlan for subnet 10.79.53.0/24
+ ip address 18.124.1.1 255.255.255.0
+!
+interface Vlan125
+ description streaming vlan for subnet 10.79.56.0/24
+ ip address 18.125.1.1 255.255.255.0
+!
+interface Vlan126
+ description management vlan for subnet 10.79.56.0/24
+ ip address 18.126.1.1 255.255.255.0
+!
+interface Vlan127
+ ip address 18.127.1.99 255.255.255.0
+!
+interface Vlan168
+ ip address 4.4.4.4 255.255.255.0
+!
+interface Vlan172
+ no ip address
+ shutdown
+!
+interface Vlan192
+ ip address 19.102.1.1 255.255.255.0
+ ipv6 address FEC0:0:3:20::1/64
+ ipv6 enable
+ ipv6 nd prefix default no-advertise
+ ipv6 nd prefix FEC0:0:3:20::/64 no-advertise
+ ipv6 nd other-config-flag
+ ipv6 nd ra suppress
+!
+interface Vlan196
+ ip address 19.106.1.1 255.255.255.0
+ ipv6 address FEC0:0:3:21::1/64
+ ipv6 enable
+ ipv6 nd prefix default no-advertise
+ ipv6 nd prefix FEC0:0:3:21::/64 no-advertise
+ ipv6 nd other-config-flag
+ ipv6 nd ra suppress
+!
+interface Vlan502
+ no ip address
+ ipv6 address FEC0:0:3:6::1/64
+ ipv6 enable
+ ipv6 nd prefix default no-advertise
+ ipv6 nd prefix FEC0:0:3:6::/64 no-advertise
+ ipv6 nd other-config-flag
+ ipv6 nd ra suppress
+!
+interface Vlan737
+ ip address 2.2.2.2 255.255.255.0
+ ipv6 address FEC0:0:3:99::2/64
+!
+interface Vlan777
+ ip address 7.7.7.8 255.255.255.0
+!
+interface Vlan809
+ ip address 10.74.11.180 255.255.255.240
+ ip nat outside
+!
+interface Vlan829
+ no ip address
+!
+interface Vlan835
+ ip address 10.74.14.100 255.255.255.224
+ ip nat outside
+!
+interface Vlan836
+ no ip address
+ ip nat outside
+!
+interface Vlan842
+ no ip address
+!
+interface Vlan899
+ no ip address
+!         
+interface Vlan931
+ ip address 10.79.53.2 255.255.255.0
+ ipv6 address FEC0:0:3:5::1/64
+ ipv6 enable
+ ipv6 nd prefix default no-advertise
+ ipv6 nd other-config-flag
+ ipv6 nd ra suppress
+!
+interface Vlan933
+ ip address 10.79.56.2 255.255.255.0
+ ipv6 address FEC0:0:3:7::1/64
+ ipv6 enable
+ ipv6 nd prefix default no-advertise
+ ipv6 nd prefix FEC0:0:3:7::/64 no-advertise
+ ipv6 nd other-config-flag
+ ipv6 nd ra suppress
+!
+interface Vlan999
+ ip address 9.9.9.9 255.255.255.0
+!         
+ip nat inside source static 18.0.121.21 10.74.11.182
+ip nat inside source static 18.0.121.22 10.74.11.183
+ip nat inside source static 18.0.121.23 10.74.11.184
+ip nat inside source static 18.0.121.24 10.74.11.185
+ip nat inside source static 18.0.121.25 10.74.14.114
+ip nat inside source static 18.0.121.20 10.74.14.116
+ip nat inside source static 18.0.121.30 10.74.14.143
+ip nat inside source static 18.0.121.39 10.74.14.145
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 10.74.43.50
+ip route 0.0.0.0 0.0.0.0 10.74.11.177
+ip route 10.74.14.128 255.255.255.224 10.74.11.177
+ip route 10.74.23.0 255.255.255.0 10.74.11.177
+ip route 10.74.24.0 255.255.255.0 7.7.7.7
+ip route 10.74.25.0 255.255.255.0 7.7.7.7
+ip route 10.74.26.0 255.255.255.0 7.7.7.7
+ip route 10.74.27.0 255.255.255.0 7.7.7.7
+ip route 10.74.61.0 255.255.255.0 10.74.11.177
+ip route 18.0.0.0 255.0.0.0 7.7.7.7
+ip route 100.10.10.0 255.255.255.0 7.7.7.7
+ip route 172.16.0.0 255.255.255.0 7.7.7.7
+!
+access-list 102 permit ip any 10.79.53.0 0.0.0.255
+access-list 102 permit ip any 10.79.56.0 0.0.0.255
+access-list 105 deny   ip 24.0.0.0 0.255.255.255 any
+access-list 105 deny   ip 24.24.24.0 0.0.0.255 any
+access-list 105 deny   ip 10.75.169.0 0.0.0.255 any
+access-list 105 permit ip any any
+!
+!
+!
+ipv6 access-list test
+ permit ipv6 any host FEC0:0:3:8::1
+!
+control-plane
+!
+!
+line con 0
+line vty 0 4
+ exec-timeout 360 0
+ password crdc
+ login
+ transport input lat pad udptn telnet rlogin ssh
+line vty 5 15
+ password crdc
+ login
+!
+exception crashinfo buffersize 80
+!
+monitor session 1 source interface Gi2/1 rx
+monitor session 1 destination interface Gi2/48
+!
+end
